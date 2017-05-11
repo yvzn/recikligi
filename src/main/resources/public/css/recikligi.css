@@ -1,3 +1,55 @@
 * {
-    font-family: sans-serif;
+    font-family: 'Lato', sans-serif;
+    color: #2c3e50;
+}
+
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #31475B;
+}
+
+body {
+    max-width: 20em;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0 4em;
+    background-color: #F0F1F2;
+}
+
+h1 {
+    text-align: center;
+    color: #F1543F;
+    flex-grow: 1;
+}
+
+h2 {
+    flex-grow: 1;
+}
+
+form {
+    flex-grow: 2;
+}
+
+input[type='file'] {
+    position: fixed;
+    left: -1000px;
+}
+
+label[for='camera'] {
+    display:block;
+    width: 75px;
+    height: 75px;
+    line-height: 75px;
+    border-radius: 50%;
+    text-align:center;
+    background: #FFC655;
+    box-shadow: 0 0 3px silver;
+    font-size: 30px;
+    font-weight:bold;
+    margin: auto;
+    cursor: pointer;
 }

@@ -1,7 +1,6 @@
 # Backlog
 
 ## TODO
-* CSS
 * Submit et sauvegarde de l'image
 * Auto-open
 * Menu aide 
@@ -21,3 +20,5 @@
 ## DONE
 * <del>Page d'accueil</del>
 * <del>Formulaire avec &lt;input></del>
+* <del>CSS</del>
+

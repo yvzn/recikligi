@@ -10,7 +10,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
 @ComponentScan(basePackages = "net.ludeo.recikligi")
-@PropertySource("classpath:recikligi.properties")
+@PropertySource("classpath:application.properties")
 @EnableAutoConfiguration
 public class AppConfig {
 
