@@ -21,6 +21,7 @@ public class AppConfig {
     @Bean
     public static PropertySourcesPlaceholderConfigurer
     propertySourcesPlaceholderConfigurer() {
+        // required to disable the favicon in application properties
         return new PropertySourcesPlaceholderConfigurer();
     }
 }
