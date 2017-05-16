@@ -8,10 +8,17 @@
     <link rel="stylesheet" href="/css/recikligi.css"/>
     <link rel="icon" type="image/png" href="/favicon.png"/>
 </head>
-<body>
+<body class="invert">
 <h1 th:text="${appTitle}"></h1>
+<h2>Oups...</h2>
 <div>
-    <p th:text="${imageId}"></p>
+    <p>Une erreur s'est glissée dans cette page.</p>
+    <p><span th:text="${status}"></span> : <span th:text="${error}"></span></p>
+    <p>Nous nous excusons pour la gêne occasionnée.</p>
 </div>
+<form action="/">
+    <label for="home">&#8634;</label>
+    <input type="submit" id="home"/>
+</form>
 </body>
 </html>

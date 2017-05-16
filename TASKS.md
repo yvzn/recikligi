@@ -1,9 +1,8 @@
 # Backlog
 
 ## TODO
-* Gestion des erreurs (paramètre absent, stockage, pas une image)
 * Auto-submit image
-* Auto-open camera
+* Gestion des erreurs (pas une image)
 * Menu aide 
 * i18n
 * Ajout service reconnaissance image + Implémentation mock
@@ -25,4 +24,5 @@
 * <del>Formulaire avec &lt;input></del>
 * <del>CSS</del>
 * <del>Submit et sauvegarde de l'image</del>
+* <del>Gestion des erreurs (paramètre absent, stockage)</del>
 

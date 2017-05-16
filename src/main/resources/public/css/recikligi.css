@@ -23,23 +23,26 @@ body {
 h1 {
     text-align: center;
     color: #F1543F;
-    flex-grow: 1;
 }
 
-h2 {
+.invert h1 {
+    color: #FFC655;
+}
+
+body > div {
     flex-grow: 1;
 }
 
 form {
-    flex-grow: 2;
+    height: 33%;
 }
 
-input[type='file'] {
+input[type='file'], input[type='submit'] {
     position: fixed;
     left: -1000px;
 }
 
-label[for='camera'] {
+label[for] {
     display:block;
     width: 75px;
     height: 75px;
@@ -52,4 +55,9 @@ label[for='camera'] {
     font-weight:bold;
     margin: auto;
     cursor: pointer;
+}
+
+.invert label[for] {
+    background: #F1543F;
+    color: #ffffff;
 }
