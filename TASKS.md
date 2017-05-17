@@ -2,7 +2,6 @@
 
 ## TODO
 * Gestion des erreurs (pas une image)
-* Master page
 * Menu aide 
 * i18n
 * Ajout service reconnaissance image + Implémentation mock
@@ -20,11 +19,12 @@
 * Géolocalisation pour l'appel à consignesdetri
 
 ## DONE 
-26% (6/23)
+30% (7/23)
 * <del>Page d'accueil</del>
 * <del>Formulaire avec &lt;input></del>
 * <del>CSS</del>
 * <del>Submit et sauvegarde de l'image</del>
 * <del>Gestion des erreurs (paramètre absent, stockage)</del>
 * <del>Auto-submit image</del>
+* <del>Master page</del>
 

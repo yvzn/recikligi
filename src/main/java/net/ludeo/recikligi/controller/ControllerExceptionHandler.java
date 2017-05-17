@@ -8,7 +8,7 @@ import org.springframework.web.multipart.support.MissingServletRequestPartExcept
 import java.net.HttpURLConnection;
 
 @ControllerAdvice
-public class ControllerExceptionHandler extends AbstractController {
+public class ControllerExceptionHandler {
 
     @ExceptionHandler(MissingServletRequestPartException.class)
     public String handleMissingParams() {
@@ -17,7 +17,6 @@ public class ControllerExceptionHandler extends AbstractController {
 
     @ExceptionHandler(Throwable.class)
     public String handleException(final Throwable throwable, final Model model) {
-        addCommonAttributes(model);
         String errorMessage = (throwable != null ? throwable.getMessage() : "Unknown error");
         model.addAttribute("error", errorMessage);
         model.addAttribute("status", HttpURLConnection.HTTP_INTERNAL_ERROR);

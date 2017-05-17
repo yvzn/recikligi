@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Setter
 @Controller
-public class RecyclableController extends AbstractController {
+public class RecyclableController {
 
     @GetMapping("/recyclable/{imageId:.+}")
     public String showRecyclableStatusForImage(@PathVariable("imageId") final String imageId, final Model model) {
-        addCommonAttributes(model).addAttribute("imageId", imageId);
+        model.addAttribute("imageId", imageId);
         return "recyclable";
     }
 }
