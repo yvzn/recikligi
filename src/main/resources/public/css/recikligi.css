@@ -39,7 +39,7 @@ form {
 
 input[type='file'] {
     position: fixed;
-    left: -1000px;
+    left: -10000px;
 }
 
 input[type='submit'] {
