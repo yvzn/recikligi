@@ -4,8 +4,9 @@
 <body>
 <h1 th:include="fragments/layout :: h1Fragment"></h1>
 <div>
-    <p th:text="${imageId}"></p>
+    <p th:text="#{about.text}"></p>
 </div>
+<form action="/" th:include="fragments/layout :: homeButtonFragment"></form>
 <footer th:include="fragments/layout :: navFragment"></footer>
 </body>
 </html>

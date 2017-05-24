@@ -1,7 +1,6 @@
 # Backlog
 
 ## TODO
-* Menu aide 
 * i18n messages d'erreur
 * Affichage image + spinner
 * Ajout service reconnaissance image + Implémentation mock
@@ -19,7 +18,7 @@
 * Géolocalisation pour l'appel à consignesdetri
 
 ## DONE 
-38% (10/26)
+42% (11/26)
 * <del>Page d'accueil</del>
 * <del>Formulaire avec &lt;input></del>
 * <del>CSS</del>
@@ -30,4 +29,5 @@
 * <del>Factorisation des vues</del>
 * <del>Gestion des erreurs (pas une image)</del>
 * <del>i18n</del>
+* <del>Menu aide</del>
 

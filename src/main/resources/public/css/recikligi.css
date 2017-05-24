@@ -23,6 +23,7 @@ body {
 h1 {
     text-align: center;
     color: #F1543F;
+    margin: 1.5em 0;
 }
 
 .invert h1 {
@@ -52,22 +53,42 @@ input[type='submit'] {
     width: 10em;
 }
 
+label[for], footer a {
+    border-radius: 50%;
+    text-align:center;
+    box-shadow: 0 0 .2em silver;
+    font-weight:bold;
+    cursor: pointer;
+}
+
 label[for] {
     display:block;
     width: 2.5em;
     height: 2.5em;
     line-height: 2.5em;
-    border-radius: 50%;
-    text-align:center;
     background-color: #FFC655;
     color: #ffffff;
-    box-shadow: 0 0 .2em silver;
     font-size: 30px;
-    font-weight:bold;
     margin: auto;
-    cursor: pointer;
 }
 
 .invert label[for] {
     background-color: #F1543F;
+}
+
+footer {
+    order: -1;
+    text-align: right;
+    margin-right: -3em;
+}
+
+footer a {
+    display:inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    margin: 0.5em 0 0 0.2em;
+    text-decoration:none;
+    background-color: #ffffff;
+    color:#31475B;
 }
