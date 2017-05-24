@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/layout :: headerFragment"></head>
-<body class="invert">
+<body>
 <h1 th:include="fragments/layout :: h1Fragment"></h1>
-<h2>Oups...</h2>
+<h2 th:text="#{error.title}"></h2>
 <div>
-    <p>Une erreur s'est glissée dans cette page.</p>
+    <p th:text="#{error.header}"></p>
     <p><span th:text="${status}"></span> : <span th:text="${error}"></span></p>
-    <p>Nous nous excusons pour la gêne occasionnée.</p>
+    <p th:text="#{error.apologies}"></p>
 </div>
 <form action="/">
-    <label for="home">&#8634;</label>
+    <label for="home" th:title="#{error.button.tooltip}">&#8634;</label>
     <input type="submit" id="home"/>
 </form>
 </body>

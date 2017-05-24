@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="headerFragment">
-    <title>Ça se recycle ?</title>
+    <title th:text="#{fragments.layout.appTitle}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato"/>
@@ -10,6 +10,6 @@
     <script src="/js/recikligi.js"></script>
 </head>
 <body>
-<h1 th:fragment="h1Fragment">Ça se recycle ?</h1>
+<h1 th:fragment="h1Fragment"><span th:text="#{fragments.layout.title}"></span></h1>
 </body>
 </html>

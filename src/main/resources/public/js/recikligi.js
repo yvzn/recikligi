@@ -9,7 +9,11 @@
     }
 
     function hideSubmitButtonIfJavascriptAvailable() {
-        document.styleSheets[0].insertRule('form input[type="submit"] { left: -10000px;}', 0);
+        try {
+            document.styleSheets[0].insertRule('form input[type="submit"] { left: -10000px;}', 0);
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     function autoSubmitFormIfImageSelected() {

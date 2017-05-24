@@ -2,9 +2,10 @@
 
 ## TODO
 * Menu aide 
-* i18n
+* i18n messages d'erreur
 * Affichage image + spinner
 * Ajout service reconnaissance image + Implémentation mock
+* Spring Boot 2
 * Ajout base de données
 * Stockage en base de données (store temporarily on file system / control / store definitely)
 * Ajout service recyclable/non
@@ -18,7 +19,7 @@
 * Géolocalisation pour l'appel à consignesdetri
 
 ## DONE 
-31% (9/29)
+38% (10/26)
 * <del>Page d'accueil</del>
 * <del>Formulaire avec &lt;input></del>
 * <del>CSS</del>
@@ -28,4 +29,5 @@
 * <del>Master page</del>
 * <del>Factorisation des vues</del>
 * <del>Gestion des erreurs (pas une image)</del>
+* <del>i18n</del>
 
