@@ -1,10 +1,8 @@
 # Backlog
 
 ## TODO
-* i18n messages d'erreur
 * Affichage image + spinner
 * Ajout service reconnaissance image + Implémentation mock
-* Spring Boot 2
 * Ajout base de données
 * Stockage en base de données (store temporarily on file system / control / store definitely)
 * Ajout service recyclable/non
@@ -16,9 +14,10 @@
 * Limitation du nombre de connexions (phase alpha)
 * getUserMedia + Canvas
 * Géolocalisation pour l'appel à consignesdetri
+* Spring Boot 2 (release)
 
 ## DONE 
-42% (11/26)
+46% (12/26)
 * <del>Page d'accueil</del>
 * <del>Formulaire avec &lt;input></del>
 * <del>CSS</del>
@@ -30,4 +29,6 @@
 * <del>Gestion des erreurs (pas une image)</del>
 * <del>i18n</del>
 * <del>Menu aide</del>
+* <del>i18n messages d'erreur</del>
+
 

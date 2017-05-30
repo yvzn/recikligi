@@ -9,7 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 @Service
-public class ImageControlService {
+public class ImageControlService extends LocalizedMessagesService {
 
     static final byte[] PNG_HEADER = {(byte) 0x89, (byte) 0x50, (byte) 0x4E, (byte) 0x47, (byte) 0x0D, (byte) 0x0A, (byte) 0x1A, (byte) 0x0A};
     private static final byte[] JPEG_HEADER = {(byte) 0xFF, (byte) 0xD8};
@@ -17,9 +17,9 @@ public class ImageControlService {
     public void controlImage(final Path imageFile) throws InvalidImageFormatException {
         String errorMessage = null;
         if (!Files.isRegularFile(imageFile)) {
-            errorMessage = String.format("Could not read file %s", imageFile.getFileName());
+            errorMessage = getMessage("error.msg.could.not.read.file", imageFile.getFileName());
         } else if (!isJpegOrPng(imageFile)) {
-            errorMessage = "Only valid PNG and JPEG files are accepted";
+            errorMessage = getMessage("error.msg.invalid.image.format");
         }
         if (errorMessage != null) {
             throw new InvalidImageFormatException(errorMessage);
@@ -32,8 +32,8 @@ public class ImageControlService {
             int readBytesCount = inputStream.read(firstBytes);
             return isJpegHeader(firstBytes, readBytesCount) || isPngHeader(firstBytes, readBytesCount);
         } catch (final IOException ex) {
-            throw new InvalidImageFormatException(
-                    String.format("Could not read file %s", imageFile.getFileName()), ex);
+            String msg = getMessage("error.msg.could.not.read.file", imageFile.getFileName());
+            throw new InvalidImageFormatException(msg, ex);
         }
     }
 

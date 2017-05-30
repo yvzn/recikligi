@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @Setter
 @Service
-public class StorageService {
+public class StorageService extends LocalizedMessagesService {
 
     @Value("${recikligi.storageFolder}")
     private String storageFolder;
@@ -25,15 +25,16 @@ public class StorageService {
             imageFile.transferTo(image.toFile());
             return imageId;
         } catch (final IOException ex) {
-            throw new StorageFailedException(
-                    String.format("Could not store uploaded file %s", imageFile.getOriginalFilename()), ex);
+            String msg = getMessage("error.msg.could.not.store.file", imageFile.getOriginalFilename());
+            throw new StorageFailedException(msg, ex);
         }
     }
 
     public Path read(final UUID imageId) throws ImageNotFoundException {
         Path image = getPathToImage(imageId);
         if (!Files.isRegularFile(image)) {
-            throw new ImageNotFoundException(String.format("Could not find image %s", imageId.toString()));
+            String msg = getMessage("error.msg.could.not.find.image", imageId.toString());
+            throw new ImageNotFoundException(msg);
         }
         return image;
     }

@@ -1,8 +1,13 @@
 package net.ludeo.recikligi.service;
 
-import org.junit.jupiter.api.BeforeEach;
+import lombok.Setter;
+import net.ludeo.recikligi.AppConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.net.URISyntaxException;
 import java.nio.file.Path;
@@ -11,15 +16,14 @@ import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("Control image files")
+@SpringBootTest(classes = {AppConfig.class})
+@ExtendWith(SpringExtension.class)
+@DisplayName("When controlling image files")
 class ImageControlServiceTest {
 
+    @Setter
+    @Autowired
     private ImageControlService imageControlService;
-
-    @BeforeEach
-    void setUp() {
-        imageControlService = new ImageControlService();
-    }
 
     @Test
     @DisplayName("PNG image is valid")
@@ -52,14 +56,14 @@ class ImageControlServiceTest {
     }
 
     @Test
-    @DisplayName("JPEG image detected")
+    @DisplayName("JPEG image is detected")
     void detectJpeg() throws Exception {
         String path = "/images/tin-box.jpg";
         assertTrue(imageControlService.isJpegOrPng(toPath(path)));
     }
 
     @Test
-    @DisplayName("Non-existing file detected")
+    @DisplayName("Non-existing file is detected")
     void detectInvalidImage() throws Exception {
         Path path = Paths.get("/not-an-existing-file-" + new Random().nextLong());
         assertThrows(InvalidImageFormatException.class, () ->
