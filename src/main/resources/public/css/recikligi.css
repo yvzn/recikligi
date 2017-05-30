@@ -10,28 +10,39 @@ html {
 }
 
 body {
-    max-width: 20em;
+    max-width: 28em;
     height: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    padding: 0 4em;
     background-color: #F0F1F2;
     color: #2c3e50;
+}
+
+body#recyclable {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body#recyclable > * {
+    background-color:rgba(240, 241, 242, 0.9);
 }
 
 h1 {
     text-align: center;
     color: #F1543F;
-    margin: 1.5em 0;
+    margin: 0;
+    padding: 1.5em 0;
 }
 
-.invert h1 {
-    color: #FFC655;
+h2 {
+    padding: 0 4rem;
 }
 
 body > div {
     flex-grow: 1;
+    padding: 0 4rem;
 }
 
 form {
@@ -72,14 +83,10 @@ label[for] {
     margin: auto;
 }
 
-.invert label[for] {
-    background-color: #F1543F;
-}
-
 footer {
     order: -1;
     text-align: right;
-    margin-right: -3em;
+    padding-right: 1em;
 }
 
 footer a {

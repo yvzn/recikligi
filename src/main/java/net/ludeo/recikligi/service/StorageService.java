@@ -39,6 +39,15 @@ public class StorageService extends LocalizedMessagesService {
         return image;
     }
 
+    public Path read(final String imageId) throws ImageNotFoundException {
+        try {
+            return read(UUID.fromString(imageId));
+        } catch (final  IllegalArgumentException | UnsupportedOperationException ex) {
+            String msg = getMessage("error.msg.could.not.find.image", imageId);
+            throw new ImageNotFoundException(msg, ex);
+        }
+    }
+
     private Path getPathToImage(UUID imageId) {
         Path folder = Paths.get(storageFolder).toAbsolutePath();
         return folder.resolve(imageId.toString());

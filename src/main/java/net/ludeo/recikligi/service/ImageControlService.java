@@ -27,14 +27,23 @@ public class ImageControlService extends LocalizedMessagesService {
     }
 
     boolean isJpegOrPng(final Path imageFile) throws InvalidImageFormatException {
+        ImageFormat imageFormat = findImageFormat(imageFile);
+        return imageFormat == ImageFormat.JPEG || imageFormat == ImageFormat.PNG;
+    }
+
+    public ImageFormat findImageFormat(final Path imageFile) throws InvalidImageFormatException {
         try (BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(imageFile.toFile()))) {
             byte[] firstBytes = new byte[8];
             int readBytesCount = inputStream.read(firstBytes);
-            return isJpegHeader(firstBytes, readBytesCount) || isPngHeader(firstBytes, readBytesCount);
+            if (isJpegHeader(firstBytes, readBytesCount))
+                return ImageFormat.JPEG;
+            if (isPngHeader(firstBytes, readBytesCount))
+                return ImageFormat.PNG;
         } catch (final IOException ex) {
             String msg = getMessage("error.msg.could.not.read.file", imageFile.getFileName());
             throw new InvalidImageFormatException(msg, ex);
         }
+        return ImageFormat.UNKNOWN;
     }
 
     private boolean isPngHeader(byte[] firstBytes, int readBytesCount) {
@@ -56,5 +65,9 @@ public class ImageControlService extends LocalizedMessagesService {
             }
         }
         return true;
+    }
+
+    public enum ImageFormat {
+        UNKNOWN, PNG, JPEG
     }
 }

@@ -8,4 +8,8 @@ class ImageNotFoundException extends Exception {
     ImageNotFoundException(String s) {
         super(s);
     }
+
+    ImageNotFoundException(final String s, final Throwable throwable) {
+        super(s, throwable);
+    }
 }

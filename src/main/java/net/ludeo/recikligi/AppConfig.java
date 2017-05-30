@@ -30,7 +30,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     protected LocaleResolver localeResolver() {
         SessionLocaleResolver slr = new SessionLocaleResolver();
-        slr.setDefaultLocale(Locale.US);
+        slr.setDefaultLocale(Locale.FRENCH);
         return slr;
     }
 
