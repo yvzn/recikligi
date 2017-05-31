@@ -10,18 +10,19 @@
 
     function hideSubmitButtonIfJavascriptAvailable() {
         try {
-            document.styleSheets[0].insertRule('form input[type="submit"] { left: -10000px;}', 0);
+            var submitButtons = document.querySelectorAll('form input[type="submit"]');
+            for (var i = 0, len = submitButtons.length; i < len; ++i) {
+                submitButtons[i].style.left = '100vw';
+            }
         } catch (e) {
             console.log(e);
         }
     }
 
     function autoSubmitFormIfImageSelected() {
-        var inputs = document.getElementsByTagName('input');
+        var inputs = document.querySelectorAll('input[type="file"]')
         for (var i = 0; i < inputs.length; ++i) {
-            if (inputs[i].getAttribute('type') === 'file') {
-                inputs[i].onchange = submitForm;
-            }
+            inputs[i].onchange = submitForm;
         }
     }
 
