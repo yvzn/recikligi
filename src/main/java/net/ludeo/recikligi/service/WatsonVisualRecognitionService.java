@@ -9,8 +9,8 @@ import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.nio.file.Files;
@@ -21,7 +21,7 @@ import java.util.stream.Stream;
 
 @Setter
 @Service
-@Qualifier("watson")
+@Profile({"watson", "default"})
 public class WatsonVisualRecognitionService implements VisualRecognitionService {
 
     private static final Logger logger = LoggerFactory.getLogger(WatsonVisualRecognitionService.class);

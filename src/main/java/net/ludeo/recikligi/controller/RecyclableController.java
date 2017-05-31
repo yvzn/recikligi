@@ -6,7 +6,6 @@ import net.ludeo.recikligi.service.ScoreLabelingService;
 import net.ludeo.recikligi.service.StorageService;
 import net.ludeo.recikligi.service.VisualRecognitionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +26,7 @@ public class RecyclableController {
 
     @Autowired
     public RecyclableController(final StorageService storageService,
-                                @Qualifier("watson") final VisualRecognitionService visualRecognitionService,
+                                final VisualRecognitionService visualRecognitionService,
                                 final ScoreLabelingService scoreLabelingService) {
         this.storageService = storageService;
         this.visualRecognitionService = visualRecognitionService;
