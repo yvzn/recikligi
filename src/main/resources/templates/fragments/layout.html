@@ -16,8 +16,8 @@
     <input type="submit" id="home"/>
 </form>
 <footer th:fragment="navFragment">
-    <!--/*<a href="/" th:title="#{fragments.layout.nav.home.tooltip}">&#8962;</a>*/-->
-    <a href="/about" th:title="#{fragments.layout.nav.about.tooltip}">i</a>
+    <!--/*<a th:href="@{/}" th:title="#{fragments.layout.nav.home.tooltip}">&#8962;</a>*/-->
+    <a th:href="@{/about}" th:title="#{fragments.layout.nav.about.tooltip}">i</a>
 </footer>
 </body>
 </html>

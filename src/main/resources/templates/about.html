@@ -6,7 +6,7 @@
 <div>
     <p th:text="#{about.text}"></p>
 </div>
-<form action="/" th:include="fragments/layout :: homeButtonFragment"></form>
+<form th:action="@{/}" th:include="fragments/layout :: homeButtonFragment"></form>
 <footer th:include="fragments/layout :: navFragment"></footer>
 </body>
 </html>
