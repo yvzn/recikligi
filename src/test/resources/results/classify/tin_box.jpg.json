@@ -1,0 +1,50 @@
+// against default classifier
+{
+  "images": [
+    {
+      "classifiers": [
+        {
+          "classes": [
+            {
+              "class": "coupling",
+              "score": 0.683,
+              "type_hierarchy": "/device/coupling"
+            },
+            {
+              "class": "device",
+              "score": 0.683
+            },
+            {
+              "class": "brass (ornament or utensil)",
+              "score": 0.627
+            },
+            {
+              "class": "bushing (cylindrical lining)",
+              "score": 0.614
+            },
+            {
+              "class": "tappet (lever)",
+              "score": 0.53
+            },
+            {
+              "class": "lever",
+              "score": 0.53
+            },
+            {
+              "class": "olive green color",
+              "score": 0.938
+            },
+            {
+              "class": "sage green color",
+              "score": 0.797
+            }
+          ],
+          "classifier_id": "default",
+          "name": "default"
+        }
+      ],
+      "image": "88774ab5-68b8-410f-928c-25b3dfa8e237.jpeg"
+    }
+  ],
+  "images_processed": 1
+}

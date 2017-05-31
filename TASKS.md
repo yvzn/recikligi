@@ -1,12 +1,10 @@
 # Backlog
 
 ## TODO
-* Ajout service reconnaissance image + Implémentation mock
-* Ajout service bluemix + credentials
 * Ajout base de données
 * Stockage en base de données (store temporarily on file system / control / store definitely)
 * Ajout service recyclable/non
-* Affichage du résultat (spinner ?)
+* Affichage du résultat (spinner ? / reactive)
 * Lien vers consignesdetri
 * "Je ne sais pas encore si cet objet est recyclable"
 * UX (animations, désactivation boutons, L&F)
@@ -18,7 +16,7 @@
 * Spring Boot 2 (release)
 
 ## DONE 
-46% (13/28)
+53% (15/28)
 * <del>Page d'accueil</del>
 * <del>Formulaire avec &lt;input></del>
 * <del>CSS</del>
@@ -32,5 +30,8 @@
 * <del>Menu aide</del>
 * <del>i18n messages d'erreur</del>
 * <del>Affichage image</del>
+* <del>Ajout service reconnaissance image + Implémentation mock</del>
+* <del>Ajout service bluemix + credentials</del>
+
 
 
