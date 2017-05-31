@@ -1,6 +1,7 @@
 package net.ludeo.recikligi.controller;
 
 import net.ludeo.recikligi.service.ImageControlService;
+import net.ludeo.recikligi.service.ImageFormat;
 import net.ludeo.recikligi.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -31,11 +32,11 @@ public class ImageController {
     @ResponseBody
     public HttpEntity<byte[]> showImage(@PathVariable("imageId") final String imageId) throws Exception {
         Path image = storageService.read(imageId);
-        ImageControlService.ImageFormat imageFormat = imageControlService.findImageFormat(image);
+        ImageFormat imageFormat = imageControlService.findImageFormat(image);
         byte[] bytes = Files.readAllBytes(image);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(imageFormat == ImageControlService.ImageFormat.PNG ? MediaType.IMAGE_PNG : MediaType.IMAGE_JPEG);
+        headers.setContentType(imageFormat == ImageFormat.PNG ? MediaType.IMAGE_PNG : MediaType.IMAGE_JPEG);
         headers.setContentLength(bytes.length);
         return new HttpEntity<>(bytes, headers);
     }

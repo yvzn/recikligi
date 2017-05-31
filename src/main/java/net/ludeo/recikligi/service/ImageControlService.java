@@ -66,8 +66,4 @@ public class ImageControlService extends LocalizedMessagesService {
         }
         return true;
     }
-
-    public enum ImageFormat {
-        UNKNOWN, PNG, JPEG
-    }
 }
