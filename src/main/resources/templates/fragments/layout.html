@@ -10,14 +10,14 @@
     <script src="/js/recikligi.js"></script>
 </head>
 <body>
-<h1 th:fragment="h1Fragment"><span th:text="#{fragments.layout.title}"></span></h1>
+<h1 th:fragment="h1Fragment">
+    <a th:href="@{/}" th:text="#{fragments.layout.title}" th:title="#{fragments.layout.nav.home.tooltip}"></a></h1>
 <form th:fragment="homeButtonFragment">
     <label for="home" th:title="#{fragments.layout.home.button.tooltip}">&#8634;</label>
     <input type="submit" id="home"/>
 </form>
 <footer th:fragment="navFragment">
-    <!--/*<a th:href="@{/}" th:title="#{fragments.layout.nav.home.tooltip}">&#8962;</a>*/-->
-    <a th:href="@{/about}" th:title="#{fragments.layout.nav.about.tooltip}">i</a>
+    <a th:href="@{/about}" th:title="#{fragments.layout.nav.about.tooltip}">&#9881;</a>
 </footer>
 </body>
 </html>
