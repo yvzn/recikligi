@@ -1,22 +1,20 @@
 # Backlog
 
 ## TODO
-* Ajout base de données
-* Stockage en base de données (store temporarily on file system / control / store definitely)
 * Ajout service recyclable/non
-* Affichage du résultat (spinner ? / reactive)
+* Affichage du résultat
 * Lien vers consignesdetri
-* "Je ne sais pas encore si cet objet est recyclable"
+* "Je ne sais pas encore si cet objet est recyclable" => feedback
+* Docker + tests téléphone
 * UX (animations, désactivation boutons, L&F)
-* Logging des sessions (cookie client)
 * Limitation du nombre de connexions (phase alpha)
-* Optimisations (affichage image)
+* Optimisations (affichage image - compression / taille)
 * getUserMedia + Canvas
 * Géolocalisation pour l'appel à consignesdetri
 * Spring Boot 2 (release)
 
 ## DONE 
-53% (15/28)
+MVP: 60% (17/28)
 * <del>Page d'accueil</del>
 * <del>Formulaire avec &lt;input></del>
 * <del>CSS</del>
@@ -32,6 +30,10 @@
 * <del>Affichage image</del>
 * <del>Ajout service reconnaissance image + Implémentation mock</del>
 * <del>Ajout service bluemix + credentials</del>
+* <del>Ajout base de données</del>
+    - https://docs.spring.io/spring-data/jpa/docs/current/reference/html/
+    - https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html
+* <del>Stockage en base de données des traductions</del>
 
 
 

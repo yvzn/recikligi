@@ -42,8 +42,8 @@ public class RecyclableController {
 
         if (imageRecognitionInfo.isPresent()) {
             model.addAttribute("success", true);
-            model.addAttribute("name", imageRecognitionInfo.get().getName());
-            model.addAttribute("score", scoreLabelingService.findUserFriendlyLabel(imageRecognitionInfo.get().getScore()));
+            model.addAttribute("name", scoreLabelingService.findUILabel(imageRecognitionInfo.get().getName()));
+            model.addAttribute("score", scoreLabelingService.findUILabel(imageRecognitionInfo.get().getScore()));
         } else {
             model.addAttribute("success", false);
         }
