@@ -11,15 +11,17 @@ import javax.persistence.ManyToOne;
 @Entity
 @Getter
 @Setter
-public class VisualClassTranslation extends AbstractEntityWithId {
+public class RecyclableStatusTranslation extends AbstractEntityWithId {
 
     private String text;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "visual_class_id")
-    private VisualClass visualClass;
+    private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "translation_locale_id")
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="recyclable_status_id")
+    private RecyclableStatus recyclableStatus;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="translation_locale_id")
     private TranslationLocale translationLocale;
 }

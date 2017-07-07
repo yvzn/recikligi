@@ -29,11 +29,16 @@ class VisualClassTranslationRepositoryTest {
 
     @Setter
     @Autowired
+    private RecyclableStatusTranslationRepository recyclableStatusTranslationRepository;
+
+    @Setter
+    @Autowired
     private VisualClassTranslationRepository visualClassTranslationRepository;
 
     @AfterEach
     void tearDown() {
         visualClassTranslationRepository.deleteAll();
+        recyclableStatusTranslationRepository.deleteAll();
         translationLocaleRepository.deleteAll();
         visualClassRepository.deleteAll();
     }
