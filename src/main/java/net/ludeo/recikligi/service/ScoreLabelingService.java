@@ -1,6 +1,5 @@
 package net.ludeo.recikligi.service;
 
-import lombok.Setter;
 import net.ludeo.recikligi.model.VisualClassTranslation;
 import net.ludeo.recikligi.model.VisualClassTranslationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Locale;
 
-@Setter
 @Service
 public class ScoreLabelingService extends LocalizedMessagesService {
 
@@ -21,8 +19,12 @@ public class ScoreLabelingService extends LocalizedMessagesService {
     @Value("${recikligi.score.threshold.medium}")
     private Double mediumScoreThreshold;
 
+    private final VisualClassTranslationRepository visualClassTranslationRepository;
+
     @Autowired
-    private VisualClassTranslationRepository visualClassTranslationRepository;
+    public ScoreLabelingService(VisualClassTranslationRepository visualClassTranslationRepository) {
+        this.visualClassTranslationRepository = visualClassTranslationRepository;
+    }
 
     public String findUILabel(final Double score) {
         String msg;

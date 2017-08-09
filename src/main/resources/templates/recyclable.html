@@ -4,11 +4,14 @@
 <body id="recyclable" th:style="'background-image:url(/image/' + ${imageId} + ');'">
 <h1 th:include="fragments/layout :: h1Fragment"></h1>
 <div>
-    <p th:if="${success}"
+    <p th:if="${success}" class="imageSuccess"
        th:text="${#messages.msgWithParams('recyclable.image.success', new Object[] {score, name})}"></p>
-    <p th:if="!${success}"
+    <p th:if="!${success}" class="imageFailure"
        th:text="#{recyclable.image.failure}"></p>
+    <p th:text="${statusDescription}" th:class="${statusText}"></p>
+    <p th:text="#{recyclable.status.disclaimer}"></p>
 </div>
+<form th:action="@{/}" th:include="fragments/layout :: homeButtonFragment"></form>
 <footer th:include="fragments/layout :: navFragment"></footer>
 </body>
 </html>

@@ -1,7 +1,6 @@
 # Backlog
 
 ## TODO
-* Ajout service recyclable/non
 * Affichage du résultat
 * Lien vers consignesdetri
 * "Je ne sais pas encore si cet objet est recyclable" => feedback
@@ -14,7 +13,7 @@
 * Spring Boot 2 (release)
 
 ## DONE 
-MVP: 60% (17/28)
+MVP: 60% (18/28)
 * <del>Page d'accueil</del>
 * <del>Formulaire avec &lt;input></del>
 * <del>CSS</del>
@@ -34,6 +33,7 @@ MVP: 60% (17/28)
     - https://docs.spring.io/spring-data/jpa/docs/current/reference/html/
     - https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html
 * <del>Stockage en base de données des traductions</del>
+* <del>Ajout service recyclable/non</del>
 
 
 

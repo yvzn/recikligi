@@ -4,6 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.UUID;
 
-interface VisualClassRepository extends CrudRepository<VisualClass, UUID> {
+public interface VisualClassRepository extends CrudRepository<VisualClass, UUID> {
 
+    VisualClass findByName(final String name);
 }

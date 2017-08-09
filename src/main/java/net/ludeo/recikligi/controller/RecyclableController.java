@@ -1,10 +1,7 @@
 package net.ludeo.recikligi.controller;
 
 import lombok.Setter;
-import net.ludeo.recikligi.service.ImageRecognitionInfo;
-import net.ludeo.recikligi.service.ScoreLabelingService;
-import net.ludeo.recikligi.service.StorageService;
-import net.ludeo.recikligi.service.VisualRecognitionService;
+import net.ludeo.recikligi.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,13 +21,17 @@ public class RecyclableController {
 
     private final ScoreLabelingService scoreLabelingService;
 
+    private final RecyclableStatusService recyclableStatusService;
+
     @Autowired
     public RecyclableController(final StorageService storageService,
                                 final VisualRecognitionService visualRecognitionService,
-                                final ScoreLabelingService scoreLabelingService) {
+                                final ScoreLabelingService scoreLabelingService,
+                                final RecyclableStatusService recyclableStatusService) {
         this.storageService = storageService;
         this.visualRecognitionService = visualRecognitionService;
         this.scoreLabelingService = scoreLabelingService;
+        this.recyclableStatusService = recyclableStatusService;
     }
 
     @GetMapping("/recyclable/{imageId:.+}")
@@ -47,6 +48,11 @@ public class RecyclableController {
         } else {
             model.addAttribute("success", false);
         }
+
+        RecyclableStatusDescription statusAndDescription = recyclableStatusService.findStatusAndDescription(
+                imageRecognitionInfo.orElse(null));
+        model.addAttribute("statusText", statusAndDescription.getText());
+        model.addAttribute("statusDescription", statusAndDescription.getDescription());
 
         return "recyclable";
     }
