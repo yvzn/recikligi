@@ -1,12 +1,16 @@
 :root {
-    --main-color: #65def1;
-    --main-color-light: #a8dcd1;
-    --body-color: hsl(71, 5%, 95%);
-    --body-color-transparency:  hsla(174, 4%, 97%, .9);
-    --body-color-text: #595959;
+    /* https://coolors.co/f7f7f2-00cecb-06d6a0-ffc655-ff5e5b */
+    --main-color: #00cecb;
+    --main-color-light: #65def1;
+    --body-color: #f7f7f2;
+    --body-color-text: #08415c;
     --primary-color: #ffc655;
-    --primary-color-text: #FFFFFF;
+    --primary-color-text: #ffffff;
     --accent-color: #06d6a0;
+    --alternate-color: #ff5e5b;
+    --image-tinting: hsla(0, 0%, 0%, .5);
+    --recyclable-status-color: #06d6a0;
+    --not-recyclable-status-color: #ff5e5b;
 }
 
 * {
@@ -18,7 +22,7 @@ html {
     margin: 0;
     padding: 0;
     background-color: var(--main-color);
-    background-image: linear-gradient( 150deg,  var(--main-color-light) 0%, var(--main-color) 100%);
+    background-image: linear-gradient( 135deg,  var(--main-color-light) 0%, var(--main-color) 100%);
 }
 
 body {
@@ -29,16 +33,6 @@ body {
     flex-direction: column;
     background-color: var(--body-color);
     color: var(--body-color-text);
-}
-
-body#recyclable {
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-body#recyclable > * {
-    background-color: var(--body-color-transparency);
 }
 
 h1 {
@@ -63,7 +57,7 @@ body > div {
 }
 
 form {
-    height: 33vh;
+    height: 25vh;
 }
 
 input[type='file'] {
@@ -97,6 +91,10 @@ label[for] {
     margin: auto;
 }
 
+p:first-letter {
+    text-transform: uppercase;
+}
+
 footer {
     order: -1;
     text-align: right;
@@ -109,4 +107,44 @@ footer a {
     text-decoration:none;
     color: inherit;
     font-size: 1.5em;
+}
+
+body#recyclable {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient(var(--image-tinting), var(--image-tinting)), var(--image-url);
+    /* --image-url variable is defined in HTML */
+    color: var(--body-color);
+}
+
+body#recyclable > * {
+    color: var(--body-color);
+}
+
+body#recyclable > div, body#recyclable > form {
+    background-color: var(--body-color);
+    color: var(--body-color-text);
+}
+
+body#recyclable p {
+    margin: 2rem 0 2rem 0;
+}
+
+.visualClass em {
+    color: var(--main-color);
+    font-style: normal;
+}
+
+.recyclableStatus.recyclable {
+    color: var(--recyclable-status-color);
+}
+
+.recyclableStatus {
+    color: var(--not-recyclable-status-color);
+    font-size: 1.5em;
+}
+
+body.alternate label[for] {
+    background-color: var(--alternate-color);
 }

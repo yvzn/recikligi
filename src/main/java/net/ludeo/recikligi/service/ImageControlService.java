@@ -1,6 +1,7 @@
 package net.ludeo.recikligi.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.HtmlUtils;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -17,7 +18,8 @@ public class ImageControlService extends LocalizedMessagesService {
     public void controlImage(final Path imageFile) throws InvalidImageFormatException {
         String errorMessage = null;
         if (!Files.isRegularFile(imageFile)) {
-            errorMessage = getMessage("error.msg.could.not.read.file", imageFile.getFileName());
+            errorMessage = getMessage("error.msg.could.not.read.file",
+                    HtmlUtils.htmlEscape(imageFile.getFileName().toString()));
         } else if (!isJpegOrPng(imageFile)) {
             errorMessage = getMessage("error.msg.invalid.image.format");
         }
@@ -40,7 +42,8 @@ public class ImageControlService extends LocalizedMessagesService {
             if (isPngHeader(firstBytes, readBytesCount))
                 return ImageFormat.PNG;
         } catch (final IOException ex) {
-            String msg = getMessage("error.msg.could.not.read.file", imageFile.getFileName());
+            String msg = getMessage("error.msg.could.not.read.file",
+                    HtmlUtils.htmlEscape(imageFile.getFileName().toString()));
             throw new InvalidImageFormatException(msg, ex);
         }
         return ImageFormat.UNKNOWN;

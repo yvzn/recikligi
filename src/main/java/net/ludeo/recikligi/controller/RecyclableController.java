@@ -51,7 +51,7 @@ public class RecyclableController {
 
         RecyclableStatusDescription statusAndDescription = recyclableStatusService.findStatusAndDescription(
                 imageRecognitionInfo.orElse(null));
-        model.addAttribute("statusText", statusAndDescription.getText());
+        model.addAttribute("statusName", statusAndDescription.getStatusName());
         model.addAttribute("statusDescription", statusAndDescription.getDescription());
 
         return "recyclable";

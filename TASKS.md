@@ -1,19 +1,20 @@
 # Backlog
 
 ## TODO
-* Affichage du résultat
 * Lien vers consignesdetri
+* Limitation du nombre de connexions (phase alpha)
+* Alimentation custom classifier
 * "Je ne sais pas encore si cet objet est recyclable" => feedback
 * Docker + tests téléphone
 * UX (animations, désactivation boutons, L&F)
-* Limitation du nombre de connexions (phase alpha)
 * Optimisations (affichage image - compression / taille)
+* PWA
 * getUserMedia + Canvas
 * Géolocalisation pour l'appel à consignesdetri
 * Spring Boot 2 (release)
 
 ## DONE 
-MVP: 60% (18/28)
+MVP: 65% (19/30)
 * <del>Page d'accueil</del>
 * <del>Formulaire avec &lt;input></del>
 * <del>CSS</del>
@@ -34,6 +35,7 @@ MVP: 60% (18/28)
     - https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html
 * <del>Stockage en base de données des traductions</del>
 * <del>Ajout service recyclable/non</del>
+* <del>Affichage du résultat</del>
 
 
 

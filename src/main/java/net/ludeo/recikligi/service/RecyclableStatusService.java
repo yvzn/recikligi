@@ -57,7 +57,7 @@ public class RecyclableStatusService {
     private RecyclableStatusDescription buildDescriptionFromTranslationOrDefault(String recyclableStatusName,
             List<RecyclableStatusTranslation> translations) {
         return translations.stream().findFirst().map(t ->
-                new RecyclableStatusDescription(t.getText(), t.getDescription()))
-                .orElse(new RecyclableStatusDescription(recyclableStatusName, recyclableStatusName));
+                new RecyclableStatusDescription(recyclableStatusName, t.getText(), t.getDescription()))
+                .orElse(new RecyclableStatusDescription(recyclableStatusName, recyclableStatusName, recyclableStatusName));
     }
 }
