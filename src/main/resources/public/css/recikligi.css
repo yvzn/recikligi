@@ -1,11 +1,22 @@
-:root {
+/*
+Content:
+    top-level
+    form + buttons
+    results page
+    alternate pages
+*/
+
+/* == top-level ==================================================================================================== */
+
+:root
+{
     /* https://coolors.co/f7f7f2-00cecb-06d6a0-ffc655-ff5e5b */
-    --main-color: #00cecb;
-    --main-color-light: #65def1;
+    --back-color-gradient-start: #00cecb;
+    --back-color-gradient-end: #65def1;
     --body-color: #f7f7f2;
     --body-color-text: #08415c;
     --primary-color: #ffc655;
-    --primary-color-text: #ffffff;
+    --primary-color-text: #fff;
     --accent-color: #06d6a0;
     --alternate-color: #ff5e5b;
     --image-tinting: hsla(0, 0%, 0%, .5);
@@ -13,138 +24,167 @@
     --not-recyclable-status-color: #ff5e5b;
 }
 
-* {
+*
+{
     font-family: 'Lato', sans-serif;
 }
 
-html {
+html
+{
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: var(--main-color);
-    background-image: linear-gradient( 135deg,  var(--main-color-light) 0%, var(--main-color) 100%);
+    background-color: var(--back-color-gradient-start);
+    background-image: linear-gradient(135deg,  var(--back-color-gradient-end) 0%, var(--back-color-gradient-start) 100%);
 }
 
-body {
+body
+{
+    display: flex;
+    flex-direction: column;
     max-width: 28em;
     height: 100%;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--body-color);
     color: var(--body-color-text);
+    background-color: var(--body-color);
 }
 
-h1 {
-    text-align: center;
-    color: var(--accent-color);
+    body > div
+    {
+        padding: 0 4rem;
+        flex-grow: 1;
+    }
+
+h1
+{
     margin: 0;
     padding: 1.5em 0;
+    text-align: center;
+    color: var(--accent-color);
 }
 
-h1 a {
-    text-decoration: none;
-    color: inherit;
-}
+    h1 a
+    {
+        text-decoration: none;
+        color: inherit;
+    }
 
-h2 {
+h2
+{
     padding: 0 4rem;
 }
 
-body > div {
-    flex-grow: 1;
-    padding: 0 4rem;
+p:first-letter
+{
+    text-transform: uppercase;
 }
 
-form {
+footer
+{
+    padding-right: 1em;
+    text-align: right;
+    order: -1;
+}
+
+    footer a
+    {
+        font-size: 1.5em;
+        display: inline-block;
+        margin: .5em 0 0 .2em;
+        text-decoration: none;
+        color: inherit;
+    }
+
+/* == form + buttons =============================================================================================== */
+
+form
+{
     height: 25vh;
 }
 
-input[type='file'] {
+input[type='file']
+{
     position: fixed;
     left: -100vw;
 }
 
-input[type='submit'] {
+input[type='submit']
+{
     position: fixed;
-    bottom:0;
-    left: 0;
     right: 0;
+    bottom: 0;
+    left: 0;
+    width: 10em;
     margin-left: auto;
     margin-right: auto;
-    width: 10em;
 }
 
-label[for] {
-    border-radius: 50%;
-    text-align:center;
-    box-shadow: 0 0 .2em silver;
-    font-weight:bold;
-    cursor: pointer;
-    display:block;
+label[for]
+{
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 2.5em;
+    display: block;
     width: 2.5em;
     height: 2.5em;
-    line-height: 2.5em;
-    background-color: var(--primary-color);
-    color: var(--primary-color-text);
-    font-size: 30px;
     margin: auto;
+    cursor: pointer;
+    text-align: center;
+    color: var(--primary-color-text);
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    box-shadow: 0 0 .2em silver;
 }
 
-p:first-letter {
-    text-transform: uppercase;
-}
+/* == results page ================================================================================================= */
 
-footer {
-    order: -1;
-    text-align: right;
-    padding-right: 1em;
-}
-
-footer a {
-    display:inline-block;
-    margin: 0.5em 0 0 0.2em;
-    text-decoration:none;
-    color: inherit;
-    font-size: 1.5em;
-}
-
-body#recyclable {
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: linear-gradient(var(--image-tinting), var(--image-tinting)), var(--image-url);
+.results
+{
     /* --image-url variable is defined in HTML */
     color: var(--body-color);
+    background-image: linear-gradient(var(--image-tinting), var(--image-tinting)), var(--image-url);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 
-body#recyclable > * {
-    color: var(--body-color);
-}
+    .results > *
+    {
+        color: var(--body-color);
+    }
 
-body#recyclable > div, body#recyclable > form {
-    background-color: var(--body-color);
-    color: var(--body-color-text);
-}
+    .results > div,
+    .results > form
+    {
+        color: var(--body-color-text);
+        background-color: var(--body-color);
+    }
 
-body#recyclable p {
-    margin: 2rem 0 2rem 0;
-}
+    .results p
+    {
+        margin: 2rem 0 2rem 0;
+    }
 
-.visualClass em {
-    color: var(--main-color);
+.visualClass em
+{
     font-style: normal;
+    color: var(--back-color-gradient-start);
 }
 
-.recyclableStatus.recyclable {
-    color: var(--recyclable-status-color);
-}
-
-.recyclableStatus {
-    color: var(--not-recyclable-status-color);
+.recyclableStatus
+{
     font-size: 1.5em;
+    color: var(--not-recyclable-status-color);
 }
 
-body.alternate label[for] {
+    .recyclableStatus.recyclable
+    {
+        color: var(--recyclable-status-color);
+    }
+
+/* == alternate pages ============================================================================================== */
+
+.alternate label[for]
+{
     background-color: var(--alternate-color);
 }

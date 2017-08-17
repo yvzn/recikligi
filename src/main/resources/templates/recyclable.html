@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/layout :: headerFragment"></head>
-<body id="recyclable" th:style="'--image-url:url(/image/' + ${imageId} + ');'">
+<body class="results" th:style="'--image-url:url(/image/' + ${imageId} + ');'">
 <h1 th:include="fragments/layout :: h1Fragment"></h1>
 <div>
     <p th:if="${success}" class="visualClass visualClassFound"
