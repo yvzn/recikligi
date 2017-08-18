@@ -4,6 +4,7 @@ Content:
     form + buttons
     results page
     alternate pages
+    responsive + media queries
 */
 
 /* == top-level ==================================================================================================== */
@@ -22,6 +23,7 @@ Content:
     --image-tinting: hsla(0, 0%, 0%, .5);
     --recyclable-status-color: #06d6a0;
     --not-recyclable-status-color: #ff5e5b;
+    --disclaimer-color: #B4B4B1;
 }
 
 *
@@ -182,9 +184,37 @@ label[for]
         color: var(--recyclable-status-color);
     }
 
+.disclaimer {
+    color: var(--disclaimer-color);
+}
+
+    .disclaimer * {
+        color: currentColor;
+    }
+
 /* == alternate pages ============================================================================================== */
 
 .alternate label[for]
 {
     background-color: var(--alternate-color);
+}
+
+/* == responsive + media queries =================================================================================== */
+
+@media screen and (max-width: 400px) {
+    body > div
+    {
+        padding: 0 2rem;
+    }
+}
+
+@media screen and (max-height: 600px) {
+    form {
+        height: 20vh;
+    }
+
+    .results p
+    {
+        margin: 1rem 0 1rem 0;
+    }
 }

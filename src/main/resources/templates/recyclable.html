@@ -9,7 +9,7 @@
     <p th:if="!${success}" class="visualClass visualClassNotFound"
        th:text="#{recyclable.image.failure}"></p>
     <p th:text="${statusDescription}" th:class="'recyclableStatus ' + ${statusName}"></p>
-    <p th:text="#{recyclable.status.disclaimer}" class="disclaimer"></p>
+    <p th:utext="#{recyclable.status.disclaimer}" class="disclaimer"></p>
 </div>
 <form th:action="@{/}" th:include="fragments/layout :: homeButtonFragment"></form>
 <footer th:include="fragments/layout :: navFragment"></footer>

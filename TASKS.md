@@ -1,11 +1,10 @@
 # Backlog
 
 ## TODO
-* Lien vers consignesdetri
 * Limitation du nombre de connexions (phase alpha)
 * Alimentation custom classifier
-* "Je ne sais pas encore si cet objet est recyclable" => feedback
 * Docker + tests téléphone
+* "Je ne sais pas encore si cet objet est recyclable" => feedback
 * UX (animations, désactivation boutons, L&F)
 * Optimisations (affichage image - compression / taille)
 * PWA
@@ -14,7 +13,7 @@
 * Spring Boot 2 (release)
 
 ## DONE 
-MVP: 65% (19/30)
+MVP: 65% (20/30)
 * <del>Page d'accueil</del>
 * <del>Formulaire avec &lt;input></del>
 * <del>CSS</del>
@@ -36,6 +35,7 @@ MVP: 65% (19/30)
 * <del>Stockage en base de données des traductions</del>
 * <del>Ajout service recyclable/non</del>
 * <del>Affichage du résultat</del>
+* <del>Lien vers consignesdetri</del>
 
 
 
