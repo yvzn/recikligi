@@ -1,7 +1,6 @@
 # Backlog
 
 ## TODO
-* Limitation du nombre de connexions (phase alpha)
 * Alimentation custom classifier
 * Docker + tests téléphone
 * "Je ne sais pas encore si cet objet est recyclable" => feedback
@@ -13,7 +12,7 @@
 * Spring Boot 2 (release)
 
 ## DONE 
-MVP: 65% (20/30)
+MVP: 70% (21/30)
 * <del>Page d'accueil</del>
 * <del>Formulaire avec &lt;input></del>
 * <del>CSS</del>
@@ -36,6 +35,7 @@ MVP: 65% (20/30)
 * <del>Ajout service recyclable/non</del>
 * <del>Affichage du résultat</del>
 * <del>Lien vers consignesdetri</del>
+* <del>Limitation du nombre de connexions (phase alpha)</del>
 
 
 

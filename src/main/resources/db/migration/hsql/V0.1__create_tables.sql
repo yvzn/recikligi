@@ -37,3 +37,8 @@ CREATE TABLE visual_class_translation (
     FOREIGN KEY (visual_class_id) REFERENCES visual_class(id),
     FOREIGN KEY (translation_locale_id) REFERENCES translation_locale(id)
 );
+
+CREATE TABLE usage_history (
+    id UUID NOT NULL,
+    date_of_request DATE,
+    PRIMARY KEY (id))
