@@ -1,6 +1,5 @@
 package net.ludeo.recikligi.service;
 
-import lombok.Setter;
 import net.ludeo.recikligi.AppConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,9 +20,12 @@ import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("When controlling image files")
 class ImageControlServiceTest {
 
-    @Setter
+    private final ImageControlService imageControlService;
+
     @Autowired
-    private ImageControlService imageControlService;
+    ImageControlServiceTest(ImageControlService imageControlService) {
+        this.imageControlService = imageControlService;
+    }
 
     @Test
     @DisplayName("PNG image is valid")

@@ -1,6 +1,5 @@
 package net.ludeo.recikligi.controller;
 
-import lombok.Setter;
 import net.ludeo.recikligi.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.nio.file.Path;
 import java.util.Optional;
 
-@Setter
 @Controller
 public class RecyclableController {
 
@@ -25,9 +23,9 @@ public class RecyclableController {
 
     @Autowired
     public RecyclableController(final StorageService storageService,
-                                final VisualRecognitionService visualRecognitionService,
-                                final ScoreLabelingService scoreLabelingService,
-                                final RecyclableStatusService recyclableStatusService) {
+            final VisualRecognitionService visualRecognitionService,
+            final ScoreLabelingService scoreLabelingService,
+            final RecyclableStatusService recyclableStatusService) {
         this.storageService = storageService;
         this.visualRecognitionService = visualRecognitionService;
         this.scoreLabelingService = scoreLabelingService;
@@ -35,7 +33,8 @@ public class RecyclableController {
     }
 
     @GetMapping("/recyclable/{imageId:.+}")
-    public String showRecyclableStatusForImage(@PathVariable("imageId") final String imageId, final Model model) throws Exception {
+    public String showRecyclableStatusForImage(@PathVariable("imageId") final String imageId,
+            final Model model) throws Exception {
         Path image = storageService.read(imageId);
         Optional<ImageRecognitionInfo> imageRecognitionInfo = visualRecognitionService.classify(image);
 

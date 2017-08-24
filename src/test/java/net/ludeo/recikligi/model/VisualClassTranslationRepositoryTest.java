@@ -1,6 +1,5 @@
 package net.ludeo.recikligi.model;
 
-import lombok.Setter;
 import net.ludeo.recikligi.AppConfig;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
@@ -19,21 +18,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DisplayName("When searching for visual class translations")
 class VisualClassTranslationRepositoryTest {
 
-    @Setter
-    @Autowired
-    private VisualClassRepository visualClassRepository;
+    private final VisualClassRepository visualClassRepository;
 
-    @Setter
-    @Autowired
-    private TranslationLocaleRepository translationLocaleRepository;
+    private final TranslationLocaleRepository translationLocaleRepository;
 
-    @Setter
-    @Autowired
-    private RecyclableStatusTranslationRepository recyclableStatusTranslationRepository;
+    private final RecyclableStatusTranslationRepository recyclableStatusTranslationRepository;
 
-    @Setter
+    private final VisualClassTranslationRepository visualClassTranslationRepository;
+
     @Autowired
-    private VisualClassTranslationRepository visualClassTranslationRepository;
+    VisualClassTranslationRepositoryTest(VisualClassRepository visualClassRepository,
+            TranslationLocaleRepository translationLocaleRepository,
+            RecyclableStatusTranslationRepository recyclableStatusTranslationRepository,
+            VisualClassTranslationRepository visualClassTranslationRepository) {
+        this.visualClassRepository = visualClassRepository;
+        this.translationLocaleRepository = translationLocaleRepository;
+        this.recyclableStatusTranslationRepository = recyclableStatusTranslationRepository;
+        this.visualClassTranslationRepository = visualClassTranslationRepository;
+    }
 
     @AfterEach
     void tearDown() {

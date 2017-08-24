@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ResourceBundleMessageSource;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.util.Arrays;
 
@@ -21,7 +20,7 @@ import java.util.Arrays;
 @ComponentScan(basePackages = "net.ludeo.recikligi")
 @PropertySource("classpath:application.properties")
 @EnableAutoConfiguration
-public class AppConfig extends WebMvcConfigurerAdapter {
+public class AppConfig {
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(AppConfig.class, args);

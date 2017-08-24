@@ -1,6 +1,5 @@
 package net.ludeo.recikligi.service;
 
-import lombok.Setter;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +7,6 @@ import java.nio.file.Path;
 import java.util.Optional;
 import java.util.Random;
 
-@Setter
 @Service
 @Profile("mock")
 public class VisualRecognitionServiceMock implements VisualRecognitionService {
