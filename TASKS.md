@@ -1,8 +1,8 @@
 # Backlog
 
 ## TODO
-* Alimentation custom classifier
 * Docker + tests téléphone
+* Alimentation custom classifier
 * "Je ne sais pas encore si cet objet est recyclable" => feedback
 * UX (animations, désactivation boutons, L&F)
 * Optimisations (affichage image - compression / taille)
