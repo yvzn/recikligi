@@ -1,0 +1,28 @@
+spring:
+  mvc:
+    favicon:
+      enabled: false
+  favicon:
+    enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+logging:
+  level:
+    net:
+      ludeo:
+        recikligi: DEBUG
+
+recikligi:
+  storageFolder:
+  watson:
+    apikey:
+  score:
+    threshold:
+      high: 90
+      medium: 70
+  daily:
+    usage:
+      limit: 50
