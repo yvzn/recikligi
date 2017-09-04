@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ResourceBundleMessageSource;
 
 import java.util.Arrays;
@@ -31,11 +30,6 @@ public class AppConfig {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasename("messages");
         return messageSource;
-    }
-
-    @Bean
-    protected static PropertySourcesPlaceholderConfigurer overridePropertyPlaceholderToDisableSpringFaviconInAppProperties() {
-        return new PropertySourcesPlaceholderConfigurer();
     }
 
     @Bean

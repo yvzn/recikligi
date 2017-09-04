@@ -16,7 +16,7 @@ logging:
         recikligi: DEBUG
 
 recikligi:
-  storageFolder:
+  storageFolder: /tmp
   watson:
     apikey:
   score:

@@ -38,6 +38,8 @@ public class WatsonVisualRecognitionService implements VisualRecognitionService 
 
     @Override
     public Optional<ImageRecognitionInfo> classify(final Path image) throws Exception {
+        logger.debug("watsonApiKey={}", buildObfuscatedApikey());
+
         VisualRecognition service = new VisualRecognition(VisualRecognition.VERSION_DATE_2016_05_20);
         service.setApiKey(watsonApiKey);
 
@@ -59,5 +61,16 @@ public class WatsonVisualRecognitionService implements VisualRecognitionService 
                 .map(Collection::stream)
                 .flatMap(Stream::findFirst)
                 .map(ImageRecognitionInfo::new);
+    }
+
+    private String buildObfuscatedApikey() {
+        return Optional.ofNullable(this.watsonApiKey)
+                .map(String::length)
+                .map(WatsonVisualRecognitionService::repeatStarNtimes)
+                .orElse("null");
+    }
+
+    private static String repeatStarNtimes(int n) {
+        return new String(new char[n]).replace("\0", "*");
     }
 }
