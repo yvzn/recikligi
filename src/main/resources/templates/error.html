@@ -2,14 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/layout :: headerFragment"></head>
 <body class="alternate">
-<h1 th:include="fragments/layout :: h1Fragment"></h1>
-<h2 th:text="#{error.title}"></h2>
-<div>
+<h1 th:fragment="h1Fragment">
+    <a th:href="@{/}" th:text="#{error.title}" th:title="#{fragments.layout.nav.home.tooltip}"></a></h1>
+<section>
     <p th:text="#{error.header}"></p>
     <p><span th:text="${status}"></span> : <span th:text="${error}"></span></p>
     <p th:text="#{error.apologies}"></p>
-</div>
+</section>
 <form th:action="@{/}" th:include="fragments/layout :: homeButtonFragment"></form>
-<footer th:include="fragments/layout :: navFragment"></footer>
+<nav th:include="fragments/layout :: navFragment"></nav>
+
+<pre th:text="${stacktrace}"></pre>
 </body>
 </html>

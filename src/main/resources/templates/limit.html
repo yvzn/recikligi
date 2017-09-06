@@ -3,9 +3,11 @@
 <head th:include="fragments/layout :: headerFragment"></head>
 <body class="alternate">
 <h1 th:include="fragments/layout :: h1Fragment"></h1>
-<h2 th:text="#{limit.title}"></h2>
-<div th:utext="#{limit.text}"></div>
+<section>
+    <h2 th:text="#{limit.title}"></h2>
+    <div th:utext="#{limit.text}"></div>
+</section>
 <form th:action="@{/}" th:include="fragments/layout :: homeButtonFragment"></form>
-<footer th:include="fragments/layout :: navFragment"></footer>
+<nav th:include="fragments/layout :: navFragment"></nav>
 </body>
 </html>

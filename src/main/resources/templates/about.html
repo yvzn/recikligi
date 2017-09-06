@@ -3,8 +3,10 @@
 <head th:include="fragments/layout :: headerFragment"></head>
 <body class="alternate">
 <h1 th:include="fragments/layout :: h1Fragment"></h1>
-<div th:utext="#{about.text}"></div>
+<section>
+    <p th:utext="#{about.text}"></p>
+</section>
 <form th:action="@{/}" th:include="fragments/layout :: homeButtonFragment"></form>
-<footer th:include="fragments/layout :: navFragment"></footer>
+<nav th:include="fragments/layout :: navFragment"></nav>
 </body>
 </html>

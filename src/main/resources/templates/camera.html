@@ -3,13 +3,14 @@
 <head th:include="fragments/layout :: headerFragment"></head>
 <body>
 <h1 th:include="fragments/layout :: h1Fragment"></h1>
-<h2 th:text="#{camera.onboarding.title}"></h2>
-<div></div>
+<section>
+    <h2 th:text="#{camera.onboarding.title}"></h2>
+</section>
 <form method="post" enctype="multipart/form-data">
     <label for="camera" th:title="#{camera.button.tooltip}">&#128247;</label>
     <input name="image" id="camera" type="file" accept="image/*;capture=camera" required="required"/>
     <input type="submit"/>
 </form>
-<footer th:include="fragments/layout :: navFragment"></footer>
+<nav th:include="fragments/layout :: navFragment"></nav>
 </body>
 </html>

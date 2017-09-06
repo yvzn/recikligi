@@ -3,15 +3,15 @@
 <head th:include="fragments/layout :: headerFragment"></head>
 <body class="results" th:style="'--image-url:url(/image/' + ${imageId} + ');'">
 <h1 th:include="fragments/layout :: h1Fragment"></h1>
-<div>
+<section>
     <p th:if="${success}" class="visualClass visualClassFound"
        th:utext="${#messages.msgWithParams('recyclable.image.success', new Object[] {score, name})}"></p>
     <p th:if="!${success}" class="visualClass visualClassNotFound"
        th:text="#{recyclable.image.failure}"></p>
     <p th:text="${statusDescription}" th:class="'recyclableStatus ' + ${statusName}"></p>
     <p th:utext="#{recyclable.status.disclaimer}" class="disclaimer"></p>
-</div>
+</section>
 <form th:action="@{/}" th:include="fragments/layout :: homeButtonFragment"></form>
-<footer th:include="fragments/layout :: navFragment"></footer>
+<nav th:include="fragments/layout :: navFragment"></nav>
 </body>
 </html>
