@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: recikligi-pod
+  labels:
+    app: recikligi
+spec:
+  containers:
+    - name: recikligi
+      image: registry.ng.bluemix.net/ludeo/recikligi
+      imagePullPolicy: Always
+      ports:
+      - containerPort: 8080
+      env:
+        - name: RECIKLIGI_WATSON_APIKEY
+          valueFrom:
+            secretKeyRef:
+              name: recikligisecret
+              key: apikey
