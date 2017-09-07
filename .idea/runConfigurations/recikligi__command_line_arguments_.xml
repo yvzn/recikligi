@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="recikligi (command line arguments)" type="Application" factoryName="Application" editBeforeRun="true" singleton="true">
+    <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+    <option name="MAIN_CLASS_NAME" value="net.ludeo.recikligi.AppConfig" />
+    <option name="VM_PARAMETERS" value="-Dspring.profiles.active=mock" />
+    <option name="PROGRAM_PARAMETERS" value="--recikligi.watson.apikey=************ --recikligi.storageFolder=target --spring.jpa.show-sql=true" />
+    <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <option name="ENABLE_SWING_INSPECTOR" value="false" />
+    <option name="ENV_VARIABLES" />
+    <option name="PASS_PARENT_ENVS" value="true" />
+    <module name="recikligi" />
+    <envs />
+    <method />
+  </configuration>
+</component>
