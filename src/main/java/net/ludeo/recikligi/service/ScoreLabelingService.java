@@ -1,5 +1,6 @@
 package net.ludeo.recikligi.service;
 
+import net.ludeo.recikligi.message.LocalizedMessagesComponent;
 import net.ludeo.recikligi.model.VisualClassTranslation;
 import net.ludeo.recikligi.model.VisualClassTranslationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Locale;
 
 @Service
-public class ScoreLabelingService extends LocalizedMessagesService {
+public class ScoreLabelingService extends LocalizedMessagesComponent {
 
     @Value("${recikligi.score.threshold.high}")
     private Double highScoreThreshold;

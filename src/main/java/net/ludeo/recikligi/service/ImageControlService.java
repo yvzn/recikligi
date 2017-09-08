@@ -1,5 +1,6 @@
 package net.ludeo.recikligi.service;
 
+import net.ludeo.recikligi.message.LocalizedMessagesComponent;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedInputStream;
@@ -9,7 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 @Service
-public class ImageControlService extends LocalizedMessagesService {
+public class ImageControlService extends LocalizedMessagesComponent {
 
     static final byte[] PNG_HEADER = {(byte) 0x89, (byte) 0x50, (byte) 0x4E, (byte) 0x47, (byte) 0x0D, (byte) 0x0A, (byte) 0x1A, (byte) 0x0A};
     private static final byte[] JPEG_HEADER = {(byte) 0xFF, (byte) 0xD8};
