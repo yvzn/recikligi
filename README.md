@@ -40,7 +40,7 @@ Note: you probably want to setup a docker volume to configure the storage folder
 on the host machine.
 
 <pre>mvn clean package ⏎
-docker build . -t recikligi ⏎
+docker build . -f src/main/docker/Dockerfile -t recikligi ⏎
 docker run --rm -d -p 8080:8080 -t recikligi ✂
   --recikligi.watson.apikey=`api key` ✂ 
   --recikligi.storageFolder=`path to storage folder` ⏎</pre>
