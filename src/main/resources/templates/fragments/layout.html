@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato"/>
     <link rel="stylesheet" href="/css/recikligi.css"/>
+    <link rel="stylesheet" href="/css/loader.css"/>
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <script src="/js/recikligi.js"></script>
 </head>
@@ -19,5 +20,10 @@
 <nav th:fragment="navFragment">
     <a th:href="@{/about}" th:title="#{fragments.layout.nav.about.tooltip}">&#x1F4AC;</a>
 </nav>
+<div th:fragment="loader">
+    <div class="dot dot1"></div>
+    <div class="dot dot2"></div>
+    <div class="dot dot3"></div>
+</div>
 </body>
 </html>

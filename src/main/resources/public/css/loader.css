@@ -1,0 +1,47 @@
+.loader
+{
+    position: absolute;
+    left: 0;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background: var(--body-color);
+    align-items: center;
+    justify-content: center;
+}
+
+.loader .dot
+{
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    border-radius: 50%;
+    background: var(--primary-color);
+}
+
+.loader .dot1
+{
+    animation: dot-jump .5s cubic-bezier(.77, .47, .64, .28) alternate infinite;
+}
+
+.loader .dot2
+{
+    animation: dot-jump .5s .2s cubic-bezier(.77, .47, .64, .28) alternate infinite;
+}
+
+.loader .dot3
+{
+    animation: dot-jump .5s .4s cubic-bezier(.77, .47, .64, .28) alternate infinite;
+}
+
+@keyframes dot-jump
+{
+    0%
+    {
+        transform: translateY(0);
+    }
+    100%
+    {
+        transform: translateY(-15px);
+    }
+}
