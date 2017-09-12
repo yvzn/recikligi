@@ -1,18 +1,17 @@
 # Backlog
 
 ## TODO
-* Docker + tests téléphone
-* Alimentation custom classifier
-* "Je ne sais pas encore si cet objet est recyclable" => feedback
 * UX (animations, désactivation boutons, L&F)
-* Optimisations (affichage image - compression / taille)
 * PWA
+* stats
+* Optimisations (affichage image - compression / taille)
+* feedback
 * getUserMedia + Canvas
 * Géolocalisation pour l'appel à consignesdetri
 * Spring Boot 2 (release)
 
 ## DONE 
-MVP: 70% (21/30)
+MVP: 77% (24/31)
 * <del>Page d'accueil</del>
 * <del>Formulaire avec &lt;input></del>
 * <del>CSS</del>
@@ -36,6 +35,9 @@ MVP: 70% (21/30)
 * <del>Affichage du résultat</del>
 * <del>Lien vers consignesdetri</del>
 * <del>Limitation du nombre de connexions (phase alpha)</del>
+* <del>Docker + tests téléphone</del>
+* <del>Alimentation custom classifier</del>
+
 
 
 
