@@ -17,7 +17,7 @@ import java.util.Arrays;
 
 @Configuration
 @ComponentScan(basePackages = "net.ludeo.recikligi")
-@PropertySource("classpath:application.yml")
+@PropertySource("classpath:application.yaml")
 @EnableAutoConfiguration
 public class AppConfig {
 

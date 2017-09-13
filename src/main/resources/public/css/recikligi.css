@@ -16,11 +16,12 @@ Content:
     --back-color-gradient-end: #65def1;
     --body-color: #f7f7f2;
     --body-color-text: #08415c;
-    --primary-color: #ffc655;
-    --primary-color-text: #fff;
+    --primary-color: hsla(40, 100%, 67%, 1);
+    --primary-color-transparent: hsla(40, 100%, 67%, 0);
+    --primary-color-text: #ffffff;
     --accent-color: #06d6a0;
     --alternate-color: #ff5e5b;
-    --image-tinting: hsla(0, 0%, 0%, .5);
+    --image-tinting: hsla(0, 0%, 0%, .3);
     --recyclable-status-color: #06d6a0;
     --not-recyclable-status-color: #ff5e5b;
     --disclaimer-color: #B4B4B1;
@@ -42,6 +43,7 @@ html
 
 body
 {
+    position: relative;
     display: flex;
     flex-direction: column;
     max-width: 450px;
@@ -68,6 +70,7 @@ h1
 section
 {
     padding: 0 4rem;
+    overflow: hidden;
     flex-grow: 1;
 }
 
@@ -132,11 +135,27 @@ label[for]
     height: 2.5em;
     margin: auto;
     cursor: pointer;
-    text-align: center;
     color: var(--primary-color-text);
     border-radius: 50%;
     background-color: var(--primary-color);
     box-shadow: 0 0 .2em silver;
+}
+
+label[for=camera]
+{
+    animation: pulse 1.25s cubic-bezier(0.66, 0, 0, 1) 10s infinite
+}
+
+@keyframes pulse
+{
+    from
+    {
+        box-shadow: 0 0 0 0 var(--primary-color);
+    }
+    to
+    {
+        box-shadow: 0 0 0 45px var(--primary-color-transparent);
+    }
 }
 
 /* == results page ================================================================================================= */
@@ -185,6 +204,14 @@ label[for]
         color: var(--recyclable-status-color);
     }
 
+    .recyclableStatus.glass,
+    .recyclableStatus.waste-collection-center,
+    .recyclableStatus.compost-pile,
+    .recyclableStatus.container,
+    {
+        color: var(--primary-color); /* update this */
+    }
+
 .disclaimer {
     color: var(--disclaimer-color);
 }
@@ -203,7 +230,13 @@ label[for]
 /* == responsive + media queries =================================================================================== */
 
 @media screen and (max-width: 450px) {
-    body, body > * {
+    html
+    {
+        background-image: linear-gradient(135deg,  var(--back-color-gradient-end) 0%, var(--back-color-gradient-start) 50%);
+    }
+
+    body, body > *
+    {
         color: var(--body-color);
         background-color: transparent;
     }
@@ -223,7 +256,7 @@ label[for]
 
 @media screen and (max-height: 600px) {
     h1 {
-        padding: 0.5em 0;
+        padding: 0 0 .5em 0;
     }
 
     form {

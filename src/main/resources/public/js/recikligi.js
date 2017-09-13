@@ -5,6 +5,7 @@
 
     function afterDocumentLoaded() {
         hideSubmitButtonIfJavascriptAvailable();
+        activateLoaderOnFormSubmit();
         autoSubmitFormIfImageSelected();
     }
 
@@ -29,7 +30,22 @@
     function submitForm() {
         var forms = document.getElementsByTagName('form');
         if (forms.length) {
+            showLoaderOnSubmit()
             forms[0].submit();
+        }
+    }
+
+    function activateLoaderOnFormSubmit() {
+        var forms = document.getElementsByTagName('form');
+        for(var i = 0; i < forms.length; i++) {
+            forms[i].onsubmit = showLoaderOnSubmit;
+        }
+    }
+
+    function showLoaderOnSubmit() {
+        var loader = document.querySelector('.loader');
+        if (loader) {
+            loader.style.display = 'flex';
         }
     }
 })();

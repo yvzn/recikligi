@@ -1,6 +1,7 @@
 package net.ludeo.recikligi.service;
 
 import lombok.Setter;
+import net.ludeo.recikligi.message.LocalizedMessagesComponent;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,7 +14,7 @@ import java.util.UUID;
 
 @Setter
 @Service
-public class StorageService extends LocalizedMessagesService {
+public class StorageService extends LocalizedMessagesComponent {
 
     @Value("${recikligi.storageFolder}")
     private String storageFolder;
@@ -42,7 +43,7 @@ public class StorageService extends LocalizedMessagesService {
     public Path read(final String imageId) throws ImageNotFoundException {
         try {
             return read(UUID.fromString(imageId));
-        } catch (final  IllegalArgumentException | UnsupportedOperationException ex) {
+        } catch (final IllegalArgumentException | UnsupportedOperationException ex) {
             String msg = getMessage("error.msg.could.not.find.image", imageId);
             throw new ImageNotFoundException(msg, ex);
         }

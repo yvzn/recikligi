@@ -12,6 +12,8 @@
 <form th:action="@{/}" th:include="fragments/layout :: homeButtonFragment"></form>
 <nav th:include="fragments/layout :: navFragment"></nav>
 
-<pre th:text="${stacktrace}"></pre>
+<div th:utext="'&lt;!--'" th:remove="tag"></div>
+<pre th:text="${stacktrace}" th:remove="tag"></pre>
+<div th:utext="'--&gt;'" th:remove="tag"></div>
 </body>
 </html>

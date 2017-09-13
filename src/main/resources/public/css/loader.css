@@ -1,0 +1,51 @@
+.loader
+{
+    position: absolute;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: var(--body-color);
+    align-items: center;
+    justify-content: center;
+}
+
+.loader .dot
+{
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    border-radius: 50%;
+    background: var(--primary-color);
+}
+
+.loader .dot1
+{
+    animation: dot-jump 1.25s ease infinite;
+}
+
+.loader .dot2
+{
+    animation: dot-jump 1.25s .1s ease infinite;
+}
+
+.loader .dot3
+{
+    animation: dot-jump 1.25s .2s ease infinite;
+}
+
+@keyframes dot-jump
+{
+    0%
+    {
+        transform: translateY(0);
+    }
+    25%
+    {
+        transform: translateY(-15px);
+    }
+    66%
+    {
+        transform: translateY(0);
+    }
+}
