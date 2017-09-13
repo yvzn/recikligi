@@ -4,7 +4,8 @@
     left: 0;
     display: none;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 1em);
+    margin-top: 1em;
     background: var(--body-color);
     align-items: center;
     justify-content: center;
