@@ -43,6 +43,9 @@
     }
 
     function showLoaderOnSubmit() {
-        document.querySelector('.loader').style.display = 'flex';
+        var loader = document.querySelector('.loader');
+        if (loader) {
+            loader.style.display = 'flex';
+        }
     }
 })();
