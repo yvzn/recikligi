@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.UUID;
 
-public interface UnkownVisualClassRepository extends CrudRepository<UnknownVisualClass, UUID> {
+public interface UnknownVisualClassRepository extends CrudRepository<UnknownVisualClass, UUID> {
 
 }

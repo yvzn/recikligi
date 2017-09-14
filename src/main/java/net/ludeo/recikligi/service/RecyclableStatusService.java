@@ -20,17 +20,17 @@ public class RecyclableStatusService {
 
     private final RecyclableStatusTranslationRepository recyclableStatusTranslationRepository;
 
-    private final UnkownVisualClassRepository unkownVisualClassRepository;
+    private final UnknownVisualClassRepository unknownVisualClassRepository;
 
     @Autowired
     public RecyclableStatusService(VisualClassRepository visualClassRepository,
             RecyclableStatusRepository recyclableStatusRepository,
             RecyclableStatusTranslationRepository recyclableStatusTranslationRepository,
-            UnkownVisualClassRepository unkownVisualClassRepository) {
+            UnknownVisualClassRepository unknownVisualClassRepository) {
         this.visualClassRepository = visualClassRepository;
         this.recyclableStatusRepository = recyclableStatusRepository;
         this.recyclableStatusTranslationRepository = recyclableStatusTranslationRepository;
-        this.unkownVisualClassRepository = unkownVisualClassRepository;
+        this.unknownVisualClassRepository = unknownVisualClassRepository;
     }
 
     public RecyclableStatusDescription findStatusAndDescription(ImageRecognitionInfo imageRecognitionInfo) {
@@ -63,7 +63,7 @@ public class RecyclableStatusService {
     private void reportUnknownVisualClass(String name) {
         UnknownVisualClass uvc = new UnknownVisualClass();
         uvc.setName(name);
-        unkownVisualClassRepository.save(uvc);
+        unknownVisualClassRepository.save(uvc);
     }
 
     private List<RecyclableStatusTranslation> findRecyclableStatusTranslations(String recyclableStatusName) {

@@ -1,7 +1,7 @@
 package net.ludeo.recikligi.controller;
 
 import net.ludeo.recikligi.model.UnknownVisualClass;
-import net.ludeo.recikligi.model.UnkownVisualClassRepository;
+import net.ludeo.recikligi.model.UnknownVisualClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,18 +15,19 @@ import java.util.stream.StreamSupport;
 @RequestMapping("/api")
 public class ApiController {
 
-    private final UnkownVisualClassRepository unkownVisualClassRepository;
+    private final UnknownVisualClassRepository unknownVisualClassRepository;
 
     @Autowired
-    public ApiController(UnkownVisualClassRepository unkownVisualClassRepository) {
-        this.unkownVisualClassRepository = unkownVisualClassRepository;
+    public ApiController(UnknownVisualClassRepository unknownVisualClassRepository) {
+        this.unknownVisualClassRepository = unknownVisualClassRepository;
     }
 
     @GetMapping("/unknown")
     public @ResponseBody
     Iterable<String> unknownVisualClasses() {
-        return StreamSupport.stream(unkownVisualClassRepository.findAll().spliterator(), false)
+        return StreamSupport.stream(unknownVisualClassRepository.findAll().spliterator(), false)
                 .map(UnknownVisualClass::getName)
+                .distinct()
                 .collect(Collectors.toSet());
     }
 }
