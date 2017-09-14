@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -27,7 +28,7 @@ class UsageHistoryRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        this.usageHistoryRepository.deleteAll();
+        usageHistoryRepository.deleteAll();
     }
 
     @Test
@@ -36,7 +37,7 @@ class UsageHistoryRepositoryTest {
         addUsageHistory(today());
         addUsageHistory(today());
 
-        Long count = this.usageHistoryRepository.countByDateOfRequest(today());
+        Long count = usageHistoryRepository.countByDateOfRequest(today());
 
         assertEquals(Long.valueOf(2), count);
     }
@@ -48,7 +49,7 @@ class UsageHistoryRepositoryTest {
         addUsageHistory(yesterday());
         addUsageHistory(today());
 
-        Long count = this.usageHistoryRepository.countByDateOfRequest(yesterday());
+        Long count = usageHistoryRepository.countByDateOfRequest(yesterday());
 
         assertEquals(Long.valueOf(3), count);
     }
@@ -57,6 +58,24 @@ class UsageHistoryRepositoryTest {
         UsageHistory usageHistory = new UsageHistory();
         usageHistory.setDateOfRequest(localDate);
         usageHistoryRepository.save(usageHistory);
+    }
+
+    @Test
+    void findUsageHistoryCount() {
+        addUsageHistory(yesterday());
+        addUsageHistory(yesterday());
+        addUsageHistory(yesterday());
+        addUsageHistory(today());
+
+        List<UsageHistoryCount> count = usageHistoryRepository.findUsageHistoryCount();
+
+        assertEquals(2, count.size());
+
+        assertEquals(today(), count.get(0).getDateOfRequest());
+        assertEquals(1, count.get(0).getUsageCount());
+
+        assertEquals(yesterday(), count.get(1).getDateOfRequest());
+        assertEquals(3, count.get(1).getUsageCount());
     }
 
     private LocalDate today() {

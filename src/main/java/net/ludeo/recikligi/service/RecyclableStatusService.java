@@ -20,13 +20,17 @@ public class RecyclableStatusService {
 
     private final RecyclableStatusTranslationRepository recyclableStatusTranslationRepository;
 
+    private final UnknownVisualClassRepository unknownVisualClassRepository;
+
     @Autowired
     public RecyclableStatusService(VisualClassRepository visualClassRepository,
             RecyclableStatusRepository recyclableStatusRepository,
-            RecyclableStatusTranslationRepository recyclableStatusTranslationRepository) {
+            RecyclableStatusTranslationRepository recyclableStatusTranslationRepository,
+            UnknownVisualClassRepository unknownVisualClassRepository) {
         this.visualClassRepository = visualClassRepository;
         this.recyclableStatusRepository = recyclableStatusRepository;
         this.recyclableStatusTranslationRepository = recyclableStatusTranslationRepository;
+        this.unknownVisualClassRepository = unknownVisualClassRepository;
     }
 
     public RecyclableStatusDescription findStatusAndDescription(ImageRecognitionInfo imageRecognitionInfo) {
@@ -43,9 +47,23 @@ public class RecyclableStatusService {
     private RecyclableStatus findRecyclableStatus(ImageRecognitionInfo imageRecognitionInfo) {
         return Optional.ofNullable(imageRecognitionInfo)
                 .map(ImageRecognitionInfo::getName)
-                .map(visualClassRepository::findByName)
+                .map(this::findVisualClassByName)
                 .map(VisualClass::getRecyclableStatus)
                 .orElse(recyclableStatusRepository.findByName(RECYCLABLE_STATUS_FOR_UNKNOWN_OBJECTS));
+    }
+
+    private VisualClass findVisualClassByName(String name) {
+        VisualClass visualClass = visualClassRepository.findByName(name);
+        if (visualClass == null) {
+            reportUnknownVisualClass(name);
+        }
+        return visualClass;
+    }
+
+    private void reportUnknownVisualClass(String name) {
+        UnknownVisualClass uvc = new UnknownVisualClass();
+        uvc.setName(name);
+        unknownVisualClassRepository.save(uvc);
     }
 
     private List<RecyclableStatusTranslation> findRecyclableStatusTranslations(String recyclableStatusName) {
