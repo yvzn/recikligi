@@ -2,12 +2,12 @@
 
 ## TODO
 * UX (animations, désactivation boutons, L&F)
-* PWA
 * Optimisations (affichage image - compression / taille)
 * feedback
-* getUserMedia + Canvas
-* Géolocalisation pour l'appel à consignesdetri
 * Spring Boot 2 (release)
+* getUserMedia + Canvas
+* PWA
+* Géolocalisation pour l'appel à consignesdetri
 
 ## DONE 
 MVP: 77% (25/31)
