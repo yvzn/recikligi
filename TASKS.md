@@ -3,7 +3,6 @@
 ## TODO
 * UX (animations, désactivation boutons, L&F)
 * PWA
-* stats
 * Optimisations (affichage image - compression / taille)
 * feedback
 * getUserMedia + Canvas
@@ -11,7 +10,7 @@
 * Spring Boot 2 (release)
 
 ## DONE 
-MVP: 77% (24/31)
+MVP: 77% (25/31)
 * <del>Page d'accueil</del>
 * <del>Formulaire avec &lt;input></del>
 * <del>CSS</del>
@@ -37,6 +36,7 @@ MVP: 77% (24/31)
 * <del>Limitation du nombre de connexions (phase alpha)</del>
 * <del>Docker + tests téléphone</del>
 * <del>Alimentation custom classifier</del>
+* <del>simple stats</del>
 
 
 
