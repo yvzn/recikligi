@@ -46,4 +46,8 @@ public class ScoreLabelingService extends LocalizedMessagesComponent {
                 visualClassName, locale.getLanguage());
         return translations.stream().findFirst().map(VisualClassTranslation::getText).orElse(visualClassName);
     }
+
+    public String formatUIScore(Double score) {
+        return String.format("%1.0f%%", score);
+    }
 }

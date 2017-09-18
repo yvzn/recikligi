@@ -5,10 +5,13 @@
 <h1 th:include="fragments/layout :: h1Fragment"></h1>
 <section>
     <p th:if="${success}" class="visualClass visualClassFound"
-       th:utext="${#messages.msgWithParams('recyclable.image.success', new Object[] {score, name})}"></p>
+       th:utext="${#messages.msgWithParams('recyclable.image.success', new Object[] {scoreLabel, name})}"></p>
     <p th:if="!${success}" class="visualClass visualClassNotFound"
        th:text="#{recyclable.image.failure}"></p>
-    <p th:text="${statusDescription}" th:class="'recyclableStatus ' + ${statusName}"></p>
+    <div th:class="'recyclableStatus ' + ${statusName}">
+        <h3 th:text="${statusText}"></h3>
+        <p th:text="${statusDescription}"></p>
+    </div>
     <p th:utext="#{recyclable.status.disclaimer}" class="disclaimer"></p>
 </section>
 <form th:action="@{/}" th:include="fragments/layout :: homeButtonFragment"></form>
