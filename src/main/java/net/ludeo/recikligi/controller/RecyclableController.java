@@ -43,7 +43,8 @@ public class RecyclableController {
         if (imageRecognitionInfo.isPresent()) {
             model.addAttribute("success", true);
             model.addAttribute("name", scoreLabelingService.findUILabel(imageRecognitionInfo.get().getName()));
-            model.addAttribute("score", scoreLabelingService.findUILabel(imageRecognitionInfo.get().getScore()));
+            model.addAttribute("score", scoreLabelingService.formatUIScore(imageRecognitionInfo.get().getScore()));
+            model.addAttribute("scoreLabel", scoreLabelingService.findUILabel(imageRecognitionInfo.get().getScore()));
         } else {
             model.addAttribute("success", false);
         }
@@ -51,6 +52,7 @@ public class RecyclableController {
         RecyclableStatusDescription statusAndDescription = recyclableStatusService.findStatusAndDescription(
                 imageRecognitionInfo.orElse(null));
         model.addAttribute("statusName", statusAndDescription.getStatusName());
+        model.addAttribute("statusText", statusAndDescription.getText());
         model.addAttribute("statusDescription", statusAndDescription.getDescription());
 
         return "recyclable";

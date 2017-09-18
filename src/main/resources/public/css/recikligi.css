@@ -22,8 +22,9 @@ Content:
     --accent-color: #06d6a0;
     --alternate-color: #ff5e5b;
     --image-tinting: hsla(0, 0%, 0%, .3);
-    --recyclable-status-color: #06d6a0;
-    --not-recyclable-status-color: #ff5e5b;
+    --recyclable-status-color: var(--accent-color);
+    --not-recyclable-status-color: var(--alternate-color);
+    --other-recyclable-status-color: var(--primary-color);
     --disclaimer-color: #B4B4B1;
 }
 
@@ -195,8 +196,7 @@ label[for=camera]
 
 .recyclableStatus
 {
-    font-size: 1.5em;
-    color: var(--not-recyclable-status-color);
+    color: var(--other-recyclable-status-color);
 }
 
     .recyclableStatus.recyclable
@@ -204,12 +204,25 @@ label[for=camera]
         color: var(--recyclable-status-color);
     }
 
-    .recyclableStatus.glass,
-    .recyclableStatus.waste-collection-center,
-    .recyclableStatus.compost-pile,
-    .recyclableStatus.container,
+    .recyclableStatus.unknown,
+    .recyclableStatus.not-recyclable
     {
-        color: var(--primary-color); /* update this */
+        color: var(--not-recyclable-status-color);
+    }
+
+    .recyclableStatus h3
+    {
+        font-size: 1.5em;
+        font-weight: normal;
+        margin: 0;
+        text-transform: capitalize;
+        /* background: var(--recyclable-status-color); */
+        /* color: var(--body-color); */
+    }
+
+    .results .recyclableStatus p
+    {
+        margin: 0;
     }
 
 .disclaimer {
