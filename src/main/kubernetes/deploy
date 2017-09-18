@@ -1,0 +1,19 @@
+mvn clean install
+docker build . -t recikligi
+
+#docker run --name bluemix -d --privileged -v /var/run/docker.sock:/var/run/docker.sock -v c:/dev/prj/recikligi:/mnt/recikligi -p 8001:8001 reachlin/bluemix
+docker start bluemix
+
+docker tag recikligi registry.ng.bluemix.net/ludeo/recikligi:latest
+docker exec -it bluemix bash
+
+bx login
+bx cr login
+docker push registry.ng.bluemix.net/ludeo/recikligi:latest
+
+bx cs init
+bx cs cluster-config **********
+export KUBECONFIG=***********
+
+kubectl delete pods recikligi-pod
+kubectl create -f /mnt/recikligi/src/main/kubernetes/recikligi-pod.yaml
