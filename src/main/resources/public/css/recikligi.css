@@ -12,20 +12,26 @@ Content:
 :root
 {
     /* https://coolors.co/f7f7f2-00cecb-06d6a0-ffc655-ff5e5b */
-    --back-color-gradient-start: #00cecb;
-    --back-color-gradient-end: #65def1;
-    --body-color: #f7f7f2;
-    --body-color-text: #08415c;
+    --gradient-color-start: #00cecb;
+    --gradient-color-end: #65def1;
+    --main-color: #f7f7f2;
+    --main-color-text: #08415c;
     --primary-color: hsla(40, 100%, 67%, 1);
-    --primary-color-transparent: hsla(40, 100%, 67%, 0);
     --primary-color-text: #ffffff;
-    --accent-color: #06d6a0;
-    --alternate-color: #ff5e5b;
+    --primary-color-transparent: hsla(40, 100%, 67%, 0);
+    --accent-1-color: #06d6a0;
+    --accent-2-color: #ff5e5b;
+
     --image-tinting: hsla(0, 0%, 0%, .3);
-    --recyclable-status-color: var(--accent-color);
-    --not-recyclable-status-color: var(--alternate-color);
+
+    --recyclable-status-color: var(--accent-1-color);
+    --not-recyclable-status-color: var(--accent-2-color);
     --other-recyclable-status-color: var(--primary-color);
     --disclaimer-color: #B4B4B1;
+
+    --space-4x: 4rem;
+    --space-2x: 2rem;
+    --space-1x: 1rem;
 }
 
 *
@@ -38,8 +44,8 @@ html
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: var(--back-color-gradient-start);
-    background-image: linear-gradient(135deg, var(--back-color-gradient-end) 0%, var(--back-color-gradient-start) 100%);
+    background-color: var(--gradient-color-start);
+    background-image: linear-gradient(135deg, var(--gradient-color-end) 0%, var(--gradient-color-start) 100%);
 }
 
 body
@@ -50,16 +56,16 @@ body
     max-width: 450px;
     height: 100%;
     margin: 0 auto;
-    color: var(--body-color-text);
-    background-color: var(--body-color);
+    color: var(--main-color-text);
+    background-color: var(--main-color);
 }
 
 h1
 {
     margin: 0;
-    padding: 1.5em 0;
+    padding: var(--space-2x) 0 var(--space-4x) 0;
     text-align: center;
-    color: var(--accent-color);
+    color: var(--accent-1-color);
 }
 
     h1 a
@@ -68,11 +74,21 @@ h1
         color: inherit;
     }
 
+h2
+{
+    margin-top: 0;
+}
+
 section
 {
-    padding: 0 4rem;
+    padding: var(--space-4x) var(--space-4x) 0 var(--space-4x);
     overflow: hidden;
     flex-grow: 1;
+}
+
+p
+{
+    margin: 0 0 var(--space-2x) 0;
 }
 
 p:first-letter
@@ -82,18 +98,27 @@ p:first-letter
 
 nav
 {
-    padding-right: 1em;
+    padding: 0 var(--space-1x) 0 0;
     text-align: right;
     order: -1;
+    height: var(--space-2x);
 }
 
     nav a
     {
         font-size: 1.5em;
         display: inline-block;
-        margin: .5em 0 0 .2em;
+        margin: var(--space-1x) 0 0 0;
         text-decoration: none;
         color: inherit;
+    }
+
+    nav.github a
+    {
+        margin: 0;
+        position: absolute;
+        right: 0px;
+        top: 0px;
     }
 
 pre
@@ -105,7 +130,7 @@ pre
 
 form
 {
-    height: 25vh;
+    padding-bottom: var(--space-4x);
 }
 
 input[type='file']
@@ -164,7 +189,7 @@ label[for=camera]
 .results
 {
     /* --image-url variable is defined in HTML */
-    color: var(--body-color);
+    color: var(--main-color);
     background-image: linear-gradient(var(--image-tinting), var(--image-tinting)), var(--image-url);
     background-repeat: no-repeat;
     background-position: center center;
@@ -173,30 +198,26 @@ label[for=camera]
 
     .results > *
     {
-        color: var(--body-color);
+        color: var(--main-color);
     }
 
     .results > section,
     .results > form
     {
-        color: var(--body-color-text);
-        background-color: var(--body-color);
-    }
-
-    .results p
-    {
-        margin: 2rem 0;
+        color: var(--main-color-text);
+        background-color: var(--main-color);
     }
 
 .visualClass em
 {
     font-style: normal;
-    color: var(--back-color-gradient-start);
+    color: var(--gradient-color-start);
 }
 
 .recyclableStatus
 {
     color: var(--other-recyclable-status-color);
+    margin: 0 0 var(--space-2x) 0;
 }
 
     .recyclableStatus.recyclable
@@ -217,7 +238,7 @@ label[for=camera]
         margin: 0;
         text-transform: capitalize;
         /* background: var(--recyclable-status-color); */
-        /* color: var(--body-color); */
+        /* color: var(--main-color); */
     }
 
     .results .recyclableStatus p
@@ -235,49 +256,48 @@ label[for=camera]
 
 /* == alternate pages ============================================================================================== */
 
-.alternate label[for]
+.accent-2 label[for]
 {
-    background-color: var(--alternate-color);
+    background-color: var(--accent-2-color);
 }
 
 /* == responsive + media queries =================================================================================== */
 
 @media screen and (max-width: 450px) {
+    :root {
+        --space-4x: 3rem;
+        --space-2x: 1.5rem;
+        --space-1x: 1rem;
+    }
+
     html
     {
-        background-image: linear-gradient(135deg,  var(--back-color-gradient-end) 0%, var(--back-color-gradient-start) 50%);
+        background-image: linear-gradient(135deg,  var(--gradient-color-end) 0%, var(--gradient-color-start) 50%);
     }
 
     body, body > *
     {
-        color: var(--body-color);
+        color: var(--main-color);
         background-color: transparent;
     }
 
     body > section,
     body > form
     {
-        color: var(--body-color-text);
-        background-color: var(--body-color);
+        color: var(--main-color-text);
+        background-color: var(--main-color);
     }
 
     section
     {
-        padding: 0 2rem;
+        /* padding: 0 2rem; */
     }
 }
 
-@media screen and (max-height: 600px) {
-    h1 {
-        padding: 0 0 .5em 0;
-    }
-
-    form {
-        height: 20vh;
-    }
-
-    .results p
-    {
-        margin: 1rem 0;
+@media screen and (max-width: 320px) {
+    :root {
+        --space-4x: 2rem;
+        --space-2x: 1rem;
+        --space-1x: .5rem;
     }
 }
