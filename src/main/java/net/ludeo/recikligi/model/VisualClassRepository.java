@@ -6,5 +6,5 @@ import java.util.UUID;
 
 public interface VisualClassRepository extends CrudRepository<VisualClass, UUID> {
 
-    VisualClass findByName(final String name);
+    VisualClass findByNameIgnoreCase(final String name);
 }
