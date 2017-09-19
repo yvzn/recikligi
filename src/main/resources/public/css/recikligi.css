@@ -63,7 +63,7 @@ body
 h1
 {
     margin: 0;
-    padding: var(--space-2x) 0 var(--space-4x) 0;
+    padding: var(--space-2x) 0 var(--space-2x) 0;
     text-align: center;
     color: var(--accent-1-color);
 }
@@ -81,7 +81,7 @@ h2
 
 section
 {
-    padding: var(--space-4x) var(--space-4x) 0 var(--space-4x);
+    padding: var(--space-2x) var(--space-4x) 0 var(--space-4x);
     overflow: hidden;
     flex-grow: 1;
 }
@@ -98,7 +98,6 @@ p:first-letter
 
 nav
 {
-    padding: 0 var(--space-1x) 0 0;
     text-align: right;
     order: -1;
     height: var(--space-2x);
@@ -108,7 +107,7 @@ nav
     {
         font-size: 1.5em;
         display: inline-block;
-        margin: var(--space-1x) 0 0 0;
+        padding: var(--space-1x) var(--space-1x) 0 0;
         text-decoration: none;
         color: inherit;
     }
