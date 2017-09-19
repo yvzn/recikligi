@@ -53,7 +53,7 @@ public class RecyclableStatusService {
     }
 
     private VisualClass findVisualClassByName(String name) {
-        VisualClass visualClass = visualClassRepository.findByName(name);
+        VisualClass visualClass = visualClassRepository.findByNameIgnoreCase(name);
         if (visualClass == null) {
             reportUnknownVisualClass(name);
         }

@@ -63,7 +63,7 @@ body
 h1
 {
     margin: 0;
-    padding: var(--space-2x) 0 var(--space-4x) 0;
+    padding: var(--space-2x) 0 var(--space-2x) 0;
     text-align: center;
     color: var(--accent-1-color);
 }
@@ -77,11 +77,13 @@ h1
 h2
 {
     margin-top: 0;
+    animation: appear-1st 1s ease-out;
+    animation-fill-mode: forwards;
 }
 
 section
 {
-    padding: var(--space-4x) var(--space-4x) 0 var(--space-4x);
+    padding: var(--space-2x) var(--space-4x) 0 var(--space-4x);
     overflow: hidden;
     flex-grow: 1;
 }
@@ -98,7 +100,6 @@ p:first-letter
 
 nav
 {
-    padding: 0 var(--space-1x) 0 0;
     text-align: right;
     order: -1;
     height: var(--space-2x);
@@ -108,14 +109,14 @@ nav
     {
         font-size: 1.5em;
         display: inline-block;
-        margin: var(--space-1x) 0 0 0;
+        padding: var(--space-1x) var(--space-1x) 0 0;
         text-decoration: none;
         color: inherit;
     }
 
     nav.github a
     {
-        margin: 0;
+        padding: 0;
         position: absolute;
         right: 0px;
         top: 0px;
@@ -174,14 +175,8 @@ label[for=camera]
 
 @keyframes pulse
 {
-    from
-    {
-        box-shadow: 0 0 0 0 var(--primary-color);
-    }
-    to
-    {
-        box-shadow: 0 0 0 45px var(--primary-color-transparent);
-    }
+    from { box-shadow: 0 0 0 0 var(--primary-color); }
+    to { box-shadow: 0 0 0 45px var(--primary-color-transparent); }
 }
 
 /* == results page ================================================================================================= */
@@ -206,6 +201,38 @@ label[for=camera]
     {
         color: var(--main-color-text);
         background-color: var(--main-color);
+    }
+
+    .results .visualClass
+    {
+        animation: appear-1st 1s ease-out;
+        animation-fill-mode: forwards;
+    }
+
+    .results .recyclableStatus
+    {
+        animation: appear-2nd 2s ease-out;
+        animation-fill-mode: forwards;        
+    }
+
+    .results .disclaimer
+    {
+        animation: appear-3rd 3s ease-out;
+        animation-fill-mode: forwards;        
+    }
+
+    @keyframes appear-1st {
+        0% { transform: translateY(var(--space-2x)); opacity: 0; }
+    }
+
+    @keyframes appear-2nd {
+        0% { opacity: 0; }
+        50% { transform: translateY(var(--space-2x)); opacity: 0}
+    }
+
+    @keyframes appear-3rd {
+        0% { opacity: 0; }
+        66% { transform: translateY(var(--space-2x)); opacity: 0; }
     }
 
 .visualClass em
@@ -237,8 +264,6 @@ label[for=camera]
         font-weight: normal;
         margin: 0;
         text-transform: capitalize;
-        /* background: var(--recyclable-status-color); */
-        /* color: var(--main-color); */
     }
 
     .results .recyclableStatus p
@@ -248,6 +273,8 @@ label[for=camera]
 
 .disclaimer {
     color: var(--disclaimer-color);
+    animation: appear-2nd 2s ease-out;
+    animation-fill-mode: forwards;
 }
 
     .disclaimer * {
@@ -286,11 +313,6 @@ label[for=camera]
     {
         color: var(--main-color-text);
         background-color: var(--main-color);
-    }
-
-    section
-    {
-        /* padding: 0 2rem; */
     }
 }
 
