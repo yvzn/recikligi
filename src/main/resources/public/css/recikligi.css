@@ -103,6 +103,7 @@ nav
     text-align: right;
     order: -1;
     height: var(--space-2x);
+    z-index: 2;
 }
 
     nav a
@@ -263,7 +264,11 @@ label[for=camera]
         font-size: 1.5em;
         font-weight: normal;
         margin: 0;
-        text-transform: capitalize;
+    }
+
+    .recyclableStatus h3:first-letter 
+    {
+        text-transform: uppercase;
     }
 
     .results .recyclableStatus p
