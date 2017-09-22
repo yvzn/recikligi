@@ -2,26 +2,14 @@
 {
     position: absolute;
     left: 0;
+    bottom: 0;
     display: none;
     width: 100%;
-    height: calc(100% - 1em);
-    margin-top: .5em;
+    height: calc(100% - 8rem);
     background: var(--main-color);
     align-items: center;
     justify-content: center;
     z-index: 3;
-}
-
-.loader h2 
-{
-    position: absolute;
-    top: 0;
-    margin: var(--space-1x) 0 0 0;
-    padding: var(--space-2x) 0 var(--space-2x) 0;
-    text-align: center;
-    color: var(--disclaimer-color);
-    font-size: 2em;
-    animation: none;
 }
 
 .loader .dot
@@ -61,5 +49,19 @@
     66%
     {
         transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .loader 
+    {
+        height: calc(100% - 7rem);
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .loader
+    {
+        height: calc(100% - 6rem);
     }
 }
