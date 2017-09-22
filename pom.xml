@@ -48,6 +48,7 @@
                             <tasks>
                                 <echo>Copying Dockerfile to build directory</echo>
                                 <copy file="Dockerfile" tofile="${basedir}/target/Dockerfile"/>
+                                <copy file="src/main/kubernetes/recikligi-pod.yaml" tofile="${basedir}/target/recikligi.yaml"/>
                             </tasks>
                         </configuration>
                         <goals>
