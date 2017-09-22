@@ -66,6 +66,7 @@ h1
     padding: var(--space-2x) 0 var(--space-2x) 0;
     text-align: center;
     color: var(--accent-1-color);
+    font-size: 2rem;
 }
 
     h1 a
