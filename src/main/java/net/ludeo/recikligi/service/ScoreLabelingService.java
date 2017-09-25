@@ -1,6 +1,6 @@
 package net.ludeo.recikligi.service;
 
-import net.ludeo.recikligi.message.LocalizedMessagesComponent;
+import lombok.Setter;
 import net.ludeo.recikligi.model.VisualClassTranslation;
 import net.ludeo.recikligi.model.VisualClassTranslationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +11,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Locale;
 
+@Setter
 @Service
-public class ScoreLabelingService extends LocalizedMessagesComponent {
+public class ScoreLabelingService {
 
     @Value("${recikligi.score.threshold.high}")
     private Double highScoreThreshold;
@@ -22,9 +23,13 @@ public class ScoreLabelingService extends LocalizedMessagesComponent {
 
     private final VisualClassTranslationRepository visualClassTranslationRepository;
 
+    private final LocalizedMessagesService localizedMessagesService;
+
     @Autowired
-    public ScoreLabelingService(VisualClassTranslationRepository visualClassTranslationRepository) {
+    public ScoreLabelingService(VisualClassTranslationRepository visualClassTranslationRepository,
+            LocalizedMessagesService localizedMessagesService) {
         this.visualClassTranslationRepository = visualClassTranslationRepository;
+        this.localizedMessagesService = localizedMessagesService;
     }
 
     public String findUILabel(final Double score) {
@@ -36,7 +41,7 @@ public class ScoreLabelingService extends LocalizedMessagesComponent {
         } else {
             msg = "recyclable.image.score.low";
         }
-        return getMessage(msg);
+        return localizedMessagesService.getMessage(msg);
     }
 
     public String findUILabel(final String visualClassName) {

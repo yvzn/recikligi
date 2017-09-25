@@ -1,7 +1,7 @@
 package net.ludeo.recikligi.service;
 
 import lombok.Setter;
-import net.ludeo.recikligi.message.LocalizedMessagesComponent;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,10 +14,17 @@ import java.util.UUID;
 
 @Setter
 @Service
-public class StorageService extends LocalizedMessagesComponent {
+public class StorageService {
 
     @Value("${recikligi.storageFolder}")
     private String storageFolder;
+
+    private final LocalizedMessagesService localizedMessagesService;
+
+    @Autowired
+    public StorageService(LocalizedMessagesService localizedMessagesService) {
+        this.localizedMessagesService = localizedMessagesService;
+    }
 
     public UUID store(final MultipartFile imageFile) throws StorageFailedException {
         try {
@@ -26,7 +33,7 @@ public class StorageService extends LocalizedMessagesComponent {
             imageFile.transferTo(image.toFile());
             return imageId;
         } catch (final IOException ex) {
-            String msg = getMessage("error.msg.could.not.store.file", imageFile.getOriginalFilename());
+            String msg = localizedMessagesService.getMessage("error.msg.could.not.store.file", imageFile.getOriginalFilename());
             throw new StorageFailedException(msg, ex);
         }
     }
@@ -34,7 +41,7 @@ public class StorageService extends LocalizedMessagesComponent {
     public Path read(final UUID imageId) throws ImageNotFoundException {
         Path image = getPathToImage(imageId);
         if (!Files.isRegularFile(image)) {
-            String msg = getMessage("error.msg.could.not.find.image", imageId.toString());
+            String msg = localizedMessagesService.getMessage("error.msg.could.not.find.image", imageId.toString());
             throw new ImageNotFoundException(msg);
         }
         return image;
@@ -44,7 +51,7 @@ public class StorageService extends LocalizedMessagesComponent {
         try {
             return read(UUID.fromString(imageId));
         } catch (final IllegalArgumentException | UnsupportedOperationException ex) {
-            String msg = getMessage("error.msg.could.not.find.image", imageId);
+            String msg = localizedMessagesService.getMessage("error.msg.could.not.find.image", imageId);
             throw new ImageNotFoundException(msg, ex);
         }
     }
