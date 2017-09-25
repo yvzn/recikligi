@@ -1,7 +1,7 @@
 package net.ludeo.recikligi.controller;
 
-import net.ludeo.recikligi.service.ImageControlService;
-import net.ludeo.recikligi.service.StorageService;
+import net.ludeo.recikligi.service.graphics.ImageControlService;
+import net.ludeo.recikligi.service.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

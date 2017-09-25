@@ -1,8 +1,9 @@
-package net.ludeo.recikligi.service;
+package net.ludeo.recikligi.service.recognition;
 
 import lombok.Setter;
 import net.ludeo.recikligi.model.VisualClassTranslation;
 import net.ludeo.recikligi.model.VisualClassTranslationRepository;
+import net.ludeo.recikligi.service.LocalizedMessagesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.i18n.LocaleContextHolder;

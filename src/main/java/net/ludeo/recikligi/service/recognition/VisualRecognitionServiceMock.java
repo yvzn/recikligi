@@ -1,4 +1,4 @@
-package net.ludeo.recikligi.service;
+package net.ludeo.recikligi.service.recognition;
 
 import lombok.Setter;
 import net.ludeo.recikligi.model.VisualClass;

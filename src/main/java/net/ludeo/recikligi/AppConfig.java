@@ -1,7 +1,7 @@
 package net.ludeo.recikligi;
 
 import net.ludeo.recikligi.controller.DailyUsageLimitFilter;
-import net.ludeo.recikligi.service.WatsonVisualRecognitionService;
+import net.ludeo.recikligi.service.recognition.WatsonVisualRecognitionService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;

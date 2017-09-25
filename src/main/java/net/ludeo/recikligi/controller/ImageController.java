@@ -1,8 +1,8 @@
 package net.ludeo.recikligi.controller;
 
-import net.ludeo.recikligi.service.ImageControlService;
-import net.ludeo.recikligi.service.ImageFormat;
-import net.ludeo.recikligi.service.StorageService;
+import net.ludeo.recikligi.service.graphics.ImageControlService;
+import net.ludeo.recikligi.service.graphics.ImageFormat;
+import net.ludeo.recikligi.service.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

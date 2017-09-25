@@ -1,6 +1,11 @@
 package net.ludeo.recikligi.controller;
 
-import net.ludeo.recikligi.service.*;
+import net.ludeo.recikligi.service.recognition.ImageRecognitionInfo;
+import net.ludeo.recikligi.service.recognition.ScoreLabelingService;
+import net.ludeo.recikligi.service.recognition.VisualRecognitionService;
+import net.ludeo.recikligi.service.recyclable.RecyclableStatusDescription;
+import net.ludeo.recikligi.service.recyclable.RecyclableStatusService;
+import net.ludeo.recikligi.service.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

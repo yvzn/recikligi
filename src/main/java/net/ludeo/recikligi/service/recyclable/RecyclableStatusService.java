@@ -1,6 +1,7 @@
-package net.ludeo.recikligi.service;
+package net.ludeo.recikligi.service.recyclable;
 
 import net.ludeo.recikligi.model.*;
+import net.ludeo.recikligi.service.recognition.ImageRecognitionInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;

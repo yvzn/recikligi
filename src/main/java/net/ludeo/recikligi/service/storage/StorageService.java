@@ -1,6 +1,7 @@
-package net.ludeo.recikligi.service;
+package net.ludeo.recikligi.service.storage;
 
 import lombok.Setter;
+import net.ludeo.recikligi.service.LocalizedMessagesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
