@@ -32,7 +32,6 @@ recikligi:
   image:
     resize:
       display:
-        width: 450
-        height: 450
+        width: 1024
       recognition:
-        size: 1024
+        width-or-height: 1024

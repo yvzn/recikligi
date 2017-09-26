@@ -2,6 +2,8 @@ package net.ludeo.recikligi.service.graphics;
 
 import lombok.Setter;
 import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.resizers.configurations.Rendering;
+import net.coobird.thumbnailator.resizers.configurations.ScalingMode;
 import net.ludeo.recikligi.service.LocalizedMessagesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,11 +29,8 @@ public class ImageResizeService {
     @Value("${recikligi.image.resize.display.width}")
     private int displayMaxWidth;
 
-    @Value("${recikligi.image.resize.display.height}")
-    private int displayMaxHeight;
-
-    @Value("${recikligi.image.resize.recognition.size}")
-    private int recognitionMaxSize;
+    @Value("${recikligi.image.resize.recognition.width-or-height}")
+    private int recognitionMaxWidthOrHeight;
 
     private final LocalizedMessagesService localizedMessagesService;
 
@@ -59,12 +58,12 @@ public class ImageResizeService {
     void resizeForRecognition(Path pathToImage, String outputFormat) throws IOException, InvalidImageFormatException {
         Path pathToImageForRecognition = buildPathToImageForRecognition(pathToImage);
 
-        // Thumbnails library require an extension to process files:
-        // the resized image is first created with that extension, then renamed
         Path pathWithExtension = buildPathWithExtension(pathToImageForRecognition, outputFormat);
 
         Thumbnails.of(pathToImage.toFile())
-                .size(recognitionMaxSize, recognitionMaxSize)
+                .scalingMode(ScalingMode.BICUBIC)
+                .rendering(Rendering.QUALITY)
+                .size(recognitionMaxWidthOrHeight, recognitionMaxWidthOrHeight)
                 .toFile(pathWithExtension.toFile());
 
         renameFileRemoveExtension(pathWithExtension);
@@ -74,12 +73,12 @@ public class ImageResizeService {
             String outputFormat) throws IOException, InvalidImageFormatException {
         Path pathToImageForDisplay = buildPathToImageForDisplay(pathToImage);
 
-        // Thumbnails library require an extension to process files:
-        // the resized image is first created with that extension, then renamed
         Path pathWithExtension = buildPathWithExtension(pathToImageForDisplay, outputFormat);
 
         Thumbnails.of(pathToImage.toFile())
-                .size(displayMaxWidth, displayMaxHeight)
+                .scalingMode(ScalingMode.BICUBIC)
+                .rendering(Rendering.QUALITY)
+                .width(displayMaxWidth)
                 .toFile(pathWithExtension.toFile());
 
         renameFileRemoveExtension(pathWithExtension);
@@ -107,6 +106,8 @@ public class ImageResizeService {
     }
 
     private static void renameFileRemoveExtension(Path path) throws IOException {
+        // Thumbnails library require an extension to process files:
+        // the resized image is first created with that extension, then renamed
         String fileName = path.getFileName().toString();
         String newFileName = removeExtensionFromFileName(fileName);
         if (!newFileName.equals(fileName)) {
