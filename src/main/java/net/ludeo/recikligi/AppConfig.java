@@ -34,8 +34,8 @@ public class AppConfig {
 
     @Bean
     @ConditionalOnBean(WatsonVisualRecognitionService.class)
-    public FilterRegistrationBean registerDailyUsageLimitIfWatsonServiceIsEnabled(DailyUsageLimitFilter filter) {
-        FilterRegistrationBean registration = new FilterRegistrationBean<>(filter);
+    public FilterRegistrationBean<DailyUsageLimitFilter> registerDailyUsageLimitIfWatsonServiceIsEnabled(DailyUsageLimitFilter filter) {
+        FilterRegistrationBean<DailyUsageLimitFilter> registration = new FilterRegistrationBean<>(filter);
         registration.setUrlPatterns(Arrays.asList("/camera", "/recyclable/*"));
         return registration;
     }
