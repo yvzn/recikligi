@@ -29,3 +29,10 @@ recikligi:
   daily:
     usage:
       limit: 100
+  image:
+    resize:
+      display:
+        width: 450
+        height: 450
+      recognition:
+        size: 1024

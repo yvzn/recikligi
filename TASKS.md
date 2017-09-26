@@ -1,16 +1,17 @@
 # Backlog
 
 ## TODO
-* UX (animations, désactivation boutons, L&F)
 * Optimisations (affichage image - compression / taille)
 * feedback
 * Spring Boot 2 (release)
 * getUserMedia + Canvas
+
+## MAYBE
 * PWA
 * Géolocalisation pour l'appel à consignesdetri
 
 ## DONE 
-MVP: 77% (25/31)
+MVP: 77% (26/31)
 * <del>Page d'accueil</del>
 * <del>Formulaire avec &lt;input></del>
 * <del>CSS</del>
@@ -37,6 +38,7 @@ MVP: 77% (25/31)
 * <del>Docker + tests téléphone</del>
 * <del>Alimentation custom classifier</del>
 * <del>simple stats</del>
+* <del>UX (animations, désactivation boutons, L&F)</del>
 
 
 
