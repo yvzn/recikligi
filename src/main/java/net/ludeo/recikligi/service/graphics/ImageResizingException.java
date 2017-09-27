@@ -1,9 +1,8 @@
 package net.ludeo.recikligi.service.graphics;
 
-import java.io.IOException;
-
 class ImageResizingException extends Exception {
-    ImageResizingException(String msg, IOException ex) {
+
+    ImageResizingException(String msg, Exception ex) {
         super(msg, ex);
     }
 }

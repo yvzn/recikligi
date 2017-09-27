@@ -5,26 +5,18 @@ import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.resizers.configurations.Rendering;
 import net.coobird.thumbnailator.resizers.configurations.ScalingMode;
 import net.ludeo.recikligi.service.LocalizedMessagesService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import net.ludeo.recikligi.service.storage.ImageVersion;
+import net.ludeo.recikligi.service.storage.StorageFailedException;
+import net.ludeo.recikligi.service.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
 
 @Setter
 @Service
 public class ImageResizeService {
-
-    public static final String DISPLAY_PREFIX = "display-";
-
-    static final String RECOGNITION_PREFIX = "recognition-";
-
-    private static final Logger logger = LoggerFactory.getLogger(ImageResizeService.class);
 
     @Value("${recikligi.image.resize.display.width}")
     private int displayMaxWidth;
@@ -32,93 +24,61 @@ public class ImageResizeService {
     @Value("${recikligi.image.resize.recognition.width-or-height}")
     private int recognitionMaxWidthOrHeight;
 
-    private final LocalizedMessagesService localizedMessagesService;
-
     private final ImageControlService imageControlService;
 
+    private final StorageService storageService;
+
+    private final LocalizedMessagesService localizedMessagesService;
+
     @Autowired
-    public ImageResizeService(LocalizedMessagesService localizedMessagesService,
-            ImageControlService imageControlService) {
-        this.localizedMessagesService = localizedMessagesService;
+    public ImageResizeService(ImageControlService imageControlService,
+            StorageService storageService,
+            LocalizedMessagesService localizedMessagesService) {
         this.imageControlService = imageControlService;
+        this.storageService = storageService;
+        this.localizedMessagesService = localizedMessagesService;
     }
 
-    public void resize(Path pathToImage) throws ImageResizingException, InvalidImageFormatException {
+    public void resize(Path pathToImage) throws ImageResizingException {
         try {
             String outputFormat = findOutputFormat(pathToImage);
             resizeForRecognition(pathToImage, outputFormat);
             resizeForDisplay(pathToImage, outputFormat);
-        } catch (IOException ex) {
+        } catch (InvalidImageFormatException | StorageFailedException ex) {
             String msg = localizedMessagesService.getMessage("error.msg.could.not.resize.file", pathToImage.getFileName());
-            logger.error(msg, ex);
             throw new ImageResizingException(msg, ex);
         }
     }
 
-    void resizeForRecognition(Path pathToImage, String outputFormat) throws IOException, InvalidImageFormatException {
-        Path pathToImageForRecognition = buildPathToImageForRecognition(pathToImage);
-
-        Path pathWithExtension = buildPathWithExtension(pathToImageForRecognition, outputFormat);
-
-        Thumbnails.of(pathToImage.toFile())
-                .scalingMode(ScalingMode.BICUBIC)
-                .rendering(Rendering.QUALITY)
-                .size(recognitionMaxWidthOrHeight, recognitionMaxWidthOrHeight)
-                .toFile(pathWithExtension.toFile());
-
-        renameFileRemoveExtension(pathWithExtension);
+    void resizeForRecognition(Path pathToImage,
+            String outputFormat) throws InvalidImageFormatException, StorageFailedException {
+        storageService.store(
+                outputStream ->
+                        Thumbnails.of(pathToImage.toFile())
+                                .scalingMode(ScalingMode.BICUBIC)
+                                .rendering(Rendering.QUALITY)
+                                .size(recognitionMaxWidthOrHeight, recognitionMaxWidthOrHeight)
+                                .outputFormat(outputFormat)
+                                .toOutputStream(outputStream),
+                pathToImage.getFileName().toString(),
+                ImageVersion.RECOGNITION);
     }
 
     private void resizeForDisplay(Path pathToImage,
-            String outputFormat) throws IOException, InvalidImageFormatException {
-        Path pathToImageForDisplay = buildPathToImageForDisplay(pathToImage);
-
-        Path pathWithExtension = buildPathWithExtension(pathToImageForDisplay, outputFormat);
-
-        Thumbnails.of(pathToImage.toFile())
-                .scalingMode(ScalingMode.BICUBIC)
-                .rendering(Rendering.QUALITY)
-                .width(displayMaxWidth)
-                .toFile(pathWithExtension.toFile());
-
-        renameFileRemoveExtension(pathWithExtension);
-    }
-
-    Path buildPathToImageForRecognition(Path pathToImage) throws InvalidImageFormatException {
-        return buildPathWithPrefix(pathToImage, RECOGNITION_PREFIX);
-    }
-
-    Path buildPathToImageForDisplay(Path pathToImage) throws InvalidImageFormatException {
-        return buildPathWithPrefix(pathToImage, DISPLAY_PREFIX);
-    }
-
-    private Path buildPathWithPrefix(Path path, String prefix) throws InvalidImageFormatException {
-        return path.resolveSibling(prefix + path.getFileName());
-    }
-
-    private Path buildPathWithExtension(Path pathWithoutExtension, String outputFormat) {
-        String fileNameWithExtension = String.format("%s.%s", pathWithoutExtension.getFileName(), outputFormat);
-        return pathWithoutExtension.resolveSibling(fileNameWithExtension);
+            String outputFormat) throws InvalidImageFormatException, StorageFailedException {
+        storageService.store(
+                outputStream ->
+                        Thumbnails.of(pathToImage.toFile())
+                                .scalingMode(ScalingMode.BICUBIC)
+                                .rendering(Rendering.QUALITY)
+                                .width(displayMaxWidth)
+                                .outputFormat(outputFormat)
+                                .toOutputStream(outputStream),
+                pathToImage.getFileName().toString(),
+                ImageVersion.DISPLAY);
     }
 
     private String findOutputFormat(Path pathToImage) throws InvalidImageFormatException {
         return imageControlService.findImageFormat(pathToImage).name().toLowerCase();
-    }
-
-    private static void renameFileRemoveExtension(Path path) throws IOException {
-        // Thumbnails library require an extension to process files:
-        // the resized image is first created with that extension, then renamed
-        String fileName = path.getFileName().toString();
-        String newFileName = removeExtensionFromFileName(fileName);
-        if (!newFileName.equals(fileName)) {
-            Files.move(path, path.resolveSibling(newFileName), StandardCopyOption.REPLACE_EXISTING);
-        }
-    }
-
-    private static String removeExtensionFromFileName(String fileName) {
-        String newFileName = fileName;
-        if (newFileName.indexOf('.') > 0)
-            newFileName = newFileName.substring(0, fileName.lastIndexOf('.'));
-        return newFileName;
     }
 }

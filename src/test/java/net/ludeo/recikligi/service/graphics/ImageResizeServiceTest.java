@@ -1,6 +1,8 @@
 package net.ludeo.recikligi.service.graphics;
 
 import net.ludeo.recikligi.AppConfig;
+import net.ludeo.recikligi.service.storage.ImageVersion;
+import net.ludeo.recikligi.service.storage.StorageService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,18 +27,22 @@ class ImageResizeServiceTest {
 
     private final ImageControlService imageControlService;
 
+    private final StorageService storageService;
+
     @Autowired
     ImageResizeServiceTest(ImageResizeService imageResizeService,
-            ImageControlService imageControlService) {
+            ImageControlService imageControlService,
+            StorageService storageService) {
         this.imageResizeService = imageResizeService;
         this.imageControlService = imageControlService;
+        this.storageService = storageService;
     }
 
     @Test
     @DisplayName("create a valid image for recognition")
     void resizeForRecognition() throws Exception {
         imageResizeService.resizeForRecognition(testImage(), "jpg");
-        assertTrue(isProperImage(resultImageForRecognition()));
+        assertTrue(isValidImage(resultImageForRecognition()));
     }
 
     @Test
@@ -52,15 +58,15 @@ class ImageResizeServiceTest {
         return Paths.get(getClass().getResource(TEST_IMAGE).toURI());
     }
 
+    private boolean isValidImage(Path image) throws Exception {
+        return imageControlService.findImageFormat(image) != ImageFormat.UNKNOWN;
+    }
+
     private Path resultImageForRecognition() throws Exception {
-        return imageResizeService.buildPathToImageForRecognition(testImage());
+        return storageService.read(testImage().getFileName().toString(), ImageVersion.RECOGNITION);
     }
 
     private Path resultImageForDisplay() throws Exception {
-        return imageResizeService.buildPathToImageForDisplay(testImage());
-    }
-
-    private boolean isProperImage(Path image) throws Exception {
-        return imageControlService.findImageFormat(image) != ImageFormat.UNKNOWN;
+        return storageService.read(testImage().getFileName().toString(), ImageVersion.DISPLAY);
     }
 }

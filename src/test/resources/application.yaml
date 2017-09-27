@@ -1,25 +1,10 @@
 spring:
-  mvc:
-    favicon:
-      enabled: false
-  favicon:
-    enabled: false
   jpa:
     hibernate:
       ddl-auto: validate
-  servlet:
-    multipart:
-      max-file-size: 2MB
-      max-request-size: 2MB
-
-logging:
-  level:
-    net:
-      ludeo:
-        recikligi: DEBUG
 
 recikligi:
-  storageFolder: /tmp
+  storageFolder: target/test-classes
   watson:
     apikey:
   score:
