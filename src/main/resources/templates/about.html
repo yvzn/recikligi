@@ -5,6 +5,7 @@
 <h1 th:include="fragments/layout :: h1Fragment"></h1>
 <section>
     <div th:utext="#{about.text}"></div>
+    <p th:utext="#{camera.filesize.disclaimer}" class="disclaimer"></p>
 </section>
 <form th:action="@{/}" th:include="fragments/layout :: homeButtonFragment"></form>
 <nav class="github">

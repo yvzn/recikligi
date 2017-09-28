@@ -2,6 +2,7 @@ package net.ludeo.recikligi.controller;
 
 import net.ludeo.recikligi.service.graphics.ImageControlService;
 import net.ludeo.recikligi.service.graphics.ImageFormat;
+import net.ludeo.recikligi.service.storage.ImageVersion;
 import net.ludeo.recikligi.service.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -31,7 +32,7 @@ public class ImageController {
     @GetMapping(value = "/image/{imageId:.+}")
     @ResponseBody
     public HttpEntity<byte[]> showImage(@PathVariable("imageId") final String imageId) throws Exception {
-        Path image = storageService.read(imageId);
+        Path image = storageService.read(imageId, ImageVersion.DISPLAY);
         ImageFormat imageFormat = imageControlService.findImageFormat(image);
         byte[] bytes = Files.readAllBytes(image);
 

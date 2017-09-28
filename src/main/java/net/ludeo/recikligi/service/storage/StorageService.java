@@ -69,10 +69,6 @@ public class StorageService {
         return read(imageId.toString(), imageVersion);
     }
 
-    public Path read(final String imageId) throws ImageNotFoundException {
-        return read(imageId, ImageVersion.ORIGINAL);
-    }
-
     public Path read(final String imageId, final ImageVersion imageVersion) throws ImageNotFoundException {
         Path image = getPathToImage(imageId, imageVersion);
         if (!Files.isRegularFile(image)) {

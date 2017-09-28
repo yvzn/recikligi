@@ -1,7 +1,6 @@
 # Backlog
 
 ## TODO
-* Optimisations (affichage image - compression / taille)
 * feedback
 * Spring Boot 2 (release)
 * getUserMedia + Canvas
@@ -11,7 +10,7 @@
 * Géolocalisation pour l'appel à consignesdetri
 
 ## DONE 
-MVP: 77% (26/31)
+MVP: 83% (26/31)
 * <del>Page d'accueil</del>
 * <del>Formulaire avec &lt;input></del>
 * <del>CSS</del>
@@ -39,6 +38,8 @@ MVP: 77% (26/31)
 * <del>Alimentation custom classifier</del>
 * <del>simple stats</del>
 * <del>UX (animations, désactivation boutons, L&F)</del>
+* <del>Optimisations (affichage image - compression / taille)</del>
+
 
 
 
