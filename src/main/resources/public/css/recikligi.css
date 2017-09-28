@@ -82,7 +82,7 @@ h2
     animation-fill-mode: forwards;
 }
 
-section
+main
 {
     padding: var(--space-2x) var(--space-4x) 0 var(--space-4x);
     overflow: hidden;
@@ -198,7 +198,7 @@ label[for=camera]
         color: var(--main-color);
     }
 
-    .results > section,
+    .results > main,
     .results > form
     {
         color: var(--main-color-text);
@@ -314,7 +314,7 @@ label[for=camera]
         background-color: transparent;
     }
 
-    body > section,
+    body > main,
     body > form
     {
         color: var(--main-color-text);
