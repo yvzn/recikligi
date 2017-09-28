@@ -1,4 +1,4 @@
-package net.ludeo.recikligi.service;
+package net.ludeo.recikligi.service.recognition;
 
 import java.nio.file.Path;
 import java.util.Optional;

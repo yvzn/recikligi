@@ -1,3 +1,4 @@
+-- visual class
 INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'acid', r.id FROM recyclable_status r WHERE r.name = 'container';
 INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'spray', r.id FROM recyclable_status r WHERE r.name = 'recyclable';
 INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'low energy light lamp', r.id FROM recyclable_status r WHERE r.name = 'container';
@@ -117,7 +118,15 @@ INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'oil fi
 INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'ashtray', r.id FROM recyclable_status r WHERE r.name = 'not-recyclable';
 INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'coca cola', r.id FROM recyclable_status r WHERE r.name = 'recyclable-if-empty';
 INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'scouring pad', r.id FROM recyclable_status r WHERE r.name = 'not-recyclable';
+INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'pepsi', r.id FROM recyclable_status r WHERE r.name = 'recyclable-if-empty';
+INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'tea bag', r.id FROM recyclable_status r WHERE r.name = 'compost-pile';
+INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'shoebox', r.id FROM recyclable_status r WHERE r.name = 'recyclable';
+INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'shopping bag', r.id FROM recyclable_status r WHERE r.name = 'not-recyclable';
+INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'paper cup', r.id FROM recyclable_status r WHERE r.name = 'not-recyclable';
+INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'mountain bike', r.id FROM recyclable_status r WHERE r.name = 'waste-collection-center';
+INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'file folder', r.id FROM recyclable_status r WHERE r.name = 'recyclable';
 
+-- visual class FR
 INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id, text) SELECT UUID(), t.id, v.id, 'acide ' FROM translation_locale t, visual_class v WHERE t.name = 'fr' AND v.name = 'acid';
 INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id, text) SELECT UUID(), t.id, v.id, 'aérosol' FROM translation_locale t, visual_class v WHERE t.name = 'fr' AND v.name = 'spray';
 INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id, text) SELECT UUID(), t.id, v.id, 'ampoule basse consommation' FROM translation_locale t, visual_class v WHERE t.name = 'fr' AND v.name = 'low energy light lamp';
@@ -237,3 +246,10 @@ INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id,
 INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id, text) SELECT UUID(), t.id, v.id, 'cendrier' FROM translation_locale t, visual_class v WHERE t.name = 'fr' AND v.name = 'ashtray';
 INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id, text) SELECT UUID(), t.id, v.id, 'coca cola' FROM translation_locale t, visual_class v WHERE t.name = 'fr' AND v.name = 'coca cola';
 INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id, text) SELECT UUID(), t.id, v.id, 'éponge à gratter' FROM translation_locale t, visual_class v WHERE t.name = 'fr' AND v.name = 'scouring pad';
+INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id, text) SELECT UUID(), t.id, v.id, 'pepsi' FROM translation_locale t, visual_class v WHERE t.name = 'fr' AND v.name = 'pepsi';
+INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id, text) SELECT UUID(), t.id, v.id, 'sachet de thé' FROM translation_locale t, visual_class v WHERE t.name = 'fr' AND v.name = 'tea bag';
+INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id, text) SELECT UUID(), t.id, v.id, 'boîte à chaussures' FROM translation_locale t, visual_class v WHERE t.name = 'fr' AND v.name = 'shoebox';
+INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id, text) SELECT UUID(), t.id, v.id, 'sac à courses' FROM translation_locale t, visual_class v WHERE t.name = 'fr' AND v.name = 'shopping bag';
+INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id, text) SELECT UUID(), t.id, v.id, 'gobelet en papier' FROM translation_locale t, visual_class v WHERE t.name = 'fr' AND v.name = 'paper cup';
+INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id, text) SELECT UUID(), t.id, v.id, 'vélo tout terrain' FROM translation_locale t, visual_class v WHERE t.name = 'fr' AND v.name = 'mountain bike';
+INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id, text) SELECT UUID(), t.id, v.id, 'chemise cartonnée' FROM translation_locale t, visual_class v WHERE t.name = 'fr' AND v.name = 'file folder';

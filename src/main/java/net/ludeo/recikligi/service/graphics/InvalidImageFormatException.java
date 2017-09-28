@@ -1,4 +1,4 @@
-package net.ludeo.recikligi.service;
+package net.ludeo.recikligi.service.graphics;
 
 import java.io.IOException;
 

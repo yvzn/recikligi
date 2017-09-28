@@ -3,7 +3,7 @@
 <head th:include="fragments/layout :: headerFragment"></head>
 <body class="results" th:style="'--image-url:url(/image/' + ${imageId} + ');'">
 <h1 th:include="fragments/layout :: h1Fragment"></h1>
-<section>
+<main>
     <p th:if="${success}" class="visualClass visualClassFound"
        th:utext="${#messages.msgWithParams('recyclable.image.success', new Object[] {scoreLabel, name})}"></p>
     <p th:if="!${success}" class="visualClass visualClassNotFound"
@@ -13,7 +13,7 @@
         <p th:text="${statusDescription}"></p>
     </div>
     <p th:utext="#{recyclable.status.disclaimer}" class="disclaimer"></p>
-</section>
+</main>
 <form th:action="@{/}" th:include="fragments/layout :: homeButtonFragment"></form>
 <nav th:include="fragments/layout :: navFragment"></nav>
 </body>

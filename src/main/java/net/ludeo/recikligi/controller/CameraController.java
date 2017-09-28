@@ -1,7 +1,8 @@
 package net.ludeo.recikligi.controller;
 
-import net.ludeo.recikligi.service.ImageControlService;
-import net.ludeo.recikligi.service.StorageService;
+import net.ludeo.recikligi.service.graphics.ImageControlService;
+import net.ludeo.recikligi.service.graphics.ImageResizeService;
+import net.ludeo.recikligi.service.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +21,14 @@ public class CameraController {
 
     private final ImageControlService imageControlService;
 
+    private final ImageResizeService imageResizeService;
+
     @Autowired
-    public CameraController(final StorageService storageService, final ImageControlService imageControlService) {
+    public CameraController(final StorageService storageService, final ImageControlService imageControlService,
+            ImageResizeService imageResizeService) {
         this.storageService = storageService;
         this.imageControlService = imageControlService;
+        this.imageResizeService = imageResizeService;
     }
 
     @GetMapping("/camera")
@@ -36,6 +41,7 @@ public class CameraController {
         UUID imageId = storageService.store(imageFile);
         Path image = storageService.read(imageId);
         imageControlService.controlImage(image);
+        imageResizeService.resize(image);
 
         redirectAttributes.addAttribute("imageId", imageId.toString());
         return "redirect:/recyclable/{imageId}";

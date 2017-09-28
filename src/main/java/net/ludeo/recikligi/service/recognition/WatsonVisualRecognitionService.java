@@ -1,4 +1,4 @@
-package net.ludeo.recikligi.service;
+package net.ludeo.recikligi.service.recognition;
 
 import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyImagesOptions;
@@ -6,6 +6,8 @@ import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ImageClassific
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassification;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassifier;
 import lombok.Setter;
+import net.ludeo.recikligi.service.graphics.ImageControlService;
+import net.ludeo.recikligi.service.graphics.ImageFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

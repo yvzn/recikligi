@@ -82,7 +82,7 @@ h2
     animation-fill-mode: forwards;
 }
 
-section
+main
 {
     padding: var(--space-2x) var(--space-4x) 0 var(--space-4x);
     overflow: hidden;
@@ -188,8 +188,8 @@ label[for=camera]
     /* --image-url variable is defined in HTML */
     color: var(--main-color);
     background-image: linear-gradient(var(--image-tinting), var(--image-tinting)), var(--image-url);
-    background-repeat: no-repeat;
-    background-position: center center;
+    background-repeat: repeat-y;
+    background-position: center 200%;
     background-size: cover;
 }
 
@@ -198,7 +198,7 @@ label[for=camera]
         color: var(--main-color);
     }
 
-    .results > section,
+    .results > main,
     .results > form
     {
         color: var(--main-color-text);
@@ -314,7 +314,7 @@ label[for=camera]
         background-color: transparent;
     }
 
-    body > section,
+    body > main,
     body > form
     {
         color: var(--main-color-text);

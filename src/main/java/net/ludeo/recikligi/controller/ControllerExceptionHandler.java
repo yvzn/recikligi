@@ -1,6 +1,7 @@
 package net.ludeo.recikligi.controller;
 
-import net.ludeo.recikligi.message.LocalizedMessagesComponent;
+import net.ludeo.recikligi.service.LocalizedMessagesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
@@ -13,7 +14,14 @@ import java.io.StringWriter;
 import java.net.HttpURLConnection;
 
 @ControllerAdvice
-public class ControllerExceptionHandler extends LocalizedMessagesComponent {
+public class ControllerExceptionHandler {
+
+    private final LocalizedMessagesService localizedMessagesService;
+
+    @Autowired
+    public ControllerExceptionHandler(LocalizedMessagesService localizedMessagesService) {
+        this.localizedMessagesService = localizedMessagesService;
+    }
 
     @ExceptionHandler(MissingServletRequestPartException.class)
     public String handleMissingParams() {
@@ -22,7 +30,7 @@ public class ControllerExceptionHandler extends LocalizedMessagesComponent {
 
     @ExceptionHandler(MaxUploadSizeExceededException.class)
     public ModelAndView handleException(final MaxUploadSizeExceededException ex) {
-        String errorMessage = getMessage("error.msg.file.too.large");
+        String errorMessage = localizedMessagesService.getMessage("error.msg.file.too.large");
         return buildModelAndView(errorMessage, ex);
     }
 

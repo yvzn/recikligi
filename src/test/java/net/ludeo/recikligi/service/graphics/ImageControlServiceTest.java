@@ -1,4 +1,4 @@
-package net.ludeo.recikligi.service;
+package net.ludeo.recikligi.service.graphics;
 
 import net.ludeo.recikligi.AppConfig;
 import org.junit.jupiter.api.DisplayName;

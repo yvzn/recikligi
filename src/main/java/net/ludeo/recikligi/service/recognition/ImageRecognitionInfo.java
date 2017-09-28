@@ -1,9 +1,8 @@
-package net.ludeo.recikligi.service;
+package net.ludeo.recikligi.service.recognition;
 
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassifier;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 @AllArgsConstructor

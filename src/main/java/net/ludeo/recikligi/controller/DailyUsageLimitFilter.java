@@ -3,7 +3,7 @@ package net.ludeo.recikligi.controller;
 import lombok.Setter;
 import net.ludeo.recikligi.model.UsageHistory;
 import net.ludeo.recikligi.model.UsageHistoryRepository;
-import net.ludeo.recikligi.service.WatsonVisualRecognitionService;
+import net.ludeo.recikligi.service.recognition.WatsonVisualRecognitionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;

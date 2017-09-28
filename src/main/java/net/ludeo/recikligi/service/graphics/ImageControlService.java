@@ -1,6 +1,7 @@
-package net.ludeo.recikligi.service;
+package net.ludeo.recikligi.service.graphics;
 
-import net.ludeo.recikligi.message.LocalizedMessagesComponent;
+import net.ludeo.recikligi.service.LocalizedMessagesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedInputStream;
@@ -10,17 +11,24 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 @Service
-public class ImageControlService extends LocalizedMessagesComponent {
+public class ImageControlService {
 
     static final byte[] PNG_HEADER = {(byte) 0x89, (byte) 0x50, (byte) 0x4E, (byte) 0x47, (byte) 0x0D, (byte) 0x0A, (byte) 0x1A, (byte) 0x0A};
     private static final byte[] JPEG_HEADER = {(byte) 0xFF, (byte) 0xD8};
 
+    private final LocalizedMessagesService localizedMessagesService;
+
+    @Autowired
+    public ImageControlService(LocalizedMessagesService localizedMessagesService) {
+        this.localizedMessagesService = localizedMessagesService;
+    }
+
     public void controlImage(final Path imageFile) throws InvalidImageFormatException {
         String errorMessage = null;
         if (!Files.isRegularFile(imageFile)) {
-            errorMessage = getMessage("error.msg.could.not.read.file", imageFile.getFileName());
+            errorMessage = localizedMessagesService.getMessage("error.msg.could.not.read.file", imageFile.getFileName());
         } else if (!isJpegOrPng(imageFile)) {
-            errorMessage = getMessage("error.msg.invalid.image.format");
+            errorMessage = localizedMessagesService.getMessage("error.msg.invalid.image.format");
         }
         if (errorMessage != null) {
             throw new InvalidImageFormatException(errorMessage);
@@ -41,7 +49,7 @@ public class ImageControlService extends LocalizedMessagesComponent {
             if (isPngHeader(firstBytes, readBytesCount))
                 return ImageFormat.PNG;
         } catch (final IOException ex) {
-            String msg = getMessage("error.msg.could.not.read.file", imageFile.getFileName());
+            String msg = localizedMessagesService.getMessage("error.msg.could.not.read.file", imageFile.getFileName());
             throw new InvalidImageFormatException(msg, ex);
         }
         return ImageFormat.UNKNOWN;
