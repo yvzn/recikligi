@@ -1,13 +1,9 @@
 (function () {
     'use strict';
 
-    window.onload = afterDocumentLoaded;
-
-    function afterDocumentLoaded() {
-        hideSubmitButtonIfJavascriptAvailable();
-        activateLoaderOnFormSubmit();
-        autoSubmitFormIfImageSelected();
-    }
+    window.addEventListener("load", hideSubmitButtonIfJavascriptAvailable);
+    window.addEventListener("load", activateLoaderOnFormSubmit);
+    window.addEventListener("load", submitFormIfImageSelected);
 
     function hideSubmitButtonIfJavascriptAvailable() {
         try {
@@ -20,17 +16,17 @@
         }
     }
 
-    function autoSubmitFormIfImageSelected() {
+    function submitFormIfImageSelected() {
         var inputs = document.querySelectorAll('input[type="file"]')
         for (var i = 0; i < inputs.length; ++i) {
-            inputs[i].onchange = submitForm;
+            inputs[i].addEventListener("change", submitFirstForm);
         }
     }
 
-    function submitForm() {
+    function submitFirstForm() {
         var forms = document.getElementsByTagName('form');
         if (forms.length) {
-            showLoaderOnSubmit()
+            showLoader()
             forms[0].submit();
         }
     }
@@ -38,11 +34,11 @@
     function activateLoaderOnFormSubmit() {
         var forms = document.getElementsByTagName('form');
         for(var i = 0; i < forms.length; i++) {
-            forms[i].onsubmit = showLoaderOnSubmit;
+            forms[i].addEventListener("submit", showLoader);
         }
     }
 
-    function showLoaderOnSubmit() {
+    function showLoader() {
         var loader = document.querySelector('.loader');
         if (loader) {
             loader.style.display = 'flex';
