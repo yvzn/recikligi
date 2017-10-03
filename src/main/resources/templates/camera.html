@@ -1,16 +1,35 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/layout :: headerFragment"></head>
-<body>
+<head th:include="fragments/layout :: headerFragment(camera=true)"></head>
+<body class="camera">
 <h1 th:include="fragments/layout :: h1Fragment"></h1>
+
 <main>
     <h2 th:text="#{camera.onboarding.title}"></h2>
 </main>
 <form method="post" enctype="multipart/form-data">
-    <label for="camera" th:title="#{camera.button.tooltip}">&#128247;</label>
-    <input name="image" id="camera" type="file" accept="image/*;capture=camera" required="required"/>
+    <label for="classicCameraImage" th:title="#{camera.button.tooltip}">&#128247;</label>
+    <input name="image" id="classicCameraImage" type="file" accept="image/*;capture=camera" required="required"/>
     <input type="submit"/>
 </form>
+
+<section id="advancedCameraPreview">
+    <video></video>
+    <form>
+        <label for="advancedCameraImage" id="cameraPreview" th:title="#{camera.button.tooltip}">&#128247;</label>
+    </form>
+</section>
+
+<section id="advancedCameraRender">
+    <article>
+        <img src="" />
+    </article>
+    <canvas></canvas>
+    <form th:action="@{/camera-advanced}" method="post">
+        <label for="advancedCameraImage" id="sendImage" th:title="#{camera.button.tooltip}">&#128247;</label>
+        <input name="image" id="advancedCameraImage" type="hidden" required="required"/>
+    </form>
+</section>
 <nav th:include="fragments/layout :: navFragment"></nav>
 <div th:replace="fragments/layout :: loader"></div>
 </body>
