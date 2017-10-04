@@ -30,8 +30,8 @@
             loader.show();
             disableCameraButtons();
             showAdvancedCamera();
-            renderMediaStreamInCamera(mediaStream);
-            enableButtonsWhenCameraIsReady();
+            renderMediaStreamInCameraVideoPreview(mediaStream);
+            enableButtonsWhenVideoPreviewIsReady();
         } catch (e) {
             handleError(e);
         }
@@ -49,10 +49,10 @@
 
     function showAdvancedCamera() {
         document.body.className = 'camera advanced';
-        showAdvancedCameraSection('advancedCameraPreview');
+        showAdvancedCameraSection('advancedCameraVideoPreview');
     }
 
-    function renderMediaStreamInCamera(mediaStream) {
+    function renderMediaStreamInCameraVideoPreview(mediaStream) {
         var videoElement = document.querySelector('video');
         videoElement.srcObject = mediaStream;
 
@@ -61,12 +61,12 @@
         });
     }
 
-    function enableButtonsWhenCameraIsReady() {
+    function enableButtonsWhenVideoPreviewIsReady() {
         var videoElement = document.querySelector('video');
         videoElement.addEventListener('canplay', function() {
             loader.hide();
             enableCameraButtons();
-            takePictureWhenCameraButtonClicked();
+            takePictureWhenButtonClicked();
         })
     }
 
@@ -85,14 +85,23 @@
         }
     }
 
-    function takePictureWhenCameraButtonClicked() {
-        var button = document.getElementById('cameraPreview');
+    function takePictureWhenButtonClicked() {
+        var button = document.getElementById('takeStillPicture');
         button.addEventListener('click', takePicture);
     }
 
     function takePicture(event) {
         event.preventDefault();
 
+        var stillPicture = extractStillPictureDataFromVideo();
+
+        displayCameraStillPicture(stillPicture.dataURL, stillPicture.width, stillPicture.height);
+        updateAdvancedCameraImageFormField(stillPicture.dataURL);
+        showAdvancedCameraSection('advancedCameraStillImage');
+        resizeCameraStillPicture(stillPicture.width, stillPicture.height);
+    }
+
+    function extractStillPictureDataFromVideo() {
         var videoElement = document.querySelector('video');
         var width = videoElement.videoWidth;
         var height = videoElement.videoHeight;
@@ -104,20 +113,20 @@
         canvasElement.height = height;
         context.drawImage(videoElement, 0, 0, width, height);
 
-        var data = canvasElement.toDataURL('image/jpg');
-        displayCameraPreviewImage(data, width, height);
-        updateCameraImageData(data);
-        showAdvancedCameraSection('advancedCameraRender');
-        resizePreviewImage(width, height);
+        return {
+            dataURL: canvasElement.toDataURL('image/jpg'),
+            width: width,
+            height: height
+        }
     }
 
-    function displayCameraPreviewImage(data, width, height) {
+    function displayCameraStillPicture(dataURL, width, height) {
         var image = document.querySelector('img');
-        image.setAttribute('src', data);
+        image.setAttribute('src', dataURL);
     }
 
-    function resizePreviewImage(width, height) {
-        var section = document.getElementById('advancedCameraRender');
+    function resizeCameraStillPicture(width, height) {
+        var section = document.getElementById('advancedCameraStillImage');
 
         var widthRatio = width / section.clientWidth;
         var heightRatio = height / section.clientHeight;
@@ -129,7 +138,7 @@
         image.style.height = (height / maxRatio) + 'px';
     }
 
-    function updateCameraImageData(data) {
+    function updateAdvancedCameraImageFormField(data) {
         var input = document.getElementById('advancedCameraImage');
         input.value = data;
     }
