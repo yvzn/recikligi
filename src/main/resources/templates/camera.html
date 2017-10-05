@@ -7,7 +7,7 @@
 <main>
     <h2 th:text="#{camera.onboarding.title}"></h2>
 </main>
-<form method="post" enctype="multipart/form-data">
+<form th:action="@{/camera-classic}" method="post" enctype="multipart/form-data">
     <label for="classicCameraImage" th:title="#{camera.classic.button.tooltip}">&#128247;</label>
     <input name="image" id="classicCameraImage" type="file" accept="image/*;capture=camera" required="required"/>
     <input type="submit"/>
@@ -25,9 +25,10 @@
         <img src="" />
     </article>
     <canvas></canvas>
-    <form th:action="@{/camera-advanced}" method="post">
-        <label for="advancedCameraImage" id="sendImage" th:title="#{camera.send.button.tooltip}">&#128247;</label>
+    <form th:action="@{/camera-advanced}" method="post" enctype="multipart/form-data">
+        <label for="sendImageButton" id="sendImage" th:title="#{camera.send.button.tooltip}">&#x1F469;&#x1F3FE;&#x200D;&#x1F4BB;</label>
         <input name="image" id="advancedCameraImage" type="hidden" required="required"/>
+        <input id="sendImageButton" type="submit" />
     </form>
 </section>
 <nav th:include="fragments/layout :: navFragment"></nav>

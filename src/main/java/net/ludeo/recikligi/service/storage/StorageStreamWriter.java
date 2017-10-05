@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 @FunctionalInterface
-public interface StorageWriter {
+public interface StorageStreamWriter {
 
-    void accept(OutputStream outputStream) throws IOException;
+    void writeTo(OutputStream outputStream) throws IOException;
 }

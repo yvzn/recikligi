@@ -7,6 +7,7 @@
         // https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Taking_still_photos
         var cameraConstraints = buildCameraConstraints();
 
+        loader.show();
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices
                 .getUserMedia(cameraConstraints)
@@ -27,7 +28,6 @@
 
     function displayMediaStreamInAdvancedCamera(mediaStream) {
         try {
-            loader.show();
             disableCameraButtons();
             showAdvancedCamera();
             renderMediaStreamInCameraVideoPreview(mediaStream);
@@ -138,8 +138,11 @@
         image.style.height = (height / maxRatio) + 'px';
     }
 
-    function updateAdvancedCameraImageFormField(data) {
+    function updateAdvancedCameraImageFormField(dataURL) {
         var input = document.getElementById('advancedCameraImage');
+        //trim the data:....base64, header
+        var pos = dataURL.indexOf("base64,");
+        var data = pos > -1 ? dataURL.substring(pos + "base64,".length) : dataURL;
         input.value = data;
     }
 

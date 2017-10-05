@@ -228,7 +228,7 @@ label[for=camera]
             display: none;
         }
 
-        .camera.advanced section label[for].disabled
+        .camera section label[for].disabled
         {
             cursor: auto;
             background-color: var(--disabled-color);
