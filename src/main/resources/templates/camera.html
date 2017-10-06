@@ -14,6 +14,7 @@
 </form>
 
 <section id="advancedCameraVideoPreview">
+    <h2 th:text="#{camera.onboarding.title}"></h2>
     <video></video>
     <form>
         <label for="advancedCameraImage" id="takeStillPicture" th:title="#{camera.take.picture.button.tooltip}">&#128247;</label>
@@ -21,11 +22,13 @@
 </section>
 
 <section id="advancedCameraStillImage">
+    <h2 th:text="#{camera.sendimage.onboarding.title}"></h2>
     <article>
         <img src="" />
     </article>
     <canvas></canvas>
     <form th:action="@{/camera-advanced}" method="post" enctype="multipart/form-data">
+        <label for="advancedCameraImage" id="retry" th:title="#{camera.retry.button.tooltip}">&#10005;</label>
         <label for="sendImageButton" id="sendImage" th:title="#{camera.send.button.tooltip}">&#x1F469;&#x1F3FE;&#x200D;&#x1F4BB;</label>
         <input name="image" id="advancedCameraImage" type="hidden" required="required"/>
         <input id="sendImageButton" type="submit" />

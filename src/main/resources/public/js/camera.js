@@ -67,6 +67,7 @@
             loader.hide();
             enableCameraButtons();
             takePictureWhenButtonClicked();
+            retryWhenButtonClicked();
         })
     }
 
@@ -97,6 +98,7 @@
 
         displayCameraStillPicture(stillPicture.dataURL, stillPicture.width, stillPicture.height);
         updateAdvancedCameraImageFormField(stillPicture.dataURL);
+
         showAdvancedCameraSection('advancedCameraStillImage');
         resizeCameraStillPicture(stillPicture.width, stillPicture.height);
     }
@@ -144,6 +146,16 @@
         var pos = dataURL.indexOf("base64,");
         var data = pos > -1 ? dataURL.substring(pos + "base64,".length) : dataURL;
         input.value = data;
+    }
+
+    function retryWhenButtonClicked() {
+        var button = document.getElementById('retry');
+        button.addEventListener('click', retryTakingPicture);
+    }
+
+    function retryTakingPicture() {
+        showAdvancedCamera();
+        updateAdvancedCameraImageFormField('');
     }
 
     function showAdvancedCameraSection(id) {
