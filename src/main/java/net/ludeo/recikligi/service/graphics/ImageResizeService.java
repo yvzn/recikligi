@@ -8,10 +8,17 @@ import net.ludeo.recikligi.service.LocalizedMessagesService;
 import net.ludeo.recikligi.service.storage.ImageVersion;
 import net.ludeo.recikligi.service.storage.StorageFailedException;
 import net.ludeo.recikligi.service.storage.StorageService;
+import net.ludeo.recikligi.service.storage.StorageStreamWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 @Setter
@@ -52,30 +59,53 @@ public class ImageResizeService {
 
     void resizeForRecognition(Path pathToImage,
             String outputFormat) throws InvalidImageFormatException, StorageFailedException {
-        storageService.store(
-                outputStream ->
-                        Thumbnails.of(pathToImage.toFile())
-                                .scalingMode(ScalingMode.BICUBIC)
-                                .rendering(Rendering.QUALITY)
+        StorageStreamWriter storageStreamWriter =
+                outputStream -> {
+                    if (isImageLargerThan(pathToImage, recognitionMaxWidthOrHeight, recognitionMaxWidthOrHeight))
+                        thumbnailBuilder(pathToImage)
                                 .size(recognitionMaxWidthOrHeight, recognitionMaxWidthOrHeight)
                                 .outputFormat(outputFormat)
-                                .toOutputStream(outputStream),
-                pathToImage.getFileName().toString(),
-                ImageVersion.RECOGNITION);
+                                .toOutputStream(outputStream);
+                    else
+                        copyFile(pathToImage, outputStream);
+                };
+
+        String imageId = pathToImage.getFileName().toString();
+        storageService.store(storageStreamWriter, imageId, ImageVersion.RECOGNITION);
     }
 
     private void resizeForDisplay(Path pathToImage,
             String outputFormat) throws InvalidImageFormatException, StorageFailedException {
-        storageService.store(
-                outputStream ->
-                        Thumbnails.of(pathToImage.toFile())
-                                .scalingMode(ScalingMode.BICUBIC)
-                                .rendering(Rendering.QUALITY)
+        StorageStreamWriter storageStreamWriter =
+                outputStream -> {
+                    if (isImageLargerThan(pathToImage, displayMaxWidth, -1))
+                        thumbnailBuilder(pathToImage)
                                 .width(displayMaxWidth)
                                 .outputFormat(outputFormat)
-                                .toOutputStream(outputStream),
-                pathToImage.getFileName().toString(),
-                ImageVersion.DISPLAY);
+                                .toOutputStream(outputStream);
+                    else
+                        copyFile(pathToImage, outputStream);
+                };
+
+        String imageId = pathToImage.getFileName().toString();
+        storageService.store(storageStreamWriter, imageId, ImageVersion.DISPLAY);
+    }
+
+    private boolean isImageLargerThan(Path pathToImage, int width, int height) throws IOException {
+        BufferedImage bufferedImage = ImageIO.read(pathToImage.toFile());
+        return (width > 0 && bufferedImage.getWidth() > width)
+                ||
+                (height > 0 && bufferedImage.getHeight() > height);
+    }
+
+    private Thumbnails.Builder<File> thumbnailBuilder(Path pathToImage) {
+        return Thumbnails.of(pathToImage.toFile())
+                .scalingMode(ScalingMode.BICUBIC)
+                .rendering(Rendering.QUALITY);
+    }
+
+    private void copyFile(Path sourceImage, OutputStream destOutputStream) throws IOException {
+        Files.copy(sourceImage, destOutputStream);
     }
 
     private String findOutputFormat(Path pathToImage) throws InvalidImageFormatException {

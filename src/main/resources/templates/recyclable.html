@@ -14,7 +14,7 @@
     </div>
     <p th:utext="#{recyclable.status.disclaimer}" class="disclaimer"></p>
 </main>
-<form th:action="@{/}" th:include="fragments/layout :: homeButtonFragment"></form>
+<form th:replace="fragments/layout :: homeButtonFragment"></form>
 <nav th:include="fragments/layout :: navFragment"></nav>
 </body>
 </html>
