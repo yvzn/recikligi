@@ -36,13 +36,29 @@ public class CameraController {
         return "camera";
     }
 
-    @PostMapping("/camera")
-    public String handleCameraImageUpload(@RequestParam("image") final MultipartFile imageFile, final RedirectAttributes redirectAttributes) throws Exception {
+    @PostMapping("/camera-classic")
+    public String handleClassicCameraImageUpload(@RequestParam("image") final MultipartFile imageFile,
+            final RedirectAttributes redirectAttributes) throws Exception {
         UUID imageId = storageService.store(imageFile);
+        controlImage(imageId);
+        return redirectToImage(imageId, redirectAttributes);
+    }
+
+    @PostMapping("/camera-advanced")
+    public String handleAdvancedCameraImageUpload(@RequestParam("image") final String base64image,
+            final RedirectAttributes redirectAttributes) throws Exception {
+        UUID imageId = storageService.store(base64image);
+        controlImage(imageId);
+        return redirectToImage(imageId, redirectAttributes);
+    }
+
+    private void controlImage(final UUID imageId) throws Exception {
         Path image = storageService.read(imageId);
         imageControlService.controlImage(image);
         imageResizeService.resize(image);
+    }
 
+    private String redirectToImage(UUID imageId, RedirectAttributes redirectAttributes) {
         redirectAttributes.addAttribute("imageId", imageId.toString());
         return "redirect:/recyclable/{imageId}";
     }

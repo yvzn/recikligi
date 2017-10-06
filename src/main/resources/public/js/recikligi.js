@@ -1,4 +1,4 @@
-(function () {
+var main = (function (loader) {
     'use strict';
 
     window.addEventListener("load", hideSubmitButtonIfJavascriptAvailable);
@@ -26,7 +26,7 @@
     function submitFirstForm() {
         var forms = document.getElementsByTagName('form');
         if (forms.length) {
-            showLoader()
+            loader.show()
             forms[0].submit();
         }
     }
@@ -34,14 +34,7 @@
     function activateLoaderOnFormSubmit() {
         var forms = document.getElementsByTagName('form');
         for(var i = 0; i < forms.length; i++) {
-            forms[i].addEventListener("submit", showLoader);
+            forms[i].addEventListener("submit", loader.show);
         }
     }
-
-    function showLoader() {
-        var loader = document.querySelector('.loader');
-        if (loader) {
-            loader.style.display = 'flex';
-        }
-    }
-})();
+})(loader);

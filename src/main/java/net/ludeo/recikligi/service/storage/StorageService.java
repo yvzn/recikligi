@@ -25,35 +25,49 @@ public class StorageService {
 
     private final LocalizedMessagesService localizedMessagesService;
 
+    private final Base64FileWriter base64FileWriter;
+
     @Autowired
     public StorageService(ImageNamingService imageNamingService,
-            LocalizedMessagesService localizedMessagesService) {
+            LocalizedMessagesService localizedMessagesService,
+            Base64FileWriter base64FileWriter) {
         this.imageNamingService = imageNamingService;
         this.localizedMessagesService = localizedMessagesService;
+        this.base64FileWriter = base64FileWriter;
     }
 
     public UUID store(final MultipartFile imageFile) throws StorageFailedException {
+        return storeWithNewId(
+                path -> imageFile.transferTo(path.toFile()));
+    }
+
+    public UUID store(String base64image) throws StorageFailedException {
+        return storeWithNewId(
+                path -> base64FileWriter.write(base64image, path));
+    }
+
+    private UUID storeWithNewId(StorageFileWriter storageFileWriter) throws StorageFailedException {
         UUID imageId = UUID.randomUUID();
-        store(imageFile, imageId);
+        store(storageFileWriter, imageId);
         return imageId;
     }
 
-    private void store(final MultipartFile imageFile, UUID imageId) throws StorageFailedException {
+    private void store(final StorageFileWriter storageFileWriter, UUID imageId) throws StorageFailedException {
         try {
             Path image = getPathToImage(imageId, ImageVersion.ORIGINAL);
-            imageFile.transferTo(image.toFile());
+            storageFileWriter.writeTo(image);
         } catch (final IOException ex) {
-            String msg = localizedMessagesService.getMessage("error.msg.could.not.store.file", imageFile.getOriginalFilename());
+            String msg = localizedMessagesService.getMessage("error.msg.could.not.store.file");
             throw new StorageFailedException(msg, ex);
         }
     }
 
-    public void store(final StorageWriter writeToStorage, final String imageId,
+    public void store(final StorageStreamWriter storageStreamWriter, final String imageId,
             final ImageVersion imageVersion) throws StorageFailedException {
         try {
             Path pathToImage = getPathToImage(imageId, imageVersion);
             try (OutputStream outputStream = Files.newOutputStream(pathToImage)) {
-                writeToStorage.accept(outputStream);
+                storageStreamWriter.writeTo(outputStream);
             }
         } catch (final IOException ex) {
             String msg = localizedMessagesService.getMessage("error.msg.could.not.store.file", imageVersion.name());
