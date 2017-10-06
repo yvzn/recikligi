@@ -55,9 +55,9 @@
     function renderMediaStreamInCameraVideoPreview(mediaStream) {
         var videoElement = document.querySelector('video');
         videoElement.srcObject = mediaStream;
+        loader.hide();
 
         videoElement.addEventListener('loadedmetadata', function () {
-            loader.hide();
             videoElement.play();
         });
     }
