@@ -57,6 +57,7 @@
         videoElement.srcObject = mediaStream;
 
         videoElement.addEventListener('loadedmetadata', function () {
+            loader.hide();
             videoElement.play();
         });
     }
@@ -64,7 +65,6 @@
     function enableButtonsWhenVideoPreviewIsReady() {
         var videoElement = document.querySelector('video');
         videoElement.addEventListener('playing', function() {
-            loader.hide();
             enableCameraButtons();
             takePictureWhenButtonClicked();
             retryWhenButtonClicked();
