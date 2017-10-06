@@ -63,7 +63,7 @@
 
     function enableButtonsWhenVideoPreviewIsReady() {
         var videoElement = document.querySelector('video');
-        videoElement.addEventListener('canplay', function() {
+        videoElement.addEventListener('playing', function() {
             loader.hide();
             enableCameraButtons();
             takePictureWhenButtonClicked();
