@@ -1,10 +1,12 @@
 package net.ludeo.recikligi.controller;
 
+import net.ludeo.recikligi.service.EmojiGeneratorService;
 import net.ludeo.recikligi.service.graphics.ImageControlService;
 import net.ludeo.recikligi.service.graphics.ImageResizeService;
 import net.ludeo.recikligi.service.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,7 +34,8 @@ public class CameraController {
     }
 
     @GetMapping("/camera")
-    public String camera() {
+    public String camera(final Model model) {
+        model.addAttribute("sendButtonIcon", EmojiGeneratorService.randomTechnologist());
         return "camera";
     }
 
