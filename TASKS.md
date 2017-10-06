@@ -1,10 +1,8 @@
 # Backlog
 
 ## BUGS
-* homeButtonFragment + th:action="@{/}" -> th:replace
 
 ## TODO
-* getUserMedia + Canvas
 * feedback
 * Spring Boot 2 (release)
 
@@ -44,6 +42,7 @@ MVP: 83% (26/29)
 * <del>simple stats</del>
 * <del>UX (animations, désactivation boutons, L&F)</del>
 * <del>Optimisations (affichage image - compression / taille)</del>
+* <del>getUserMedia + Canvas</del>
 
 
 

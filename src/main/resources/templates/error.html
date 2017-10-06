@@ -9,7 +9,7 @@
     <h2 th:text="${error}"></h2>
     <p th:text="#{error.apologies}"></p>
 </main>
-<form th:action="@{/}" th:include="fragments/layout :: homeButtonFragment"></form>
+<form th:replace="fragments/layout :: homeButtonFragment"></form>
 <nav th:include="fragments/layout :: navFragment"></nav>
 
 <div th:utext="'&lt;!--'" th:remove="tag"></div>
