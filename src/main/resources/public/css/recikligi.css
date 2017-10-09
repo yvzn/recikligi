@@ -2,7 +2,6 @@
 Content:
     top-level
     form + buttons
-    camera page
     results page
     alternate pages
     responsive + media queries
@@ -22,15 +21,17 @@ Content:
     --primary-color-transparent: hsla(40, 100%, 67%, 0);
     --accent-1-color: #06d6a0;
     --accent-2-color: #ff5e5b;
+
     --disabled-color: #999;
     --camera-background-color: #000;
+    --disclaimer-color: #B4B4B1;
+    --secondary-action-color: var(--accent-2-color);
 
     --image-tinting: hsla(0, 0%, 0%, .3);
 
     --recyclable-status-color: var(--accent-1-color);
     --not-recyclable-status-color: var(--accent-2-color);
     --other-recyclable-status-color: var(--primary-color);
-    --disclaimer-color: #B4B4B1;
 
     --space-4x: 4rem;
     --space-2x: 2rem;
@@ -172,102 +173,6 @@ label[for]
     background-color: var(--primary-color);
     box-shadow: 0 0 .2em silver;
 }
-
-/* == camera page ================================================================================================= */
-
-label[for=camera]
-{
-    animation: pulse 1.25s cubic-bezier(0.66, 0, 0, 1) 10s infinite
-}
-
-    @keyframes pulse
-    {
-        from { box-shadow: 0 0 0 0 var(--primary-color); }
-        to { box-shadow: 0 0 0 45px var(--primary-color-transparent); }
-    }
-
-.camera section
-{
-    display: none;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: var(--main-content-height);
-    z-index: 2;
-    background: var(--main-color);
-    overflow: hidden;
-}
-
-    .camera.advanced section.active
-    {
-        display: block;
-    }
-
-    .camera section h2
-    {
-        position: absolute;
-        top: 33%;
-        width: 100%;
-        font-size: 1.25rem;
-        font-weight: normal;
-        color: var(--main-color);
-        text-align: center;
-        animation: disappear 1s ease-out 10s;
-        animation-fill-mode: forwards;
-    }
-
-        @keyframes disappear
-        {
-            to { opacity: 0; }
-        }
-
-    .camera section video,
-    .camera section article
-    {
-        width: 100%;
-        height: 100%;
-        background: var(--camera-background-color);
-    }
-
-    .camera section article
-    {
-        display: flex;
-        align-items: center;
-    }
-
-    .camera section form
-    {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-    }
-
-    .camera section canvas
-    {
-        display: none;
-    }
-
-    .camera section label#retry
-    {
-        position:absolute;
-        top: 1rem;
-        left: calc(30% - 3rem);
-        font-size: 20px;
-        width: 3rem;
-        height: 3rem;
-        background-color: var(--disabled-color);
-    }
-
-    .camera section label#takeStillPicture,
-    .camera section label#sendImage {
-        animation: pulse 1.25s cubic-bezier(0.66, 0, 0, 1) 10s infinite;
-    }
-
-    .camera section label[for].disabled
-    {
-        cursor: auto;
-        background-color: var(--disabled-color);
-    }
 
 /* == results page ================================================================================================= */
 

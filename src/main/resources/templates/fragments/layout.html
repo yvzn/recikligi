@@ -1,12 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="headerFragment">
-    <title th:text="#{fragments.layout.appTitle}"></title>
+    <title th:utext="#{fragments.layout.appTitle}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato"/>
     <link rel="stylesheet" href="/css/recikligi.css"/>
     <link rel="stylesheet" href="/css/loader.css"/>
+    <link th:if="${camera}" rel="stylesheet" href="/css/camera.css"/>
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <script src="/js/loader.js"></script>
     <script src="/js/recikligi.js"></script>
