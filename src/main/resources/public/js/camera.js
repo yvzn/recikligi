@@ -3,27 +3,68 @@
 
     window.addEventListener("load", showAdvancedCameraIfMediaDeviceAvailable);
 
+    var mediaSourceIds = [];
+
     function showAdvancedCameraIfMediaDeviceAvailable() {
-        // https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Taking_still_photos
         var cameraConstraints = buildCameraConstraints();
 
         loader.show();
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices
-                .getUserMedia(cameraConstraints)
-                .then(displayMediaStreamInAdvancedCamera)
-                .catch(handleError);
+            if (navigator.mediaDevices.enumerateDevices)
+            {
+                enumerateDevicesAndStartMediaStream();
+            }
+            else
+            {
+                startMediaStream(cameraConstraints);
+            }
         }
     }
 
-    function buildCameraConstraints() {
-        return {
+    function buildCameraConstraints(sourceId) {
+        var constraints = {
             audio: false,
             video: {
                 width: { ideal: 720 },
                 height: { ideal: 1280 }
             }
         }
+        if (sourceId) {
+            constraints.video.deviceId = sourceId;
+        }
+        return constraints;
+    }
+
+    function enumerateDevicesAndStartMediaStream() {
+        navigator.mediaDevices
+            .enumerateDevices()
+            .then(selectFirstSourceAndStartMediaStream)
+            .catch(handleError);
+    }
+
+    function selectFirstSourceAndStartMediaStream(devices) {
+        for (var i = 0; i != devices.length; ++i) {
+            if (devices[i].kind == 'videoinput') {
+                mediaSourceIds.push(devices[i].deviceId);
+            }
+        }
+        // start with the first one by default
+        mediaSourceIds.selectedIndex = 0;
+        startMediaStreamFromSelectedSource();
+
+        showSwitchDeviceButtonIfMoreThanOneSource();
+    }
+
+    function startMediaStreamFromSelectedSource() {
+        var cameraConstraints = buildCameraConstraints(mediaSourceIds[mediaSourceIds.selectedIndex]);
+        startMediaStream(cameraConstraints);
+    }
+
+    function startMediaStream(cameraConstraints) {
+        navigator.mediaDevices
+            .getUserMedia(cameraConstraints)
+            .then(displayMediaStreamInAdvancedCamera)
+            .catch(handleError);
     }
 
     function displayMediaStreamInAdvancedCamera(mediaStream) {
@@ -156,6 +197,37 @@
     function retryTakingPicture() {
         showAdvancedCamera();
         updateAdvancedCameraImageFormField('');
+    }
+
+    function showSwitchDeviceButtonIfMoreThanOneSource() {
+        var button = document.getElementById('switchSource');
+        if (mediaSourceIds && mediaSourceIds.length > 1) {
+            button.addEventListener('click', switchMediaSource);
+            button.style.display = 'flex';
+        }
+    }
+
+    function switchMediaSource() {
+        stopMediaStream();
+        loader.show();
+        selectNextMediaSource();
+    }
+
+    function stopMediaStream() {
+        var videoElement = document.querySelector('video');
+
+        var stream = videoElement.srcObject;
+        var tracks = stream.getTracks();
+
+        tracks.forEach(function(track) {
+            track.stop();
+        });
+        videoElement.srcObject = null;
+    }
+
+    function selectNextMediaSource() {
+        mediaSourceIds.selectedIndex = (mediaSourceIds.selectedIndex + 1) % mediaSourceIds.length;
+        startMediaStreamFromSelectedSource();
     }
 
     function showAdvancedCameraSection(id) {
