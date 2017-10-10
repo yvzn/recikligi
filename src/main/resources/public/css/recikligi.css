@@ -4,6 +4,7 @@ Content:
     form + buttons
     results page
     alternate pages
+    feedback pages
     responsive + media queries
 */
 
@@ -252,6 +253,15 @@ label[for]
 .accent-2 label[for]
 {
     background-color: var(--accent-2-color);
+}
+
+/* == feedback pages =============================================================================================== */
+
+#feedback
+{
+    position: absolute;
+    left: -100vw;
+    top: 0;
 }
 
 /* == responsive + media queries =================================================================================== */

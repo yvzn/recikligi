@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/layout :: headerFragment"></head>
+<body class="results" th:style="'--image-url:url(/image/' + ${feedback.imageId} + ');'">
+<h1 th:include="fragments/layout :: h1Fragment"></h1>
+
+<main cf-context>
+</main>
+<form th:replace="fragments/layout :: homeButtonFragment"></form>
+<nav th:include="fragments/layout :: navFragment"></nav>
+
+<form id="feedback" cf-form>
+    <!--
+    Note ux
+    Note reconnaissance
+    image
+    reconnaissance
+    recyclable
+    Commentaire libre
+    e-mail
+    -->
+
+    <fieldset>
+        <label for="suggestedName" th:text="'The picture was classified as ' + ${name} + '. How would you classify it ?'"></label>
+        <input id="suggestedName" name="suggestedName" />
+    </fieldset>
+
+    <fieldset>
+        <label for="comment">Do you have any further comments ?</label>
+        <input id="comment" name="comment" />
+    </fieldset>
+
+    <fieldset>
+        <label for="email">Can you provide an e-mail, should we wish to contact you ?</label>
+        <input type="email" id="email" name="email" required="required" placeholder="mail@example.com" />
+    </fieldset>
+
+    <input type="submit" />
+
+    <input type="hidden" id="imageId" name="imageId" th:value="${feedback.imageId}" />
+    <input type="hidden" id="success" name="success" th:value="${feedback.success}" />
+    <input type="hidden" id="name" name="name" th:value="${feedback.name}" />
+    <input type="hidden" id="score" name="score" th:value="${feedback.score}" />
+    <input type="hidden" id="scoreLabel" name="scoreLabel" th:value="${feedback.scoreLabel}" />
+    <input type="hidden" id="statusName" name="statusName" th:value="${feedback.statusName}" />
+    <input type="hidden" id="statusText" name="statusText" th:value="${feedback.statusText}" />
+    <input type="hidden" id="statusDescription" name="statusDescription" th:value="${feedback.statusDescription}" />
+</form>
+<script type="text/javascript" src="https://cf-4053.kxcdn.com/conversational-form/0.9.6/conversational-form.min.js" crossorigin></script>
+</body>
+</html>
