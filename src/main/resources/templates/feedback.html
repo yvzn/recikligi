@@ -9,30 +9,48 @@
 <form th:replace="fragments/layout :: homeButtonFragment"></form>
 <nav th:include="fragments/layout :: navFragment"></nav>
 
-<form id="feedback" cf-form>
-    <!--
-    Note ux
-    Note reconnaissance
-    image
-    reconnaissance
-    recyclable
-    Commentaire libre
-    e-mail
-    -->
+<form id="feedback" action="mailto:mail%40ludeo.net" cf-form method="post">
+    <fieldset>
+        <label for="user">What is your name?</label>
+        <input id="user" name="user" required="required" cf-questions="Hi there!&&I am the feedback form. What is your name?" />
+    </fieldset>
 
     <fieldset>
-        <label for="suggestedName" th:text="'The picture was classified as ' + ${name} + '. How would you classify it ?'"></label>
+        <label for="rating">How would you rate the application ?</label>
+        <label>
+            <input type="radio" id="rating" name="rating" cf-questions="Nice meeting you, {user}&&How would you rate the application ?" value="0" />
+            Poor
+        </label>
+        <label>
+            <input type="radio" id="rating-1" name="rating" value="1" />
+            Average
+        </label>
+        <label>
+            <input type="radio" id="rating-2" name="rating" value="2" />
+            Good
+        </label>
+    </fieldset>
+
+    <fieldset>
+        <label for="suggestedName" th:text="'The picture you sent was analyzed as ' + ${feedback.name} + '&&How would you name it?'"></label>
         <input id="suggestedName" name="suggestedName" />
     </fieldset>
 
     <fieldset>
-        <label for="comment">Do you have any further comments ?</label>
-        <input id="comment" name="comment" />
+        <label for="suggestedStatus">Would you consider this object as recyclable?</label>
+        <label>
+            <input type="radio" id="suggestedStatus" name="suggestedStatus" cf-questions="Would you consider this {suggestedName} as recyclable?" value="recyclable" />
+            Yes
+        </label>
+        <label>
+            <input type="radio" id="suggestedStatus-1" name="suggestedStatus" value="not-recyclable" />
+            No
+        </label>
     </fieldset>
 
     <fieldset>
-        <label for="email">Can you provide an e-mail, should we wish to contact you ?</label>
-        <input type="email" id="email" name="email" required="required" placeholder="mail@example.com" />
+        <label for="comment">I will prepare an e-mail with your feedback attached for sending. Do you have any further comments ?</label>
+        <input id="comment" name="comment" />
     </fieldset>
 
     <input type="submit" />
@@ -46,6 +64,7 @@
     <input type="hidden" id="statusText" name="statusText" th:value="${feedback.statusText}" />
     <input type="hidden" id="statusDescription" name="statusDescription" th:value="${feedback.statusDescription}" />
 </form>
+
 <script type="text/javascript" src="https://cf-4053.kxcdn.com/conversational-form/0.9.6/conversational-form.min.js" crossorigin></script>
 </body>
 </html>
