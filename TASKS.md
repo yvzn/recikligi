@@ -43,6 +43,7 @@ MVP: 83% (26/29)
 * <del>UX (animations, désactivation boutons, L&F)</del>
 * <del>Optimisations (affichage image - compression / taille)</del>
 * <del>getUserMedia + Canvas</del>
+    - https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
 
 
 
