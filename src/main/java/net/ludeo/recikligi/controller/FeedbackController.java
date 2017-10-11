@@ -12,4 +12,9 @@ public class FeedbackController {
         model.addAttribute("feedback", feedback);
         return "feedback";
     }
+
+    @PostMapping("/user-feedback")
+    public String submitFeedbackForm(final Feedback feedback, final Model model) {
+        return "redirect:/";
+    }
 }

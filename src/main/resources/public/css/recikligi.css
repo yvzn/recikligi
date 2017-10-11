@@ -281,11 +281,12 @@ label[for]
 
 /* == feedback pages =============================================================================================== */
 
-#feedback
-{
-    position: absolute;
-    left: -100vw;
-    top: 0;
+.feedback .conversational-form {
+    background-color: transparent;
+}
+
+.feedback cf-chat-response text>p {
+    background-color: white;
 }
 
 /* == responsive + media queries =================================================================================== */
