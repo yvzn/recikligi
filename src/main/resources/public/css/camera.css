@@ -81,7 +81,7 @@ label#sendImage {
     animation: pulse 1.25s cubic-bezier(0.66, 0, 0, 1) 10s infinite;
 }
 
-label[for].disabled,
+label[data-action-button].disabled,
 label#retry.disabled,
 label#switchSource.disabled
 {

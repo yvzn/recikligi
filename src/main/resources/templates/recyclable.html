@@ -17,10 +17,10 @@
 </main>
 
 <form th:action="@{/}" method="post">
-    <label for="home" th:title="#{fragments.layout.home.button.tooltip}">&#8634;</label>
+    <label data-action-button="click" for="home" th:title="#{fragments.layout.home.button.tooltip}">&#8634;</label>
     <input type="submit" id="home"/>
 
-    <label for="feedbackButton" th:title="#{recyclable.feedback.button.tooltip}" data-secondary-action="right">&#x1F4E3;</label>
+    <label data-action-button="click" for="feedbackButton" th:title="#{recyclable.feedback.button.tooltip}" data-secondary-action="right">&#x1F4E3;</label>
     <input type="submit" id="feedbackButton" th:formaction="@{/feedback}"/>
 
     <input type="hidden" name="imageId" th:value="${imageId}" />

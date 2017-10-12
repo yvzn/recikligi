@@ -163,7 +163,7 @@ input[type='submit']
     margin-right: auto;
 }
 
-label[for]
+label[data-action-button]
 {
     grid-column: 2;
     display: flex;
@@ -180,7 +180,7 @@ label[for]
     box-shadow: 0 0 .2em silver;
 }
 
-    label[for][data-secondary-action]
+    label[data-action-button][data-secondary-action]
     {
         font-size: 20px;
         width: 3rem;
@@ -188,12 +188,12 @@ label[for]
         background-color: var(--secondary-action-color);
     }
 
-    label[for][data-secondary-action='left']
+    label[data-action-button][data-secondary-action='left']
     {
         grid-column: 1;
     }
 
-    label[for][data-secondary-action='right']
+    label[data-action-button][data-secondary-action='right']
     {
         grid-column: 3;
     }
@@ -274,12 +274,16 @@ label[for]
 
 /* == alternate pages ============================================================================================== */
 
-.accent-2 label[for]
+.accent-2 label[data-action-button]
 {
     background-color: var(--accent-2-color);
 }
 
 /* == feedback pages =============================================================================================== */
+
+#feedback {
+    display: block;
+}
 
 .feedback .conversational-form {
     background-color: transparent;

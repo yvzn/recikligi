@@ -8,7 +8,7 @@
     <h2 th:text="#{camera.onboarding.title}"></h2>
 </main>
 <form th:action="@{/camera-classic}" method="post" enctype="multipart/form-data">
-    <label for="classicCameraImage" th:title="#{camera.classic.button.tooltip}">&#128247;</label>
+    <label data-action-button="click" for="classicCameraImage" th:title="#{camera.classic.button.tooltip}">&#128247;</label>
     <input name="image" id="classicCameraImage" type="file" accept="image/*;capture=camera" required="required"/>
     <input type="submit"/>
 </form>
@@ -17,8 +17,8 @@
     <h2 th:text="#{camera.onboarding.title}"></h2>
     <video></video>
     <form>
-        <label for="advancedCameraImage" id="takeStillPicture" th:title="#{camera.take.picture.button.tooltip}">&#128247;</label>
-        <label for="advancedCameraImage" id="switchSource" th:title="#{camera.switch.source.button.tooltip}" data-secondary-action="right">&#8644;</label>
+        <label data-action-button="click" for="advancedCameraImage" id="takeStillPicture" th:title="#{camera.take.picture.button.tooltip}">&#128247;</label>
+        <label data-action-button="click" for="advancedCameraImage" id="switchSource" th:title="#{camera.switch.source.button.tooltip}" data-secondary-action="right">&#8644;</label>
     </form>
 </section>
 
@@ -29,8 +29,8 @@
     </article>
     <canvas></canvas>
     <form th:action="@{/camera-advanced}" method="post" enctype="multipart/form-data">
-        <label for="advancedCameraImage" id="retry" th:title="#{camera.retry.button.tooltip}" data-secondary-action="left">&#8634;</label>
-        <label for="sendImageButton" id="sendImage" th:title="#{camera.sendimage.button.tooltip}" th:utext="${sendButtonIcon}"></label>
+        <label data-action-button="click" for="advancedCameraImage" id="retry" th:title="#{camera.retry.button.tooltip}" data-secondary-action="left">&#8634;</label>
+        <label data-action-button="click" for="sendImageButton" id="sendImage" th:title="#{camera.sendimage.button.tooltip}" th:utext="${sendButtonIcon}"></label>
         <input name="image" id="advancedCameraImage" type="hidden" required="required"/>
         <input id="sendImageButton" type="submit" />
     </form>
