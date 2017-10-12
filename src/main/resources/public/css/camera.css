@@ -9,7 +9,7 @@ label[for=camera]
         to { box-shadow: 0 0 0 45px var(--primary-color-transparent); }
     }
 
-.camera section
+section
 {
     display: none;
     position: absolute;
@@ -21,12 +21,12 @@ label[for=camera]
     overflow: hidden;
 }
 
-    .camera.advanced section.active
+    section.active
     {
         display: block;
     }
 
-    .camera section h2
+    section h2
     {
         position: absolute;
         top: 33%;
@@ -44,64 +44,47 @@ label[for=camera]
             to { opacity: 0; }
         }
 
-    .camera section video,
-    .camera section article
-    {
-        width: 100%;
-        height: 100%;
-        background: var(--camera-background-color);
-    }
+video,
+article
+{
+    width: 100%;
+    height: 100%;
+    background: var(--camera-background-color);
+}
 
-    .camera section article
+    article
     {
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    .camera section form
-    {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-    }
+.camera form
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
 
-    .camera section canvas
-    {
-        display: none;
-    }
+canvas
+{
+    display: none;
+}
 
-    .camera section label#retry,
-    .camera section label#switchSource
-    {
-        position:absolute;
-        top: 1rem;
-        font-size: 20px;
-        width: 3rem;
-        height: 3rem;
-        background-color: var(--secondary-action-color);
-    }
+label#switchSource
+{
+    display: none;
+}
 
-    .camera section label#retry
-    {
-        left: calc(30% - 3rem);
-    }
+label#takeStillPicture,
+label#sendImage {
+    animation: pulse 1.25s cubic-bezier(0.66, 0, 0, 1) 10s infinite;
+}
 
-    .camera section label#switchSource
-    {
-        left: calc(60% + 3rem);
-        display: none;
-    }
-
-    .camera section label#takeStillPicture,
-    .camera section label#sendImage {
-        animation: pulse 1.25s cubic-bezier(0.66, 0, 0, 1) 10s infinite;
-    }
-
-    .camera section label[for].disabled,
-    .camera section label#retry.disabled,
-    .camera section label#switchSource.disabled
-    {
-        cursor: auto;
-        background-color: var(--disabled-color);
-    }
+label[data-action-button].disabled,
+label#retry.disabled,
+label#switchSource.disabled
+{
+    cursor: auto;
+    background-color: var(--disabled-color);
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/layout :: headerFragment"></head>
+<body class="results feedback" th:style="'--image-url:url(/image/' + ${feedback.imageId} + ');'">
+<h1 th:include="fragments/layout :: h1Fragment"></h1>
+
+<main cf-context>
+</main>
+<nav th:include="fragments/layout :: navFragment"></nav>
+
+<form id="feedback" th:action="@{/user-feedback}" cf-form method="post">
+    <fieldset>
+        <label for="userName">Quel est votre nom ?</label>
+        <input id="userName" name="userName" required="required"
+               cf-questions="Bonjour! Je suis le formulaire de commentaires.&&Je *ne suis pas* un chatbot ;)&&Quel est votre nom ?" />
+    </fieldset>
+
+    <fieldset>
+        <label for="rating">Comment évalueriez-vous l'application ?</label>
+        <label>
+            <input type="radio" id="rating" name="rating"
+                   cf-questions="Enchanté, {userName}&&Comment évalueriez-vous l'application recyclette ?" value="poor" />
+            Médiocre
+        </label>
+        <label>
+            <input type="radio" id="rating-1" name="rating" value="average" />
+            Moyenne
+        </label>
+        <label>
+            <input type="radio" id="rating-2" name="rating" value="good" />
+            Cool
+        </label>
+    </fieldset>
+
+    <fieldset>
+        <label for="focus">Comment pourrions-nous améliorer l'application?</label>
+        <label>
+            <input type="radio" id="focus" name="focus" value="accuracy" />
+            Précision / exactitude
+        </label>
+        <label>
+            <input type="radio" id="focus-1" name="focus" value="design" />
+            Design
+        </label>
+        <label>
+            <input type="radio" id="focus-2" name="focus" value="speed" />
+            Rapidité
+        </label>
+    </fieldset>
+
+    <fieldset>
+        <label for="suggestedName" th:if="${feedback.success}"
+               th:text="'OK&&La photo envoyée a été reconnue comme ' + ${feedback.name} + '&&Comment la décririez-vous ?'"></label>
+        <label for="suggestedName" th:if="${!feedback.success}"
+               th:text="'OK&&Désolé, la photo envoyée n\'a pas été reconnue :(&&Comment la décririez-vous ?'"></label>
+        <input id="suggestedName" name="suggestedName" />
+    </fieldset>
+
+    <fieldset>
+        <label for="suggestedStatus">Considèreriez-vous cet object comme recyclable?</label>
+        <label>
+            <input type="radio" id="suggestedStatus" name="suggestedStatus"
+                   cf-questions="Merci&&Considèreriez-vous un(e) {suggestedName} comme recyclable?" value="recyclable" />
+            Oui
+        </label>
+        <label>
+            <input type="radio" id="suggestedStatus-1" name="suggestedStatus" value="not-recyclable" />
+            Non
+        </label>
+    </fieldset>
+
+    <fieldset>
+        <label for="comment">Avez-vous d'autres commentaires ?</label>
+        <input id="comment" name="comment" />
+    </fieldset>
+
+    <fieldset>
+        <label for="email">Pouvez-vous fournir une adresse e-mail, au cas où nous souhaiterions discuter avec vous ?</label>
+        <input id="email" name="email"
+               cf-questions="Pouvez-vous fournir une adresse e-mail, au cas où nous souhaiterions discuter avec vous ?&&C'est facultatif." />
+    </fieldset>
+
+    <input type="submit" />
+
+    <input type="hidden" id="imageId" name="imageId" th:value="${feedback.imageId}" />
+    <input type="hidden" id="success" name="success" th:value="${feedback.success}" />
+    <input type="hidden" id="name" name="name" th:value="${feedback.name}" />
+    <input type="hidden" id="score" name="score" th:value="${feedback.score}" />
+    <input type="hidden" id="statusName" name="statusName" th:value="${feedback.statusName}" />
+</form>
+
+<script type="text/javascript" src="https://cf-4053.kxcdn.com/conversational-form/0.9.6/conversational-form.min.js" crossorigin></script>
+<script>
+    window.addEventListener('load', function() {
+        var form = document.getElementById('feedback');
+        if (form) form.style.display = 'none';
+    });
+</script>
+</body>
+</html>

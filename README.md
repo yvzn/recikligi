@@ -1,12 +1,12 @@
-# recikligi
-
-(temporary name)
+# La recyclette ♺
 
 The aim of project is to provide a simple way for user to tell if one object
 can be recycled, by taking a picture of the object to test. 
 
 Project uses machine-learning-based visual recognition to identify object,
 then compares it against a database of pre-identified recyclable items.
+
+This project is under Apache 2 License.
 
 ## technical details
 

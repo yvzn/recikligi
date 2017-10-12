@@ -3,6 +3,7 @@
 <head th:include="fragments/layout :: headerFragment"></head>
 <body class="results" th:style="'--image-url:url(/image/' + ${imageId} + ');'">
 <h1 th:include="fragments/layout :: h1Fragment"></h1>
+
 <main>
     <p th:if="${success}" class="visualClass visualClassFound"
        th:utext="${#messages.msgWithParams('recyclable.image.success', new Object[] {scoreLabel, name})}"></p>
@@ -14,7 +15,21 @@
     </div>
     <p th:utext="#{recyclable.status.disclaimer}" class="disclaimer"></p>
 </main>
-<form th:replace="fragments/layout :: homeButtonFragment"></form>
+
+<form th:action="@{/}" method="post">
+    <label data-action-button="click" for="home" th:title="#{fragments.layout.home.button.tooltip}">&#8634;</label>
+    <input type="submit" id="home"/>
+
+    <label data-action-button="click" for="feedbackButton" th:title="#{recyclable.feedback.button.tooltip}" data-secondary-action="right">&#x1F4E3;</label>
+    <input type="submit" id="feedbackButton" th:formaction="@{/feedback}"/>
+
+    <input type="hidden" name="imageId" th:value="${imageId}" />
+    <input type="hidden" name="success" th:value="${success}" />
+    <input type="hidden" name="name" th:value="${name}" />
+    <input type="hidden" name="score" th:value="${score}" />
+    <input type="hidden" name="statusName" th:value="${statusName}" />
+</form>
+
 <nav th:include="fragments/layout :: navFragment"></nav>
 </body>
 </html>

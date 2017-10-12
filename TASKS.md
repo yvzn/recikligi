@@ -3,7 +3,6 @@
 ## BUGS
 
 ## TODO
-* feedback
 * Spring Boot 2 (release)
 
 ## V2
@@ -13,7 +12,7 @@
 * Géolocalisation pour l'appel à consignesdetri
 
 ## DONE 
-MVP: 83% (26/29)
+MVP: 96% (28/29)
 * <del>Page d'accueil</del>
 * <del>Formulaire avec &lt;input></del>
 * <del>CSS</del>
@@ -44,7 +43,8 @@ MVP: 83% (26/29)
 * <del>Optimisations (affichage image - compression / taille)</del>
 * <del>getUserMedia + Canvas</del>
     - https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
-
+* <del>feedback</del>
+    - https://github.com/space10-community/conversational-form
 
 
 

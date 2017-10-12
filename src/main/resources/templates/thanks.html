@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/layout :: headerFragment"></head>
+<body>
+<h1 th:include="fragments/layout :: h1Fragment"></h1>
+<main>
+    <h2 th:text="#{feedback.thanks.text}"></h2>
+</main>
+<form th:replace="fragments/layout :: homeButtonFragment"></form>
+<nav th:include="fragments/layout :: navFragment"></nav>
+</body>
+</html>
