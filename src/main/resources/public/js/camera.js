@@ -121,7 +121,7 @@
     }
 
     function setCameraButtonsClassName(className) {
-        var buttons = document.querySelectorAll('section label[for]');
+        var buttons = document.querySelectorAll('section label[data-action-button]');
         for (var i = 0; i < buttons.length; ++i) {
             buttons[i].className = className;
         }

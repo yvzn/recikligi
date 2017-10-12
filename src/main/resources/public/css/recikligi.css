@@ -4,6 +4,7 @@ Content:
     form + buttons
     results page
     alternate pages
+    feedback pages
     responsive + media queries
 */
 
@@ -137,7 +138,12 @@ pre
 
 form
 {
+    position: relative;
     padding-bottom: var(--space-4x);
+    display: grid;
+    grid-template-columns: 1fr 5rem 1fr;
+    align-items: center;
+    justify-items: center;
 }
 
 input[type='file']
@@ -157,22 +163,41 @@ input[type='submit']
     margin-right: auto;
 }
 
-label[for]
+label[data-action-button]
 {
+    grid-column: 2;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 30px;
     font-weight: bold;
-    width: 2.5em;
-    height: 2.5em;
-    margin: auto;
+    width: 5rem;
+    height: 5rem;
     cursor: pointer;
     color: var(--primary-color-text);
     border-radius: 50%;
     background-color: var(--primary-color);
     box-shadow: 0 0 .2em silver;
 }
+
+    label[data-action-button][data-secondary-action]
+    {
+        font-size: 20px;
+        width: 3rem;
+        height: 3rem;
+        background-color: var(--secondary-action-color);
+    }
+
+    label[data-action-button][data-secondary-action='left']
+    {
+        grid-column: 1;
+    }
+
+    label[data-action-button][data-secondary-action='right']
+    {
+        grid-column: 3;
+    }
+
 
 /* == results page ================================================================================================= */
 
@@ -228,7 +253,7 @@ label[for]
         margin: 0;
     }
 
-    .recyclableStatus h3:first-letter 
+    .recyclableStatus h3:first-letter
     {
         text-transform: uppercase;
     }
@@ -249,9 +274,23 @@ label[for]
 
 /* == alternate pages ============================================================================================== */
 
-.accent-2 label[for]
+.accent-2 label[data-action-button]
 {
     background-color: var(--accent-2-color);
+}
+
+/* == feedback pages =============================================================================================== */
+
+#feedback {
+    display: block;
+}
+
+.feedback .conversational-form {
+    background-color: transparent;
+}
+
+.feedback cf-chat-response text>p {
+    background-color: white;
 }
 
 /* == responsive + media queries =================================================================================== */

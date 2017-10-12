@@ -1,9 +1,6 @@
 package net.ludeo.recikligi.controller;
 
-import net.ludeo.recikligi.model.UnknownVisualClass;
-import net.ludeo.recikligi.model.UnknownVisualClassRepository;
-import net.ludeo.recikligi.model.UsageHistoryCount;
-import net.ludeo.recikligi.model.UsageHistoryRepository;
+import net.ludeo.recikligi.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,11 +19,15 @@ public class ApiController {
 
     private final UsageHistoryRepository usageHistoryRepository;
 
+    private final FeedbackRepository feedbackRepository;
+
     @Autowired
     public ApiController(UnknownVisualClassRepository unknownVisualClassRepository,
-            UsageHistoryRepository usageHistoryRepository) {
+            UsageHistoryRepository usageHistoryRepository,
+            FeedbackRepository feedbackRepository) {
         this.unknownVisualClassRepository = unknownVisualClassRepository;
         this.usageHistoryRepository = usageHistoryRepository;
+        this.feedbackRepository = feedbackRepository;
     }
 
     @GetMapping("/unknown")
@@ -39,7 +40,14 @@ public class ApiController {
     }
 
     @GetMapping("/usage")
-    public @ResponseBody List<UsageHistoryCount> usageHistoryCount() {
+    public @ResponseBody
+    List<UsageHistoryCount> usageHistoryCount() {
         return usageHistoryRepository.findUsageHistoryCount();
+    }
+
+    @GetMapping("/f6k")
+    public @ResponseBody
+    Iterable<Feedback> feedback() {
+        return feedbackRepository.findAll();
     }
 }
