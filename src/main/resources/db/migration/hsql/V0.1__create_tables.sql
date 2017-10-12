@@ -44,9 +44,25 @@ CREATE TABLE usage_history (
     PRIMARY KEY (id)
 );
 
-
 CREATE TABLE unknown_visual_class (
     id UUID NOT NULL,
     name VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE feedback (
+    id UUID NOT NULL,
+    user_name VARCHAR(255),
+    email VARCHAR(255),
+    rating VARCHAR(31),
+    focus VARCHAR(31),
+    suggested_name VARCHAR(255),
+    suggested_status VARCHAR(31),
+    comment VARCHAR(255),
+    image_id UUID,
+    success BOOLEAN ,
+    name VARCHAR(255),
+    score VARCHAR(7),
+    status_name VARCHAR(31),
     PRIMARY KEY (id)
 );

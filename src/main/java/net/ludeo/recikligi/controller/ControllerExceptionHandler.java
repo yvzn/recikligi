@@ -1,7 +1,10 @@
 package net.ludeo.recikligi.controller;
 
 import net.ludeo.recikligi.service.LocalizedMessagesService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
@@ -15,6 +18,8 @@ import java.net.HttpURLConnection;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {
+
+    private static final Logger logger = LoggerFactory.getLogger(ControllerExceptionHandler.class);
 
     private final LocalizedMessagesService localizedMessagesService;
 
@@ -34,6 +39,12 @@ public class ControllerExceptionHandler {
         return buildModelAndView(errorMessage, ex);
     }
 
+    @ExceptionHandler(DataAccessException.class)
+    public ModelAndView handleException(final DataAccessException ex) {
+        String errorMessage = localizedMessagesService.getMessage("error.msg.data.update");
+        return buildModelAndView(errorMessage, ex);
+    }
+
     @ExceptionHandler(Throwable.class)
     public ModelAndView handleGenericException(final Throwable throwable) {
         String errorMessage = (throwable != null ? throwable.getMessage() : "Unknown error");
@@ -41,6 +52,8 @@ public class ControllerExceptionHandler {
     }
 
     private ModelAndView buildModelAndView(final String errorMessage, final Throwable throwable) {
+        logger.debug(errorMessage, throwable);
+
         String errorStracktrace = getStacktrace(throwable);
 
         ModelAndView modelAndView = new ModelAndView();

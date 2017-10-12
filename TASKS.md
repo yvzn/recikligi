@@ -1,6 +1,7 @@
 # Backlog
 
 ## BUGS
+* feedback form with javascript disabled
 
 ## TODO
 * feedback
