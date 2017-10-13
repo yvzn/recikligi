@@ -114,7 +114,7 @@ nav
 
     nav a
     {
-        font-size: 1.5em;
+        font-size: 1.5rem;
         display: inline-block;
         padding: var(--space-1x) var(--space-1x) 0 0;
         text-decoration: none;
@@ -328,5 +328,26 @@ label[data-action-button]
         --space-2x: 1rem;
         --space-1x: .5rem;
         --main-content-height: calc(100% - 6rem + 10px);
+    }
+}
+
+@media screen and (max-height: 450px) {
+    h1 {
+        padding: var(--space-1x) 0 var(--space-1x) 0;
+        font-size: 1rem;
+    }
+
+    nav {
+        height: var(--space-1x);
+        position: absolute;
+        right: 0;
+    }
+
+    nav a {
+        font-size: 1rem;
+    }
+
+    main {
+        padding: var(--space-1x) var(--space-1x) 0 var(--space-1x);
     }
 }

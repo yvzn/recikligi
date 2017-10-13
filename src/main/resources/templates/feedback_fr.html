@@ -10,16 +10,10 @@
 
 <form id="feedback" th:action="@{/user-feedback}" cf-form method="post">
     <fieldset>
-        <label for="userName">Quel est votre nom ?</label>
-        <input id="userName" name="userName" required="required"
-               cf-questions="Bonjour! Je suis le formulaire de commentaires.&&Je *ne suis pas* un chatbot ;)&&Quel est votre nom ?" />
-    </fieldset>
-
-    <fieldset>
         <label for="rating">Comment évalueriez-vous l'application ?</label>
         <label>
             <input type="radio" id="rating" name="rating"
-                   cf-questions="Enchanté, {userName}&&Comment évalueriez-vous l'application recyclette ?" value="poor" />
+                   cf-questions="Bonjour!&&Comment évalueriez-vous l'application recyclette ?" value="poor" />
             Médiocre
         </label>
         <label>
@@ -50,9 +44,9 @@
 
     <fieldset>
         <label for="suggestedName" th:if="${feedback.success}"
-               th:text="'OK&&La photo envoyée a été reconnue comme ' + ${feedback.name} + '&&Comment la décririez-vous ?'"></label>
+               th:text="'La photo envoyée a été reconnue comme ' + ${feedback.name} + '&&Comment la décririez-vous ?'"></label>
         <label for="suggestedName" th:if="${!feedback.success}"
-               th:text="'OK&&Désolé, la photo envoyée n\'a pas été reconnue :(&&Comment la décririez-vous ?'"></label>
+               th:text="'Désolé, la photo envoyée n\'a pas été reconnue :(&&Comment la décririez-vous ?'"></label>
         <input id="suggestedName" name="suggestedName" />
     </fieldset>
 
@@ -60,7 +54,7 @@
         <label for="suggestedStatus">Considèreriez-vous cet object comme recyclable?</label>
         <label>
             <input type="radio" id="suggestedStatus" name="suggestedStatus"
-                   cf-questions="Merci&&Considèreriez-vous un(e) {suggestedName} comme recyclable?" value="recyclable" />
+                   cf-questions="Considèreriez-vous un(e) {suggestedName} comme recyclable?" value="recyclable" />
             Oui
         </label>
         <label>
