@@ -10,7 +10,6 @@ import java.util.UUID;
 @Getter
 @Setter
 public class Feedback extends AbstractEntityWithId {
-    private String userName;
     private String rating;
     private String focus;
     private String suggestedName;

@@ -10,16 +10,10 @@
 
 <form id="feedback" th:action="@{/user-feedback}" cf-form method="post">
     <fieldset>
-        <label for="userName">What is your name?</label>
-        <input id="userName" name="userName" required="required"
-               cf-questions="Hi there! I am the feedback form.&&I am *not* a chatbot ;)&&What is your name?" />
-    </fieldset>
-
-    <fieldset>
         <label for="rating">How would you rate the application?</label>
         <label>
             <input type="radio" id="rating" name="rating"
-                   cf-questions="Nice meeting you, {userName}&&How would you rate the recyclette application?" value="poor" />
+                   cf-questions="Hi there!&&How would you rate the recyclette application?" value="poor" />
             Poor
         </label>
         <label>
@@ -50,9 +44,9 @@
 
     <fieldset>
         <label for="suggestedName" th:if="${feedback.success}"
-               th:text="'OK&&The picture you sent was analyzed as ' + ${feedback.name} + '&&How would you name it?'"></label>
+               th:text="'The picture you sent was analyzed as ' + ${feedback.name} + '&&How would you name it?'"></label>
         <label for="suggestedName" th:if="${!feedback.success}"
-               th:text="'OK&&Sorry the picture you sent was not recognized :(&&How would you name it?'"></label>
+               th:text="'Sorry the picture you sent was not recognized :(&&How would you name it?'"></label>
         <input id="suggestedName" name="suggestedName" />
     </fieldset>
 
@@ -60,7 +54,7 @@
         <label for="suggestedStatus">Would you consider this object as recyclable?</label>
         <label>
             <input type="radio" id="suggestedStatus" name="suggestedStatus"
-                   cf-questions="Thanks&&Would you consider this {suggestedName} as recyclable?" value="recyclable" />
+                   cf-questions="Would you consider this {suggestedName} as recyclable?" value="recyclable" />
             Yes
         </label>
         <label>

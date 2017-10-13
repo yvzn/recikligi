@@ -52,7 +52,6 @@ CREATE TABLE unknown_visual_class (
 
 CREATE TABLE feedback (
     id UUID NOT NULL,
-    user_name VARCHAR(255),
     email VARCHAR(255),
     rating VARCHAR(31),
     focus VARCHAR(31),
