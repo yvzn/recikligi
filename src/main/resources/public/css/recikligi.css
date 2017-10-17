@@ -333,21 +333,23 @@ label[data-action-button]
 
 @media screen and (max-height: 450px) {
     h1 {
-        padding: var(--space-1x) 0 var(--space-1x) 0;
-        font-size: 1rem;
+        display: none;
     }
 
     nav {
-        height: var(--space-1x);
-        position: absolute;
-        right: 0;
-    }
-
-    nav a {
-        font-size: 1rem;
+        display: none;
     }
 
     main {
         padding: var(--space-1x) var(--space-1x) 0 var(--space-1x);
+    }
+
+    .conversational-form cf-chat {
+        margin-bottom: 10px;
+    }
+
+    .conversational-form cf-chat scrollable {
+        padding-bottom: 0;
+        padding-top: 20px;
     }
 }

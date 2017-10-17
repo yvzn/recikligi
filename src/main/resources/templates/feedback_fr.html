@@ -10,10 +10,9 @@
 
 <form id="feedback" th:action="@{/user-feedback}" cf-form method="post">
     <fieldset>
-        <label for="rating">Comment évalueriez-vous l'application ?</label>
+        <label for="rating">Bonjour! Comment évalueriez-vous l'application recyclette ?</label>
         <label>
-            <input type="radio" id="rating" name="rating"
-                   cf-questions="Bonjour!&&Comment évalueriez-vous l'application recyclette ?" value="poor" />
+            <input type="radio" id="rating" name="rating" value="poor" />
             Médiocre
         </label>
         <label>
@@ -30,7 +29,7 @@
         <label for="focus">Comment pourrions-nous améliorer l'application?</label>
         <label>
             <input type="radio" id="focus" name="focus" value="accuracy" />
-            Précision / exactitude
+            Précision
         </label>
         <label>
             <input type="radio" id="focus-1" name="focus" value="design" />
@@ -38,7 +37,7 @@
         </label>
         <label>
             <input type="radio" id="focus-2" name="focus" value="speed" />
-            Rapidité
+            Vitesse
         </label>
     </fieldset>
 
