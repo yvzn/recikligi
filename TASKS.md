@@ -16,6 +16,10 @@ MVP: 96% (28/29)
 * <del>Page d'accueil</del>
 * <del>Formulaire avec &lt;input></del>
 * <del>CSS</del>
+	- https://coolors.co/26547c-f1543f-ffc655-ffd166-06d6a0
+	- https://coolors.co/65def1-f1543f-ffc655-a8dcd1-dce2c8
+	- https://coolors.co/2660a4-06d6a0-ffc655-edf7f6-c47335
+	- https://coolors.co/31475b-f1543f-ffc655-bac1b8-58a4b0
 * <del>Submit et sauvegarde de l'image</del>
 * <del>Gestion des erreurs (paramètre absent, stockage)</del>
 * <del>Auto-submit image</del>
