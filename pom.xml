@@ -9,7 +9,7 @@
 
     <groupId>net.ludeo</groupId>
     <artifactId>recikligi</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>recikligi</name>
 
     <build>
@@ -48,7 +48,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <junit.jupiter.version>5.0.0-RC3</junit.jupiter.version>
         <junit.platform.version>1.0.0-RC3</junit.platform.version>
-        <watson.visual-recognition.version>3.8.0</watson.visual-recognition.version>
+        <watson.visual-recognition.version>7.4.0</watson.visual-recognition.version>
     </properties>
 
     <dependencies>
@@ -82,9 +82,14 @@
         </dependency>
 
         <dependency>
-            <groupId>com.ibm.watson.developer_cloud</groupId>
+            <groupId>com.ibm.watson</groupId>
             <artifactId>visual-recognition</artifactId>
             <version>${watson.visual-recognition.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.5</version>
         </dependency>
         <dependency>
             <groupId>org.hsqldb</groupId>

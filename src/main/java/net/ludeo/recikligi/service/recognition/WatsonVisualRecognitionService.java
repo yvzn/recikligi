@@ -1,10 +1,11 @@
 package net.ludeo.recikligi.service.recognition;
 
-import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyImagesOptions;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ImageClassification;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassification;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassifier;
+import com.ibm.cloud.sdk.core.service.security.IamOptions;
+import com.ibm.watson.visual_recognition.v3.VisualRecognition;
+import com.ibm.watson.visual_recognition.v3.model.ClassifiedImage;
+import com.ibm.watson.visual_recognition.v3.model.ClassifiedImages;
+import com.ibm.watson.visual_recognition.v3.model.ClassifierResult;
+import com.ibm.watson.visual_recognition.v3.model.ClassifyOptions;
 import lombok.Setter;
 import net.ludeo.recikligi.service.graphics.ImageControlService;
 import net.ludeo.recikligi.service.graphics.ImageFormat;
@@ -15,7 +16,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Optional;
@@ -42,24 +42,28 @@ public class WatsonVisualRecognitionService implements VisualRecognitionService 
     public Optional<ImageRecognitionInfo> classify(final Path image) throws Exception {
         logger.debug("watsonApiKey={}", buildObfuscatedApikey());
 
-        VisualRecognition service = new VisualRecognition(VisualRecognition.VERSION_DATE_2016_05_20);
-        service.setApiKey(watsonApiKey);
+        IamOptions iamOptions = new IamOptions
+                .Builder()
+                .apiKey(watsonApiKey).build();
+
+        VisualRecognition service = new VisualRecognition("2018-03-19", iamOptions);
 
         ImageFormat imageFormat = imageControlService.findImageFormat(image);
         String imageName = String.format("%s.%s", image.getFileName(), imageFormat.toString().toLowerCase());
 
-        ClassifyImagesOptions options = new ClassifyImagesOptions.Builder()
-                .images(Files.readAllBytes(image), imageName)
+        ClassifyOptions classifyOptions = new ClassifyOptions.Builder()
+                .imagesFile(image.toFile())
+                .imagesFilename(imageName)
                 .build();
-        VisualClassification result = service.classify(options).execute();
+        ClassifiedImages result = service.classify(classifyOptions).execute().getResult();
 
         logger.debug(result.toString());
 
         return result.getImages().stream().findFirst()
-                .map(ImageClassification::getClassifiers)
+                .map(ClassifiedImage::getClassifiers)
                 .map(Collection::stream)
                 .flatMap(Stream::findFirst)
-                .map(VisualClassifier::getClasses)
+                .map(ClassifierResult::getClasses)
                 .map(Collection::stream)
                 .flatMap(Stream::findFirst)
                 .map(ImageRecognitionInfo::new);

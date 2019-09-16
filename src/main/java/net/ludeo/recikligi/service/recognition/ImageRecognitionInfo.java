@@ -1,6 +1,6 @@
 package net.ludeo.recikligi.service.recognition;
 
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassifier;
+import com.ibm.watson.visual_recognition.v3.model.ClassResult;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -12,8 +12,8 @@ public class ImageRecognitionInfo {
 
     private final Double score;
 
-    ImageRecognitionInfo(final VisualClassifier.VisualClass visualClass) {
-        this.name = visualClass.getName();
-        this.score = visualClass.getScore();
+    ImageRecognitionInfo(final ClassResult classResult) {
+        this.name = classResult.getClassName();
+        this.score = classResult.getScore().doubleValue();
     }
 }
