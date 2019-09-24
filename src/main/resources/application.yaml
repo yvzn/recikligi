@@ -18,6 +18,10 @@ logging:
       ludeo:
         recikligi: DEBUG
 
+server:
+  tomcat:
+    use-relative-redirects: true
+
 recikligi:
   storageFolder: /tmp
   watson:
