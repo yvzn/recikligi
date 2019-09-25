@@ -3,7 +3,7 @@
 <head th:include="fragments/layout :: headerFragment"></head>
 <body>
 <h1 th:fragment="h1Fragment">
-    <a th:href="@{/}" th:utext="#{fragments.layout.appTitle}" th:title="#{fragments.layout.nav.home.tooltip}"></a></h1>
+    <a th:href="@{/camera}" th:utext="#{fragments.layout.appTitle}" th:title="#{fragments.layout.nav.home.tooltip}"></a></h1>
 <main>
     <div th:utext="#{about.text}"></div>
     <p th:utext="#{camera.filesize.disclaimer}" class="disclaimer"></p>

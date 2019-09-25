@@ -15,8 +15,8 @@
 </head>
 <body>
 <h1 th:fragment="h1Fragment">
-    <a th:href="@{/}" th:text="#{fragments.layout.title}" th:title="#{fragments.layout.nav.home.tooltip}"></a></h1>
-<form th:fragment="homeButtonFragment" th:action="@{/}">
+    <a th:href="@{/camera}" th:text="#{fragments.layout.title}" th:title="#{fragments.layout.nav.home.tooltip}"></a></h1>
+<form th:fragment="homeButtonFragment" th:action="@{/camera}">
     <label data-action-button="click" for="home" th:title="#{fragments.layout.home.button.tooltip}">&#8634;</label>
     <input type="submit" id="home"/>
 </form>
