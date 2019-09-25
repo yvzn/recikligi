@@ -9,7 +9,7 @@ public class DefaultController {
 
     @RequestMapping("/")
     public String home() {
-        return "redirect:/camera";
+        return "home";
     }
 
     @GetMapping("/about")

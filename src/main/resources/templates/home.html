@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/layout :: headerFragment"></head>
+<body>
+<h1 th:include="fragments/layout :: h1Fragment"></h1>
+<main>
+    <div th:utext="#{home.text}"></div>
+</main>
+<form th:action="@{/camera}">
+    <label data-action-button="click" for="proceed" th:title="#{camera.classic.button.tooltip}">&#9850;</label>
+    <input type="submit" id="proceed"/>
+</form>
+<nav th:include="fragments/layout :: navFragment"></nav>
+</body>
+</html>
