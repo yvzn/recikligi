@@ -2,7 +2,7 @@
   <configuration default="false" name="recikligi (command line arguments)" type="Application" factoryName="Application" editBeforeRun="true" singleton="true">
     <option name="MAIN_CLASS_NAME" value="net.ludeo.recikligi.AppConfig" />
     <module name="recikligi" />
-    <option name="PROGRAM_PARAMETERS" value="--recikligi.watson.apikey=************ --recikligi.storageFolder=target --spring.jpa.show-sql=true" />
+    <option name="PROGRAM_PARAMETERS" value="--recikligi.watson.apikey=hWs07Yi1E75Os3a7b0OO-070QMmBMNOrxGRPN-27wfo7 --recikligi.storageFolder=target --spring.jpa.show-sql=true" />
     <option name="VM_PARAMETERS" value="-Dspring.profiles.active=mock" />
     <method v="2">
       <option name="Make" enabled="true" />
