@@ -1,6 +1,7 @@
 package net.ludeo.recikligi.service.recognition;
 
-import com.ibm.cloud.sdk.core.service.security.IamOptions;
+import com.ibm.cloud.sdk.core.security.Authenticator;
+import com.ibm.cloud.sdk.core.security.IamAuthenticator;
 import com.ibm.watson.visual_recognition.v3.VisualRecognition;
 import com.ibm.watson.visual_recognition.v3.model.ClassifiedImage;
 import com.ibm.watson.visual_recognition.v3.model.ClassifiedImages;
@@ -42,11 +43,11 @@ public class WatsonVisualRecognitionService implements VisualRecognitionService 
     public Optional<ImageRecognitionInfo> classify(final Path image) throws Exception {
         logger.debug("watsonApiKey={}", buildObfuscatedApikey());
 
-        IamOptions iamOptions = new IamOptions
-                .Builder()
-                .apiKey(watsonApiKey).build();
+        Authenticator authenticator = new IamAuthenticator.Builder()
+                .apikey(watsonApiKey)
+                .build();
 
-        VisualRecognition service = new VisualRecognition("2018-03-19", iamOptions);
+        VisualRecognition service = new VisualRecognition("2018-03-19", authenticator);
 
         ImageFormat imageFormat = imageControlService.findImageFormat(image);
         String imageName = String.format("%s.%s", image.getFileName(), imageFormat.toString().toLowerCase());

@@ -13,7 +13,7 @@ public class ImageRecognitionInfo {
     private final Double score;
 
     ImageRecognitionInfo(final ClassResult classResult) {
-        this.name = classResult.getClassName();
+        this.name = classResult.getXClass();
         this.score = classResult.getScore().doubleValue();
     }
 }

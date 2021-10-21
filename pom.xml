@@ -9,7 +9,7 @@
 
     <groupId>net.ludeo</groupId>
     <artifactId>recikligi</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>recikligi</name>
 
     <build>
@@ -29,7 +29,6 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19</version>
             </plugin>
         </plugins>
     </build>
@@ -39,8 +38,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <junit.jupiter.version>5.5.2</junit.jupiter.version>
-        <watson.visual-recognition.version>7.4.0</watson.visual-recognition.version>
     </properties>
 
     <dependencies>
@@ -76,12 +73,17 @@
         <dependency>
             <groupId>com.ibm.watson</groupId>
             <artifactId>visual-recognition</artifactId>
-            <version>${watson.visual-recognition.version}</version>
+            <version>9.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>1.3.72</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.8.5</version>
         </dependency>
         <dependency>
             <groupId>org.hsqldb</groupId>
@@ -114,7 +116,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>${junit.jupiter.version}</version>
+            <version>5.8.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
