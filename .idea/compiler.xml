@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="recikligi" target="1.8" />
+      <module name="recikligi" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

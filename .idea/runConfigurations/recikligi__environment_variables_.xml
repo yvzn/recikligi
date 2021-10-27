@@ -6,6 +6,7 @@
     </envs>
     <option name="MAIN_CLASS_NAME" value="net.ludeo.recikligi.AppConfig" />
     <module name="recikligi" />
+    <option name="PROGRAM_PARAMETERS" value="--spring.jpa.show-sql=true" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
