@@ -6,7 +6,7 @@
 
 <main>
     <p th:if="${success}" class="visualClass visualClassFound"
-       th:utext="${#messages.msgWithParams('recyclable.image.success', new Object[] {scoreLabel, name})}"></p>
+       th:utext="${#messages.msg('recyclable.image.success', scoreLabel, name)}"></p>
     <p th:if="!${success}" class="visualClass visualClassNotFound"
        th:text="#{recyclable.image.failure}"></p>
     <div th:class="'recyclableStatus ' + ${statusName}">
