@@ -7,3 +7,33 @@ License: MIT license    https://github.com/coobird/thumbnailator/blob/master/LIC
 
 Author:  Pivotal        https://spring.io/
 License: Apache license https://github.com/spring-projects/spring-boot/blob/master/LICENSE.txt
+
+== Watson Java SDK ==
+
+Author:  Watson Developer Cloud https://github.com/watson-developer-cloud
+License: Apache license         https://github.com/watson-developer-cloud/java-sdk/blob/master/LICENSE
+
+== Azure ==
+
+Author:  Azure        https://github.com/azure/azure-sdk
+License: MIT license  https://github.com/Azure/azure-sdk/blob/main/LICENSE
+
+== Gson ==
+
+Author:  Google         https://github.com/google
+License: Apache license https://github.com/google/gson/blob/master/LICENSE
+
+== Lombok ==
+
+Author:  Project Lombok https://projectlombok.org/credits
+License: MIT license    https://github.com/projectlombok/lombok/blob/master/LICENSE
+
+== HSQLDB ==
+
+Author:  HSQLDB development group http://hsqldb.org/
+License: BSD-like                 http://hsqldb.org/web/hsqlLicense.html
+
+== Flyway DB Community Edition ==
+
+Author:  Red Gate        https://flywaydb.org/documentation/contribute/hallOfFame
+License: Apache license  https://flywaydb.org/licenses/flyway-community-edition-license
