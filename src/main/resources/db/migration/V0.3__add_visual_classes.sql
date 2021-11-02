@@ -1,3 +1,17 @@
+--   Copyright 2017-2021 Yvan Razafindramanana
+--
+--   Licensed under the Apache License, Version 2.0 (the "License");
+--   you may not use this file except in compliance with the License.
+--   You may obtain a copy of the License at
+--
+--       http://www.apache.org/licenses/LICENSE-2.0
+--
+--   Unless required by applicable law or agreed to in writing, software
+--   distributed under the License is distributed on an "AS IS" BASIS,
+--   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+--   See the License for the specific language governing permissions and
+--   limitations under the License.
+
 -- visual class
 INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'acid', r.id FROM recyclable_status r WHERE r.name = 'container';
 INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'spray', r.id FROM recyclable_status r WHERE r.name = 'recyclable';
@@ -125,6 +139,7 @@ INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'shoppi
 INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'paper cup', r.id FROM recyclable_status r WHERE r.name = 'not-recyclable';
 INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'mountain bike', r.id FROM recyclable_status r WHERE r.name = 'waste-collection-center';
 INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'file folder', r.id FROM recyclable_status r WHERE r.name = 'recyclable';
+INSERT INTO visual_class (id, name, recyclable_status_id) SELECT UUID(), 'cell phone', r.id FROM recyclable_status r WHERE r.name = 'waste-collection-center';
 
 -- visual class FR
 INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id, text) SELECT UUID(), t.id, v.id, 'acide ' FROM translation_locale t, visual_class v WHERE t.name = 'fr' AND v.name = 'acid';
@@ -253,3 +268,4 @@ INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id,
 INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id, text) SELECT UUID(), t.id, v.id, 'gobelet en papier' FROM translation_locale t, visual_class v WHERE t.name = 'fr' AND v.name = 'paper cup';
 INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id, text) SELECT UUID(), t.id, v.id, 'vélo tout terrain' FROM translation_locale t, visual_class v WHERE t.name = 'fr' AND v.name = 'mountain bike';
 INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id, text) SELECT UUID(), t.id, v.id, 'chemise cartonnée' FROM translation_locale t, visual_class v WHERE t.name = 'fr' AND v.name = 'file folder';
+INSERT INTO visual_class_translation(id, translation_locale_id, visual_class_id, text) SELECT UUID(), t.id, v.id, 'téléphone portable' FROM translation_locale t, visual_class v WHERE t.name = 'fr' AND v.name = 'cell phone';
