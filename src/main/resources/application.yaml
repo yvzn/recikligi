@@ -26,6 +26,10 @@ recikligi:
   storageFolder: /tmp
   watson:
     apikey:
+  azure:
+    computervision:
+      endpoint:
+      apikey:
   score:
     threshold:
       high: 80

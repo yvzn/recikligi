@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="recikligi (watson)" type="Application" factoryName="Application" editBeforeRun="true" singleton="true">
+    <envs>
+      <env name="RECIKLIGI_WATSON_APIKEY" value="-" />
+      <env name="RECIKLIGI_STORAGEFOLDER" value="target" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="net.ludeo.recikligi.AppConfig" />
+    <module name="recikligi" />
+    <option name="PROGRAM_PARAMETERS" value="--spring.jpa.show-sql=true" />
+    <option name="VM_PARAMETERS" value="-Dspring.profiles.active=watson" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

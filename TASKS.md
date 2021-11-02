@@ -3,16 +3,21 @@
 ## BUGS
 
 ## TODO
-* Spring Boot 2 (release)
+* Accessibility
+    * Update font
+    * Update icons
 
-## V2
-* PWA
-* custom classifier
-* multiple visual classes => keywords
+## To be considered
+* Use a real database engine, instead of in-memory (for persistance)
+* handle multiple visual classes (show top 3)
+* search by object name
 * Géolocalisation pour l'appel à consignesdetri
 
-## DONE 
-MVP: 96% (28/29)
+## DONE
+### v1.2
+* <del>Switch visual recognition provider (Watson is deprecated)</del>
+ 
+### MVP
 * <del>Page d'accueil</del>
 * <del>Formulaire avec &lt;input></del>
 * <del>CSS</del>

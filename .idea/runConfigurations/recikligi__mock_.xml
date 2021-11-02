@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="recikligi (mock)" type="Application" factoryName="Application" editBeforeRun="true" singleton="true">
+    <option name="MAIN_CLASS_NAME" value="net.ludeo.recikligi.AppConfig" />
+    <module name="recikligi" />
+    <option name="PROGRAM_PARAMETERS" value="--recikligi.watson.apikey= --recikligi.storageFolder=target --spring.jpa.show-sql=true" />
+    <option name="VM_PARAMETERS" value="-Dspring.profiles.active=mock" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

@@ -1,8 +1,10 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="recikligi (environment variables)" type="Application" factoryName="Application" editBeforeRun="true" singleton="true">
+  <configuration default="false" name="recikligi (default)" type="Application" factoryName="Application" editBeforeRun="true">
     <envs>
-      <env name="RECIKLIGI_WATSON_APIKEY" value="hWs07Yi1E75Os3a7b0OO-070QMmBMNOrxGRPN-27wfo7" />
+      <env name="RECIKLIGI_WATSON_APIKEY" value="" />
       <env name="RECIKLIGI_STORAGEFOLDER" value="target" />
+      <env name="RECIKLIGI_AZURE_COMPUTERVISION_ENDPOINT" value="" />
+      <env name="RECIKLIGI_AZURE_COMPUTERVISION_APIKEY" value="" />
     </envs>
     <option name="MAIN_CLASS_NAME" value="net.ludeo.recikligi.AppConfig" />
     <module name="recikligi" />
